@@ -13,6 +13,7 @@ import com.lzy.okgo.model.Response;
 import com.zhuye.hougong.R;
 import com.zhuye.hougong.adapter.message.TongHuaListAdapter;
 import com.zhuye.hougong.base.BaseFragment;
+import com.zhuye.hougong.bean.TongListBean;
 import com.zhuye.hougong.contants.Contants;
 import com.zhuye.hougong.utils.Sputils;
 
@@ -54,24 +55,18 @@ public class TongHuaListFragment extends BaseFragment {
                 .execute(new StringCallback() {
                     @Override
                     public void onSuccess(Response<String> response) {
-                        Log.i("llllll",response.body());
-                        Gson gson = new Gson();
-                        try {
-//                            if(adapter!=null){
-//                                //finAdapter.setFindTongChengData(dongTaiBean);
-//                                if(dongTaiBean!=null&&adapter!=null){
-//                                    // finAdapter.setFindGuanZhuData(dongTaiBean);
-//                                    adapter.addData(dongTaiBean.getData());
-//                                }
-//                                // finAdapter.notifyDataSetChanged();
-//                            }
-                        } catch (JsonSyntaxException e) {
-                            e.printStackTrace();
+                        if(response.body().contains("200")){
+                            try {
+                                Gson gson = new Gson();
+                                TongListBean bean = gson.fromJson(response.body(),TongListBean.class);
+                                if(adapter!=null){
+                                    adapter.addData(bean.getData());
+                                }
+                            } catch (JsonSyntaxException e) {
+                                e.printStackTrace();
+                            }
                         }
-
-
                     }
-
                     @Override
                     public void onError(Response<String> response) {
                         super.onError(response);

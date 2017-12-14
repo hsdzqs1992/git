@@ -2,6 +2,7 @@ package com.zhuye.hougong.adapter.message;
 
 import android.content.Context;
 
+import com.zhuye.hougong.R;
 import com.zhuye.hougong.adapter.BaseHolder;
 import com.zhuye.hougong.adapter.BaseRecycleAdapter;
 
@@ -17,7 +18,7 @@ public class TongHuaListAdapter extends BaseRecycleAdapter {
 
     @Override
     protected int getResId() {
-        return 0;
+        return R.layout.message_tonhua_item;
     }
 
     @Override

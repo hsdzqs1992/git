@@ -74,6 +74,7 @@ public class ZiPaiActivity extends BaseActivity {
     private void tijiao() {
         if(TextUtils.isEmpty(path)){
             CommentUtils.toast(ZiPaiActivity.this,"请选择照片");
+            return;
         }
 
         OkGo.<String>post(Contants.host_apply)

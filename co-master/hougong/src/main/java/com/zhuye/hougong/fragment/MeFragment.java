@@ -298,13 +298,10 @@ import static com.zhuye.hougong.R.id.me_yinpin_tv2;
             public void onClick(View view) {
                 String token = Sputils.getString(getActivity(), "token", "");
                 //startActivity(new Intent(getActivity(), LoginActivity.class));
-
                 // startActivity(new Intent(getActivity(), PersonDetailActivity.class));
                 if (TextUtils.isEmpty(token)) {
-
                     //没登录
                     startActivity(new Intent(getActivity(), LoginActivity.class));
-
                 } else {
                     //登录
                     startActivity(new Intent(getActivity(), PersonDetailActivity.class));
