@@ -1,0 +1,95 @@
+<resources>
+    <string name="app_name">天酷后宫</string>
+    <string name="weibo">&#xe67b;</string>
+    <string name="weixin">&#xe643;</string>
+    <string name="qq">&#xe644;</string>
+    <string name="yibai">&#xe601;</string>
+    <string name="loudou">&#xe66f;</string>
+    <string name="paihang">&#xe624;</string>
+    <string name="dianzan">&#xe600;</string>
+    <string name="man">&#xe606;</string>
+    <string name="setting">&#xe64e;</string>
+    <string name="qianbao">&#xe621;</string>
+    <string name="eye">&#xe608;</string>
+    <string name="message">&#xe69a;</string>
+    <string name="like">&#xe611;</string>
+    <string name="me">&#xe661;</string>
+    <string name="liwu1">&#xe637;</string>
+    <string name="find">&#xe7cd;</string>
+    <string name="yuanbao">&#xe754;</string>
+    <string name="video">&#xe60b;</string>
+    <string name="huangguan">&#xe622;</string>
+    <string name="liwu">&#xe60a;</string>
+    <string name="nvxing">&#xe63a;</string>
+    <string name="photo">&#xe66c;</string>
+    <string name="feiji">&#xe676;</string>
+
+
+    <string name="tuijian">推荐</string>
+    <string name="huoyue">活跃</string>
+    <string name="xinren">新人</string>
+    <string name="mianfei">免费</string>
+    <string name="touixang">头像</string>
+    <string name="yonghuiming">用户名</string>
+    <string name="mingzi">名字</string>
+    <string name="sex">性别</string>
+    <string name="age">年龄</string>
+    <string name="xingzuo">星座</string>
+    <string name="diqu">地区</string>
+    <string name="jibie">级别</string>
+    <string name="bangding">账号绑定</string>
+    <string name="heimingdan">黑名单</string>
+    <string name="yinshen">隐身</string>
+    <string name="feedback">反馈意见</string>
+    <string name="qingchujilu">清除聊天记录</string>
+    <string name="qingchuhuancun">清除缓存</string>
+    <string name="guanyu">关于软件</string>
+    <string name="logout">退出账号</string>
+    <string name="guanzhu">我的关注</string>
+    <string name="fensi">我的粉丝</string>
+    <string name="zongzichan">总资产（金币）</string>
+    <string name="monery">15612</string>
+
+    <!--通话方面的提示信息-->
+    <string name="call_accepted">通话已接通</string>
+    <string name="call_busy">对方正忙</string>
+    <string name="call_cancel">已取消</string>
+    <string name="call_cancel_is_incoming">对方已取消</string>
+    <string name="call_connecting">正在呼叫对方</string>
+    <string name="call_connected">正在等待对方接受呼叫申请</string>
+    <string name="call_connected_is_incoming">对方申请与你进行通话</string>
+    <string name="call_connection_fail">建立连接失败</string>
+    <string name="call_disconnected">通话已结束</string>
+    <string name="call_duration_time">通话时长</string>
+    <string name="call_no_data">没有通话数据</string>
+    <string name="call_not_answer">对方未接听</string>
+    <string name="call_no_response">对方可能在忙，建议稍后拨打</string>
+    <string name="call_offline">对方不在线</string>
+    <string name="call_network_unstable">网络状态不佳</string>
+    <string name="call_network_normal">网络状态良好</string>
+    <string name="call_reject">对方已拒绝</string>
+    <string name="call_reject_is_incoming">已拒绝</string>
+    <string name="call_local_version_smaller">本地版本过低，无法通讯</string>
+    <string name="call_opposite_version_smaller">对方版本过低，无法通讯</string>
+    <string name="call_version_different">双方通讯协议不同，无法通讯</string>
+    <string name="call_video_pause">视频传输已暂停</string>
+    <string name="call_video_resume">视频传输已恢复</string>
+    <string name="call_video_calling">视频通话进行中</string>
+    <string name="call_voice_pause">语音传输已暂停</string>
+    <string name="call_voice_resume">语音传输已恢复</string>
+    <string name="call_voice_calling">语音通话进行中</string>
+
+    <string-array name="date">
+    <item>库尔勒市</item>
+    <item>轮台县</item>
+    <item>尉犁县</item>
+    <item>若羌县</item>
+    <item>且末县</item>
+    <item>焉耆县</item>
+    <item>和静县</item>
+    <item>和硕县</item>
+    <item>博湖县</item>
+    <item>铁门关市</item>
+</string-array>
+
+</resources>

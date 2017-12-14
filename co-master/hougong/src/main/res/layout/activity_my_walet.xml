@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_my_walet"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.zhuye.hougong.view.MyWaletActivity">
+
+    <LinearLayout
+
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:background="@drawable/bg_1"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="293dp">
+            <RelativeLayout
+                android:gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="40dp">
+
+                <ImageView
+                    android:id="@+id/mywalot_back"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="12dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/back"/>
+                <TextView
+                    android:layout_alignParentRight="true"
+                    android:text="赚钱攻略"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:id="@+id/mywalot_zhuanqian"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="12dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                  />
+                <TextView
+                    android:layout_centerInParent="true"
+                    android:text="我的钱包"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:id="@+id/mywalot_qianbao"
+                    android:layout_marginTop="12dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+            </RelativeLayout>
+
+            <TextView
+                android:drawablePadding="11dp"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:layout_marginTop="24dp"
+                android:layout_marginLeft="42dp"
+                android:drawableLeft="@drawable/property"
+                android:text="@string/zongzichan"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dp_40" />
+
+            <TextView
+                android:textColor="@color/white"
+                android:textSize="54sp"
+
+                android:layout_marginLeft="40dp"
+                android:id="@+id/mywalot_money"
+                android:text="@string/monery"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dp_60" />
+            
+
+
+            <LinearLayout
+                android:layout_marginTop="40dp"
+                android:layout_marginRight="12dp"
+                android:layout_marginLeft="42dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content">
+
+
+                    <TextView
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        android:text="累计收入（金币）"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp_40" />
+
+                    <TextView
+                        android:textColor="@color/white"
+                        android:textSize="30sp"
+                        android:id="@+id/mywalot_leiji"
+                        android:text="@string/monery"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp_60" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        android:text="累计支出（金币）"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp_40" />
+                    <TextView
+                        android:textColor="@color/white"
+                        android:textSize="30sp"
+                        android:id="@+id/mywalot_zhichu"
+                        android:text="@string/monery"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp_60" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+
+
+
+
+
+        <LinearLayout
+            android:layout_marginTop="34dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/mywalot_chongzhi"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:src="@drawable/recharge"
+                    android:layout_width="83dp"
+                    android:layout_height="83dp" />
+                <TextView
+                    android:textColor="#666666"
+                    android:textSize="16sp"
+                    android:gravity="center"
+                    android:text="充值"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_60" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:gravity="center"
+                android:id="@+id/mywalot_tixian"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:src="@drawable/tixian"
+                    android:layout_width="83dp"
+                    android:layout_height="83dp" />
+                <TextView
+                    android:textColor="#666666"
+                    android:textSize="16sp"
+                    android:gravity="center"
+                    android:text="提现"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_60" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/mywalot_jiaoyi"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:src="@drawable/trading_record"
+                    android:layout_width="83dp"
+                    android:layout_height="83dp" />
+                <TextView
+                    android:textColor="#666666"
+                    android:textSize="16sp"
+                    android:gravity="center"
+                    android:text="交易记录"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_60" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:gravity="center"
+                android:id="@+id/mywalot_shouzhijilv"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:src="@drawable/cheeck_record"
+                    android:layout_width="83dp"
+                    android:layout_height="83dp" />
+                <TextView
+                    android:textColor="#666666"
+                    android:textSize="16sp"
+                    android:gravity="center"
+                    android:text="收支记录"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_60" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/co-master.iml" filepath="$PROJECT_DIR$/co-master.iml" />
+      <module fileurl="file://$PROJECT_DIR$/demo/demo.iml" filepath="$PROJECT_DIR$/demo/demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/easeui/easeui.iml" filepath="$PROJECT_DIR$/easeui/easeui.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hougong/hougong.iml" filepath="$PROJECT_DIR$/hougong/hougong.iml" />
+      <module fileurl="file://$PROJECT_DIR$/okgo/okgo.iml" filepath="$PROJECT_DIR$/okgo/okgo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/okrx/okrx.iml" filepath="$PROJECT_DIR$/okrx/okrx.iml" />
+      <module fileurl="file://$PROJECT_DIR$/okrx2/okrx2.iml" filepath="$PROJECT_DIR$/okrx2/okrx2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/okserver/okserver.iml" filepath="$PROJECT_DIR$/okserver/okserver.iml" />
+      <module fileurl="file://$PROJECT_DIR$/takephoto_library/takephoto_library.iml" filepath="$PROJECT_DIR$/takephoto_library/takephoto_library.iml" />
+      <module fileurl="file://$PROJECT_DIR$/vmtools/vmtools.iml" filepath="$PROJECT_DIR$/vmtools/vmtools.iml" />
+    </modules>
+  </component>
+</project>

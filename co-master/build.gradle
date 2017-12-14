@@ -1,0 +1,55 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    repositories {
+        jcenter()
+        mavenCentral()
+        maven { url 'https://maven.google.com' }
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.3.3'
+
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+        mavenCentral()
+        maven { url 'https://maven.google.com' }
+        maven { url 'https://jitpack.io' }
+        mavenLocal()
+        maven { url "https://raw.githubusercontent.com/snowdream/mvn-repo/master/releases/" }
+        maven { url "https://raw.githubusercontent.com/snowdream/mvn-repo/master/snapshots/" }
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+ext {
+    versionCode = 29
+    versionName_okgo = '3.0.4'
+    versionName_okserver = '2.0.5'
+    versionName_okrx = '1.0.2'
+    versionName_okrx2 = '2.0.2'
+
+    libMinSdkVersion = 14
+    appMinSdkVersion = 16
+    targetSdkVersion = 25
+    compileSdkVersion = 26
+    buildToolsVersion = '26.0.2'
+    supportVersion = '25.3.1'
+
+    minSdkVersion = 15
+    versionCode = 1
+    versionName = '1.0.0'
+    // 定义引用 android 扩展库版本
+    supportLibVersion = '26.1.0'
+}
+
+

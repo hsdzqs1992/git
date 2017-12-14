@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="182dp"
+    android:layout_height="205dp"
+    android:background="#f00"
+    >
+    <RelativeLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:scaleType="fitXY"
+            android:id="@+id/home_tuijian_item_touxiang"
+            android:src="@mipmap/ic_launcher"
+            android:layout_width="182dp"
+            android:layout_height="137dp" />
+
+        <ImageView
+            android:src="@drawable/on_line"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="12dp"
+            android:id="@+id/home_tuijian_item_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_marginTop="137dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:textSize="16sp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="12dp"
+            android:id="@+id/home_tuijian_item_zhuboname"
+            android:text="某主播"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:textColor="#666666"
+            android:drawablePadding="4dp"
+            android:drawableLeft="@drawable/miss"
+            android:layout_marginLeft="@dimen/h10"
+            android:layout_marginTop="12dp"
+            android:id="@+id/home_tuijian_item_zhuboage"
+            android:text="22"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_marginTop="167dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="12dp"
+            android:id="@+id/home_tuijian_item_zhuboprice"
+            android:text="350币/分钟"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+        <ImageView
+            android:src="@drawable/attention_on"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="12dp"
+            android:layout_marginTop="9dp"
+            android:id="@+id/home_tuijian_item_zhuboguanzhu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+
+
+</android.support.v7.widget.CardView>

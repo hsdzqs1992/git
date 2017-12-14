@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_yan_qing_jiang_li"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.zhuye.hougong.view.YanQingJiangLiActivity">
+
+    <ImageView
+        android:id="@+id/yaoqingjiangli_toubeijing"
+        android:background="@drawable/bg_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:id="@+id/person_detail_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="12dp"
+            android:src="@drawable/back"/>
+
+
+        <TextView
+            android:id="@+id/mywalot_qianbao"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:paddingBottom="10dp"
+            android:text="邀请奖励"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/yaoqingjiangli_ll"
+        android:layout_below="@+id/yaoqingjiangli_toubeijing"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_marginLeft="18dp"
+            android:layout_marginRight="18dp"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="77dp">
+
+            <ImageView
+                android:id="@+id/yaoqing_yaoqig"
+                android:src="@drawable/invit_friend"
+                android:layout_width="53dp"
+                android:layout_height="53dp" />
+            <TextView
+                android:textColor="#666"
+                android:layout_marginTop="18dp"
+                android:textSize="16dp"
+                android:layout_marginLeft="12dp"
+                android:gravity="center_vertical"
+                android:layout_toRightOf="@+id/yaoqing_yaoqig"
+                android:text="邀请好友"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+
+            <TextView
+                android:textColor="#999"
+                android:layout_marginTop="22dp"
+                android:drawableRight="@mipmap/arrow_right"
+                android:layout_alignParentRight="true"
+                android:textSize="12dp"
+                android:drawablePadding="12dp"
+                android:gravity="center_vertical"
+                android:text="去完成"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_marginLeft="18dp"
+            android:layout_marginRight="18dp"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="77dp">
+
+            <ImageView
+                android:id="@+id/yaoqing_qq"
+                android:src="@drawable/qq1"
+                android:layout_width="53dp"
+                android:layout_height="53dp" />
+            <TextView
+                android:textColor="#666"
+                android:layout_marginTop="18dp"
+                android:textSize="16dp"
+                android:layout_marginLeft="12dp"
+                android:gravity="center_vertical"
+                android:layout_toRightOf="@+id/yaoqing_qq"
+                android:text="绑定QQ"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+
+            <TextView
+                android:textColor="#999"
+                android:layout_marginTop="22dp"
+                android:drawableRight="@mipmap/arrow_right"
+                android:layout_alignParentRight="true"
+                android:textSize="12dp"
+                android:drawablePadding="12dp"
+                android:gravity="center_vertical"
+                android:text="去完成"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_marginLeft="18dp"
+            android:layout_marginRight="18dp"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="77dp">
+
+            <ImageView
+                android:id="@+id/yaoqing_weixin"
+                android:src="@drawable/weixin"
+                android:layout_width="53dp"
+                android:layout_height="53dp" />
+            <TextView
+                android:textColor="#666"
+                android:layout_marginTop="18dp"
+                android:textSize="16dp"
+                android:layout_marginLeft="12dp"
+                android:gravity="center_vertical"
+                android:layout_toRightOf="@+id/yaoqing_weixin"
+                android:text="绑定微信"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+
+            <TextView
+                android:textColor="#999"
+                android:layout_marginTop="22dp"
+                android:drawableRight="@mipmap/arrow_right"
+                android:layout_alignParentRight="true"
+                android:textSize="12dp"
+                android:drawablePadding="12dp"
+                android:gravity="center_vertical"
+                android:text="去完成"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_marginLeft="18dp"
+            android:layout_marginRight="18dp"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="77dp">
+
+            <ImageView
+                android:id="@+id/yaoqing_zipai"
+                android:src="@drawable/zipai"
+                android:layout_width="53dp"
+                android:layout_height="53dp" />
+            <TextView
+                android:textColor="#666"
+                android:layout_marginTop="18dp"
+                android:textSize="16dp"
+                android:layout_marginLeft="12dp"
+                android:gravity="center_vertical"
+                android:layout_toRightOf="@+id/yaoqing_zipai"
+                android:text="邀请好友"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+
+            <TextView
+                android:textColor="#999"
+                android:layout_marginTop="22dp"
+                android:drawableRight="@mipmap/arrow_right"
+                android:layout_alignParentRight="true"
+                android:textSize="12dp"
+                android:drawablePadding="12dp"
+                android:gravity="center_vertical"
+                android:text="去完成"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="30dp"
+        android:layout_below="@+id/yaoqingjiangli_ll"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_marginRight="6dp"
+            android:layout_marginLeft="60dp"
+            android:gravity="center_horizontal"
+            android:src="@drawable/golden"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:textColor="#ff3c3c"
+            android:textSize="16dp"
+            android:text="完成以上步骤额外赚取50金币"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+
+</RelativeLayout>

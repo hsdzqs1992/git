@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_chong_zhi"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.zhuye.hougong.view.ChongZhiActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/colorPrimary">
+
+        <ImageView
+            android:id="@+id/person_home_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="12dp"
+            android:src="@drawable/back"/>
+        <TextView
+            android:layout_centerInParent="true"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:text="充值"
+            android:id="@+id/chongzhi_titile_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            />
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_marginTop="12dp"
+        android:paddingRight="17dp"
+        android:paddingLeft="17dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.zhuye.hougong.weidgt.RoundedCornerImageView
+                android:id="@+id/chongzhi_touxiang"
+                android:src="@mipmap/ic_launcher"
+                android:layout_width="59dp"
+                android:layout_height="59dp"/>
+
+            <TextView
+                android:layout_marginLeft="12dp"
+                android:textColor="#666666"
+                android:textSize="16sp"
+                android:layout_toRightOf="@+id/chongzhi_touxiang"
+                android:text="用户名"
+                android:id="@+id/chongzhi_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_marginLeft="12dp"
+                android:textColor="#999999"
+                android:textSize="14sp"
+                android:layout_marginTop="17dp"
+                android:layout_below="@+id/chongzhi_name"
+                android:layout_toRightOf="@+id/chongzhi_touxiang"
+                android:text="22"
+                android:id="@+id/find_zuixin_dizhi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:textColor="#ee4250"
+                android:layout_below="@+id/chongzhi_name"
+                android:textSize="33sp"
+                android:layout_alignParentRight="true"
+                android:text="152"
+                android:id="@+id/chongzhi_data"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+
+        <!---->
+       <android.support.v7.widget.RecyclerView
+           android:id="@+id/zhifu"
+           android:layout_width="match_parent"
+           android:layout_height="270dp"></android.support.v7.widget.RecyclerView>
+
+        <TextView
+            android:textColor="#666666"
+            android:gravity="center"
+            android:textSize="16sp"
+            android:text="请选择支付方式"
+            android:layout_width="wrap_content"
+            android:layout_height="38dp" />
+
+        <RelativeLayout
+            android:id="@+id/chongzhi_alipay"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="13dp"
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            
+            <ImageView
+                android:id="@+id/zhontzhi_alipai_iv"
+                android:src="@drawable/zhifubao"
+                android:layout_width="43dp"
+                android:layout_height="43dp" />
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@+id/zhontzhi_alipai_iv"
+                android:textColor="#666666"
+                android:gravity="center_vertical"
+
+                android:textSize="16sp"
+                android:text="支付宝"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/chongzhi_weixin"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="13dp"
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/zhontzhi_weixin_iv"
+                android:src="@drawable/wechat1"
+                android:layout_width="43dp"
+                android:layout_height="43dp" />
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@+id/zhontzhi_weixin_iv"
+                android:textColor="#666666"
+                android:gravity="center_vertical"
+                android:textSize="16sp"
+                android:text="微信"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

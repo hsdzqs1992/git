@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_sheng_vip1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_vip"
+    tools:context="com.zhuye.hougong.view.ShengVIP1Activity">
+
+    <ImageView
+        android:id="@+id/shengji1_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:background="@drawable/btn_bg"
+        android:layout_marginBottom="80dp"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/shengji1_kaitong"
+        android:text="立即开通"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</RelativeLayout>

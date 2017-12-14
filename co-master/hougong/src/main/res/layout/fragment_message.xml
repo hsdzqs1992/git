@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical"
+              android:layout_height="match_parent">
+
+
+
+   <RelativeLayout
+       android:paddingTop="20dp"
+        android:gravity="center"
+        android:id="@+id/self_create_titlebar"
+        android:layout_width="match_parent"
+        android:layout_height="68dip"
+        android:background="@color/tab_blue_bg">
+        <ImageView
+            android:visibility="invisible"
+            android:id="@+id/search"
+            android:layout_width="40dip"
+            android:layout_height="40dip"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dip"
+            android:layout_marginRight="10dip"
+            android:padding="8dip"
+            android:src="@drawable/search"/>
+
+        <ImageView
+
+            android:id="@+id/message"
+            android:layout_width="40dip"
+            android:layout_height="40dip"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dip"
+            android:layout_marginRight="10dip"
+            android:padding="8dip"
+            android:src="@drawable/gerenxinxi"/>
+
+        <com.zhuye.hougong.weidgt.PagerSlidingTabStrip
+            android:layout_marginLeft="30dp"
+            android:id="@+id/tab_strip_message"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:layout_toLeftOf="@id/message"
+            android:layout_toRightOf="@id/search"
+            android:background="@null"
+            android:fillViewport="false"
+            app:pstsIndicatorHeight="3dp"
+            app:pstsScrollOffset="50dp"
+            app:pstsTabPaddingLeftRight="25dp"
+            />
+    </RelativeLayout>
+
+
+ <!--<android.support.design.widget.TabLayout
+     android:background="@drawable/paihang_bg"
+     android:id="@+id/tab_strip_message"
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"></android.support.design.widget.TabLayout>-->
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/message_viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></android.support.v4.view.ViewPager>
+
+</LinearLayout>

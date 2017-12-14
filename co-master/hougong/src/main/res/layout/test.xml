@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_marginTop="49dp"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:paddingRight="20dp"
+            android:gravity="center"
+            android:paddingLeft="30dp"
+            android:textColor="@color/white"
+            android:textSize="19sp"
+            android:id="@+id/person_home_video"
+            android:background="@drawable/btn_bg2"
+            android:drawableLeft="@drawable/video_big"
+            android:text="视频"
+            android:layout_width="141dp"
+            android:layout_height="48dp" />
+
+        <Button
+
+            android:paddingRight="20dp"
+            android:paddingLeft="30dp"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="19sp"
+            android:layout_marginLeft="35dp"
+            android:layout_toRightOf="@+id/person_home_video"
+            android:id="@+id/person_home_audio"
+            android:background="@drawable/btn_bg1"
+            android:drawableLeft="@drawable/phone_big"
+            android:text="音频"
+            android:layout_width="141dp"
+            android:layout_height="48dp" />
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <Button
+            android:gravity="center_vertical"
+            android:drawablePadding="6dp"
+            android:paddingLeft="160dp"
+            android:drawableLeft="@drawable/attention_onn"
+            android:textColor="#999999"
+            android:textSize="16sp"
+            android:layout_alignParentBottom="true"
+            android:id="@+id/other_person_detail_shifouguan"
+            android:text="已关注"
+            android:layout_width="match_parent"
+            android:layout_height="47dp" />
+    </RelativeLayout>
+
+</LinearLayout>

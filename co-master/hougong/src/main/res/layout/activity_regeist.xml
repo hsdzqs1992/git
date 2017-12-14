@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_regeist"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:orientation="vertical"
+    tools:context="com.zhuye.hougong.view.RegeistActivity">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:background="@color/colorPrimary"
+        android:layout_width="match_parent"
+        android:layout_height="45dp">
+
+        <ImageView
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="12dp"
+            android:id="@+id/regeist_back"
+            android:src="@drawable/back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <EditText
+        android:drawablePadding="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="55dp"
+        android:id="@+id/login_username"
+        android:drawableLeft="@drawable/user"
+        android:hint="请输入手机号或用户名"
+        android:layout_width="match_parent"
+        android:textSize="16sp"
+        android:textColor="#bbbbbb"
+        android:layout_height="wrap_content" />
+
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <EditText
+            android:layout_marginTop="20dp"
+            android:drawablePadding="20dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginLeft="20dp"
+            android:id="@+id/login_code"
+            android:drawableLeft="@drawable/authcode"
+            android:hint="请输入验证码"
+            android:layout_width="wrap_content"
+            android:textSize="16sp"
+            android:textColor="#bbbbbb"
+            android:paddingRight="40dp"
+            android:layout_height="wrap_content" />
+
+
+        <Button
+            android:textColor="@color/white"
+            android:paddingRight="10dp"
+            android:paddingLeft="10dp"
+            android:layout_marginTop="17dp"
+            android:id="@+id/login_sendcode"
+            android:background="@drawable/btn_bg"
+            android:textSize="21sp"
+            android:text="发送验证码"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <EditText
+        android:drawablePadding="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:id="@+id/login_password"
+        android:drawableLeft="@drawable/code"
+        android:hint="请输入密码"
+        android:layout_width="match_parent"
+        android:inputType="textPassword"
+        android:textSize="16sp"
+        android:textColor="#bbbbbb"
+        android:layout_height="wrap_content" />
+
+
+
+
+    <EditText
+        android:paddingLeft="42dp"
+        android:drawablePadding="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:id="@+id/login_repassword"
+        android:hint="请输入密码"
+        android:layout_width="match_parent"
+        android:inputType="textPassword"
+        android:textSize="16sp"
+        android:textColor="#bbbbbb"
+        android:layout_height="wrap_content" />
+
+
+    <Button
+        android:paddingBottom="6dp"
+        android:paddingTop="6dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="47dp"
+        android:id="@+id/login_login"
+        android:background="@drawable/btn_bg"
+        android:textSize="21sp"
+        android:text="注册"
+        android:textColor="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

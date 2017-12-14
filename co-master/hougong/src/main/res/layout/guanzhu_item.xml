@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:layout_height="wrap_content">
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:paddingTop="18dp"
+        android:paddingLeft="12dp">
+        <ImageView
+            android:id="@+id/guanzhu_item_iv"
+            android:src="@mipmap/ic_launcher"
+            android:layout_width="47dp"
+            android:layout_height="47dp"
+            android:layout_marginBottom="10dp"/>
+
+        <TextView
+            android:textColor="#666"
+            android:textSize="16sp"
+            android:layout_marginLeft="13dp"
+            android:layout_marginTop="13dp"
+            android:gravity="center_vertical"
+            android:layout_toRightOf="@id/guanzhu_item_iv"
+            android:id="@+id/guanzhu_item_tv"
+            android:text="@string/yonghuiming"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+</LinearLayout>

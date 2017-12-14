@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical">
+
+
+
+    <RelativeLayout
+        android:paddingTop="20dp"
+        android:gravity="center"
+        android:id="@+id/self_create_titlebar"
+        android:layout_width="match_parent"
+        android:layout_height="68dip"
+        android:background="@color/tab_blue_bg">
+        <ImageView
+            android:visibility="invisible"
+            android:id="@+id/search"
+            android:layout_width="40dip"
+            android:layout_height="40dip"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dip"
+            android:layout_marginRight="10dip"
+            android:padding="8dip"
+            android:src="@drawable/search"/>
+
+        <ImageView
+            android:id="@+id/message"
+            android:layout_width="40dip"
+            android:layout_height="40dip"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dip"
+            android:layout_marginRight="10dip"
+            android:padding="8dip"
+            android:src="@drawable/issue1"/>
+
+        <com.zhuye.hougong.weidgt.PagerSlidingTabStrip
+            android:id="@+id/tab_strip_find"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:layout_toLeftOf="@id/message"
+            android:layout_toRightOf="@id/search"
+            android:background="@null"
+            android:fillViewport="false"
+            app:pstsIndicatorHeight="3dp"
+            app:pstsScrollOffset="150dp"
+            app:pstsTabPaddingLeftRight="20dp"
+            />
+
+
+    </RelativeLayout>
+
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/find_viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></android.support.v4.view.ViewPager>
+
+
+
+</LinearLayout>

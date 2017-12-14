@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+
+    <com.zhuye.hougong.weidgt.MyToolbar
+        android:id="@+id/mee_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></com.zhuye.hougong.weidgt.MyToolbar>
+
+    <RelativeLayout
+        android:padding="@dimen/padding"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:src="@mipmap/ic_launcher"
+            android:id="@+id/me_touxiang"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+        android:layout_toRightOf="@+id/me_touxiang"
+        android:text="用户名"
+        android:id="@+id/me_tou_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
+        <TextView
+            android:layout_toRightOf="@+id/me_tou_name"
+            android:text="id"
+            android:id="@+id/me_tou_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_below="@+id/me_tou_name"
+            android:layout_toRightOf="@+id/me_touxiang"
+            android:text="编辑资料"
+            android:id="@+id/me_tou_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:layout_alignParentRight="true"
+            android:text="成为女神"
+            android:id="@+id/me_tou_nvshen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:gravity="center"
+            android:text="关注"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:gravity="center"
+            android:text="粉丝"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:gravity="center"
+            android:text="好友"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/me_shipin_iv"
+            android:src="@mipmap/ic_launcher"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+        <TextView
+            android:gravity="center_vertical"
+            android:id="@+id/me_shipin_tv"
+            android:layout_toRightOf="@+id/me_shipin_iv"
+            android:text="语音接听"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:layout_toRightOf="@+id/me_shipin_tv"
+            android:id="@+id/me_shipin_iv2"
+            android:src="@mipmap/ic_launcher"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+        <ImageView
+            android:layout_alignParentRight="true"
+            android:id="@+id/me_shipin_go"
+            android:src="@mipmap/ic_launcher"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:gravity="center_vertical"
+            android:id="@+id/me_shipin_tv2"
+            android:layout_toLeftOf="@+id/me_shipin_go"
+            android:text="10金币/分钟"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/me_yuyin_iv"
+            android:src="@mipmap/ic_launcher"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+        <TextView
+            android:gravity="center_vertical"
+            android:id="@+id/me_yuyin_tv"
+            android:layout_toRightOf="@+id/me_yuyin_iv"
+            android:text="语音接听"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:layout_toRightOf="@+id/me_yuyin_tv"
+            android:id="@+id/me_yuyin_iv2"
+            android:src="@mipmap/ic_launcher"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+        <ImageView
+            android:layout_alignParentRight="true"
+            android:id="@+id/me_yuyin_go"
+            android:src="@mipmap/ic_launcher"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:gravity="center_vertical"
+            android:id="@+id/me_yuyin_tv2"
+            android:layout_toLeftOf="@+id/me_yuyin_go"
+            android:text="10金币/分钟"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/me_recycleview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </android.support.v7.widget.RecyclerView>
+
+</LinearLayout>

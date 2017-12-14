@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="#312c2f"
+    android:orientation="vertical"
+
+    android:layout_height="349dp">
+
+    <RelativeLayout
+        android:gravity="center_vertical"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:textColor="#fff"
+            android:textSize="14sp"
+            android:text="礼物"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:layout_marginRight="14dp"
+            android:layout_toLeftOf="@+id/find_liwu_chongzhi"
+            android:textColor="#fff"
+            android:textSize="14sp"
+            android:text="金币金额:  0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_marginRight="14dp"
+            android:layout_toLeftOf="@+id/find_liwu_go"
+            android:id="@+id/find_liwu_chongzhi"
+            android:textColor="#f35353"
+            android:textSize="16sp"
+            android:text="去充值"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <ImageView
+            android:id="@+id/find_liwu_go"
+            android:layout_alignParentRight="true" android:src="@drawable/login_go"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </RelativeLayout>
+    
+   <android.support.v4.view.ViewPager
+       android:gravity="center"
+       android:layout_marginLeft="10dp"
+       android:layout_marginRight="10dp"
+       android:id="@+id/viewpager"
+       android:layout_width="match_parent"
+       android:layout_height="220dp"></android.support.v4.view.ViewPager>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_marginRight="5dp"
+            android:background="@drawable/redshape"
+            android:layout_width="10dp"
+            android:layout_height="10dp" />
+        <ImageView
+            android:layout_marginRight="5dp"
+            android:background="@drawable/grayshape"
+            android:layout_width="10dp"
+            android:layout_height="10dp" />
+        <ImageView
+            android:background="@drawable/grayshape"
+            android:layout_width="10dp"
+            android:layout_height="10dp" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <LinearLayout
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView android:layout_marginBottom="10dp"
+                android:gravity="center"
+                android:textColor="#fff"
+                android:textSize="16sp"
+                android:text="人气值+1"
+                android:layout_weight="1"
+                android:layout_width="106dp"
+                android:layout_height="wrap_content" />
+            <View
+                android:background="#ccc"
+                android:layout_width="2dp"
+                android:layout_height="20dp"></View>
+
+            <TextView android:layout_marginBottom="10dp"
+                android:gravity="center"
+                android:textColor="#fff"
+                android:textSize="16sp"
+                android:text="礼物数1"
+                android:layout_weight="1"
+                android:layout_width="106dp"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/songliwu"
+                android:paddingTop="10dp"
+                android:background="#f35353"
+                android:paddingBottom="10dp"
+                android:gravity="center"
+                android:textColor="#fff"
+                android:textSize="16sp"
+                android:text="送出礼物"
+                android:layout_weight="1"
+                android:layout_width="106dp"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/padding">
+
+
+    <TextView
+        android:textSize="24sp"
+        android:id="@+id/home_left_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
+
+    <com.astuetz.PagerSlidingTabStrip android:id="@+id/tabs"
+        android:layout_toLeftOf="@+id/home_right_icon"
+        android:layout_toRightOf="@+id/home_left_icon"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+
+
+    <TextView
+        android:textSize="24sp"
+        android:layout_alignParentRight="true"
+        android:id="@+id/home_right_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</RelativeLayout>

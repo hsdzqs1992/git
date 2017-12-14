@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_forget_pass2"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.zhuye.hougong.view.ForgetPass2Activity">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:background="@color/colorPrimary"
+        android:layout_width="match_parent"
+        android:layout_height="45dp">
+
+        <ImageView
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="12dp"
+            android:id="@+id/forget2_back"
+            android:src="@drawable/back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+
+    <EditText
+        android:drawablePadding="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:id="@+id/reforget_passs"
+        android:drawableLeft="@drawable/code"
+        android:hint="请输入密码"
+        android:layout_width="match_parent"
+        android:inputType="textPassword"
+        android:textSize="16sp"
+        android:textColor="#bbbbbb"
+        android:layout_height="wrap_content" />
+
+
+
+
+    <EditText
+        android:paddingLeft="42dp"
+        android:drawablePadding="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:id="@+id/reforget_repasss"
+        android:hint="请输入密码"
+        android:layout_width="match_parent"
+        android:inputType="textPassword"
+        android:textSize="16sp"
+        android:textColor="#bbbbbb"
+        android:layout_height="wrap_content" />
+
+
+    <Button
+        android:paddingBottom="6dp"
+        android:paddingTop="6dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="47dp"
+        android:id="@+id/login_login"
+        android:background="@drawable/btn_bg"
+        android:textSize="21sp"
+        android:text="完成"
+        android:textColor="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+
+
+
+</LinearLayout>

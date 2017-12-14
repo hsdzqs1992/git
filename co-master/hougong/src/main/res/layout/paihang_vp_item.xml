@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+   <com.cjj.MaterialRefreshLayout
+       android:id="@+id/materialRefreshLayout"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent">
+
+   <ScrollView
+       android:layout_width="match_parent"
+       android:layout_height="match_parent">
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:orientation="vertical">
+
+         <LinearLayout
+             android:background="@drawable/paihang_bg"
+             android:orientation="horizontal"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content">
+            <LinearLayout
+                android:id="@+id/paihang_two"
+                android:layout_marginBottom="28dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+               <TextView
+                   android:layout_marginTop="18dp"
+                   android:background="@drawable/bangdan_tv_shape"
+                   android:textColor="@color/colorPrimary"
+                   android:textSize="16sp"
+                   android:gravity="center"
+                   android:text="日榜单"
+                   android:id="@+id/paihang_bangdan_ri"
+                   android:layout_width="60dp"
+                   android:layout_height="26dp" />
+
+               <RelativeLayout
+                   android:gravity="center_horizontal"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content">
+                  <com.zhuye.hougong.weidgt.RoundedCornerImageView
+                      android:layout_marginTop="38dp"
+                      android:id="@+id/paihang_touxiang"
+                      android:src="@mipmap/ic_launcher"
+                      android:layout_width="59dp"
+                      android:layout_height="59dp" />
+                  <ImageView
+                      android:layout_marginLeft="15dp"
+                      android:layout_marginTop="82dp"
+                      android:id="@+id/paihang_xiaotouxiang"
+                      android:src="@drawable/two"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content" />
+               </RelativeLayout>
+
+
+               <LinearLayout
+                   android:paddingTop="17dp"
+                   android:gravity="center"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content">
+                  <TextView
+                      android:textColor="@color/white"
+                      android:textSize="16sp"
+                      android:text="用户名"
+                      android:id="@+id/paihang_name"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content" />
+                  <TextView
+                      android:paddingRight="10dp"
+                      android:paddingLeft="10dp"
+                      android:background="@drawable/tv_find_bg"
+                      android:drawablePadding="3dp"
+                      android:drawableLeft="@drawable/miss"
+                      android:textSize="11sp"
+                      android:layout_marginLeft="7dp"
+                      android:layout_toRightOf="@+id/find_zuixin_name"
+                      android:text="22"
+                      android:id="@+id/find_zuixin_age"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content" />
+               </LinearLayout>
+
+
+               <TextView
+                   android:drawablePadding="8dp"
+                   android:drawableLeft="@drawable/like_small"
+                   android:textColor="@color/white"
+                   android:paddingTop="33dp"
+                   android:text="12000"
+                   android:id="@+id/paihang_money"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/paihang_one"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+               <TextView
+                   android:layout_marginTop="18dp"
+                   android:textColor="@color/white"
+                   android:textSize="16sp"
+                   android:gravity="center"
+                   android:text="周榜单"
+                   android:id="@+id/paihang_bangdan_zhou"
+                   android:layout_width="60dp"
+                   android:layout_height="26dp" />
+
+               <RelativeLayout
+                   android:gravity="center_horizontal"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content">
+                  <com.zhuye.hougong.weidgt.RoundedCornerImageView
+                      android:layout_marginTop="38dp"
+                      android:id="@+id/paihang_touxiang_1"
+                      android:src="@mipmap/ic_launcher"
+                      android:layout_width="77dp"
+                      android:layout_height="77dp" />
+                  <ImageView
+                      android:layout_marginLeft="25dp"
+                      android:layout_marginTop="100dp"
+                      android:id="@+id/paihang_xiaotouxiang_1"
+                      android:src="@drawable/one"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content" />
+               </RelativeLayout>
+
+
+               <LinearLayout
+                   android:paddingTop="2dp"
+                   android:gravity="center"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content">
+                  <TextView
+                      android:textColor="@color/white"
+                      android:textSize="16sp"
+                      android:text="用户名"
+                      android:id="@+id/paihang_name1"
+                      android:layout_width="60dp"
+                      android:layout_height="wrap_content" />
+                  <TextView
+                      android:paddingRight="10dp"
+                      android:paddingLeft="10dp"
+                      android:background="@drawable/tv_find_bg"
+                      android:drawablePadding="3dp"
+                      android:drawableLeft="@drawable/miss"
+                      android:textSize="11sp"
+                      android:layout_marginLeft="7dp"
+                      android:layout_toRightOf="@+id/find_zuixin_name"
+                      android:text="22"
+                      android:id="@+id/find_zuixin_age_1"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content" />
+               </LinearLayout>
+
+
+               <TextView
+                   android:textSize="15sp"
+                   android:drawablePadding="8dp"
+                   android:drawableLeft="@drawable/like_big"
+                   android:textColor="@color/white"
+                   android:paddingTop="33dp"
+                   android:text="13000"
+                   android:id="@+id/paihang_money_1"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content" />
+
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:clickable="true"
+                android:id="@+id/paihang_three"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+               <TextView
+                   android:layout_marginTop="18dp"
+                   android:textColor="@color/white"
+                   android:textSize="16sp"
+                   android:gravity="center"
+                   android:text="月榜单"
+                   android:id="@+id/paihang_bangdan_3"
+                   android:layout_width="60dp"
+                   android:layout_height="26dp" />
+
+               <RelativeLayout
+                   android:gravity="center_horizontal"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content">
+                  <com.zhuye.hougong.weidgt.RoundedCornerImageView
+                      android:layout_marginTop="38dp"
+                      android:id="@+id/paihang_touxiang_3"
+                      android:src="@mipmap/ic_launcher"
+                      android:layout_width="59dp"
+                      android:layout_height="59dp" />
+                  <ImageView
+                      android:layout_marginLeft="15dp"
+                      android:layout_marginTop="82dp"
+                      android:id="@+id/paihang_xiaotouxiang_3"
+                      android:src="@drawable/three"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content" />
+               </RelativeLayout>
+
+
+               <LinearLayout
+                   android:paddingTop="17dp"
+                   android:gravity="center"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content">
+                  <TextView
+                      android:textColor="@color/white"
+                      android:textSize="16sp"
+                      android:text="用户名"
+                      android:id="@+id/paihang_name_3"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content" />
+                  <TextView
+                      android:paddingRight="10dp"
+                      android:paddingLeft="10dp"
+                      android:background="@drawable/tv_find_bg"
+                      android:drawablePadding="3dp"
+                      android:drawableLeft="@drawable/miss"
+                      android:textSize="11sp"
+                      android:layout_marginLeft="7dp"
+                      android:layout_toRightOf="@+id/find_zuixin_name"
+                      android:text="22"
+                      android:id="@+id/find_zuixin_age_3"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content" />
+               </LinearLayout>
+
+
+               <TextView
+                   android:drawablePadding="8dp"
+                   android:drawableLeft="@drawable/like_small"
+                   android:textColor="@color/white"
+                   android:paddingTop="33dp"
+                   android:text="10000"
+                   android:id="@+id/paihang_money_3"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content" />
+
+
+
+            </LinearLayout>
+
+
+
+
+         </LinearLayout>
+
+
+         <LinearLayout
+             android:orientation="vertical"
+             android:padding="10dp"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent">
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+               <View
+                   android:background="@color/colorPrimary"
+                   android:layout_width="4dp"
+                   android:layout_height="17dp"></View>
+               <TextView
+                   android:textColor="#666666"
+                   android:layout_marginLeft="10dp"
+                   android:textSize="16sp"
+                   android:text="剩余榜单"
+                   android:id="@+id/paihang_bangdan_shengyu"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+
+
+            <android.support.v7.widget.RecyclerView
+                   android:layout_width="match_parent"
+                   android:layout_height="match_parent"
+                   android:id="@+id/paihangqi">
+               </android.support.v7.widget.RecyclerView>
+
+         </LinearLayout>
+       </LinearLayout>
+      </ScrollView>
+   </com.cjj.MaterialRefreshLayout>
+</LinearLayout>

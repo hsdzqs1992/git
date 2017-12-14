@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:textSize="12sp"
+        android:id="@+id/name"
+        android:paddingTop="3dp"
+        android:paddingBottom="6dp"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp"
+        android:textColor="@color/colorPrimary"
+        android:layout_marginLeft="13dp"
+        android:text="美食"
+        android:background="@drawable/person_liaotian_shape_bg"
+        android:layout_width="wrap_content"
+        android:layout_height="24dp"
+        />
+</LinearLayout>
