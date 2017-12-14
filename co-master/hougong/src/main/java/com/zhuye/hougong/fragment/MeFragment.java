@@ -240,11 +240,11 @@ import static com.zhuye.hougong.R.id.me_yinpin_tv2;
                                 tvFriends.setText(personInfoBean.getData().getTrends()+"\n动态");
 
                                 if(personInfoBean.getData().getUsertype().equals("1")){
-                                    fragmentNvshen.setText("成为主播");
+                                    fragmentNvshen.setText("主播");
                                 }else if(personInfoBean.getData().getUsertype().equals("2")){
                                     fragmentNvshen.setText("申请中");
                                 }else if(personInfoBean.getData().getUsertype().equals("0")){
-                                    fragmentNvshen.setText("想干啥");
+                                    fragmentNvshen.setText("成为主播");
                                 }
 
                                 //语音视频初始化
