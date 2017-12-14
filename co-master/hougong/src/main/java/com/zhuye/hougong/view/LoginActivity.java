@@ -221,12 +221,12 @@ public class LoginActivity extends AppCompatActivity {
 
                                         @Override
                                         public void onError(int i, String s) {
-                                            // CommentUtils.toast(LoginActivity.this,s);
+                                             CommentUtils.toast(LoginActivity.this,s);
                                         }
 
                                         @Override
                                         public void onProgress(int i, String s) {
-
+                                            CommentUtils.toast(LoginActivity.this,s);
                                         }
                                     });
                                 }
@@ -326,44 +326,55 @@ public class LoginActivity extends AppCompatActivity {
                                             final LoginCode cod = gson.fromJson(response.body(), LoginCode.class);
 
 
-                                            //登录成功后需要的处理
-                                            Sputils.setString(LoginActivity.this,"token",cod.getData().getToken());
-                                            Modle.getInstance().loginSuccess(EMClient.getInstance().getCurrentUser());
-                                            //将用户保存到数据库
-                                            Modle.getInstance().getAccountDao().saveUser(new com.zhuye.hougong.bean.UserInfo(EMClient.getInstance().getCurrentUser()));
-                                            //跳转
-                                            runOnUiThread(new Runnable() {
-                                                @Override
-                                                public void run() {
-                                                    EventBus.getDefault().post(new MessageEvent());
-                                                    CommentUtils.toast(LoginActivity.this,"登录成功");
-                                                    startActivity(new Intent(LoginActivity.this,MainActivity.class));
-                                                    finish();
-                                                }
-                                            });
+//                                            //登录成功后需要的处理
+//                                            Sputils.setString(LoginActivity.this,"token",cod.getData().getToken());
+//                                            Modle.getInstance().loginSuccess(EMClient.getInstance().getCurrentUser());
+//                                            //将用户保存到数据库
+//                                            Modle.getInstance().getAccountDao().saveUser(new com.zhuye.hougong.bean.UserInfo(EMClient.getInstance().getCurrentUser()));
+//                                            //跳转
+//                                            runOnUiThread(new Runnable() {
+//                                                @Override
+//                                                public void run() {
+//                                                    EventBus.getDefault().post(new MessageEvent());
+//                                                    CommentUtils.toast(LoginActivity.this,"登录成功");
+//                                                    startActivity(new Intent(LoginActivity.this,MainActivity.class));
+//                                                    finish();
+//                                                }
+//                                            });
 
                                             Modle.getInstance().getGlobalThread().execute(new Runnable() {
                                                 @Override
                                                 public void run() {
-//                                                    if(EMClient.getInstance().isLoggedInBefore()){
-//                                                        EMClient.getInstance().logout(true, new EMCallBack() {
-//                                                            @Override
-//                                                            public void onSuccess() {
-//
-//                                                            }
-//
-//                                                            @Override
-//                                                            public void onError(int i, String s) {
-//
-//                                                            }
-//
-//                                                            @Override
-//                                                            public void onProgress(int i, String s) {
-//
-//                                                            }
-//                                                        });
-//                                                    }
+                                                    EMClient.getInstance().login(cod.getData().getHx_username(), cod.getData().getHx_password(), new EMCallBack() {
+                                                        @Override
+                                                        public void onSuccess() {
+                                                            //登录成功后需要的处理
+                                                            Sputils.setString(LoginActivity.this,"token",cod.getData().getToken());
+                                                            Modle.getInstance().loginSuccess(EMClient.getInstance().getCurrentUser());
+                                                            //将用户保存到数据库
+                                                            Modle.getInstance().getAccountDao().saveUser(new com.zhuye.hougong.bean.UserInfo(EMClient.getInstance().getCurrentUser()));
+                                                            //跳转
+                                                            runOnUiThread(new Runnable() {
+                                                                @Override
+                                                                public void run() {
+                                                                    EventBus.getDefault().post(new MessageEvent());
+                                                                    CommentUtils.toast(LoginActivity.this,"登录成功");
+                                                                    startActivity(new Intent(LoginActivity.this,MainActivity.class));
+                                                                    finish();
+                                                                }
+                                                            });
+                                                        }
 
+                                                        @Override
+                                                        public void onError(int i, String s) {
+                                                             CommentUtils.toast(LoginActivity.this,s);
+                                                        }
+
+                                                        @Override
+                                                        public void onProgress(int i, String s) {
+                                                            CommentUtils.toast(LoginActivity.this,s);
+                                                        }
+                                                    });
 
                                                 }
                                             });

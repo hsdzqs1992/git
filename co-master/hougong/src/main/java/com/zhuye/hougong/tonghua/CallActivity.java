@@ -1,6 +1,7 @@
 package com.zhuye.hougong.tonghua;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.view.WindowManager;
@@ -69,11 +70,13 @@ public class CallActivity extends VMActivity {
      */
     protected void endCall() {
         CallManager.getInstance().endCall();
+
         onFinish();
     }
 
 
 
+    protected int t = 0;
     /**
      * 拒绝通话
      */
@@ -100,6 +103,10 @@ public class CallActivity extends VMActivity {
      * 销毁界面时做一些自己的操作
      */
     @Override public void onFinish() {
+        //处理  时间
+        Intent in = new Intent();
+        in.putExtra("time",t);
+        setResult(100,in);
         super.onFinish();
     }
 

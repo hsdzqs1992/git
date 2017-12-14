@@ -1,11 +1,13 @@
 package com.zhuye.hougong.tonghua;
 
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.hardware.Camera;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -23,6 +25,7 @@ import com.vmloft.develop.library.tools.utils.VMDimenUtil;
 import com.vmloft.develop.library.tools.utils.VMFileUtil;
 import com.vmloft.develop.library.tools.utils.VMLog;
 import com.zhuye.hougong.R;
+import com.zhuye.hougong.utils.CommentUtils;
 
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
@@ -77,11 +80,22 @@ public class VideoCallActivity extends CallActivity {
     @BindView(R.id.fab_answer_call)
     FloatingActionButton answerCallFab;
 
+    String type;
+    private int totaltime;
+    String money;
+    String price;
     @Override protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video_call);
 
         ButterKnife.bind(this);
+        type = getIntent().getStringExtra("type");
+        if(!TextUtils.isEmpty(type) && type.equals("fa")){
+            money =  getIntent().getStringExtra("money");
+            price = getIntent().getStringExtra("price");
+            //问题
+            totaltime = Integer.parseInt(money)/Integer.parseInt(price);
+        }
 
         initView();
     }
@@ -523,6 +537,21 @@ public class VideoCallActivity extends CallActivity {
      */
     private void refreshCallTime() {
         int t = CallManager.getInstance().getCallTime();
+
+
+        if(type.equals("fa")){
+            if(t>180){
+                if((t-180)==totaltime*60){
+                    CommentUtils.toast(VideoCallActivity.this,"余额不足，请充值！");
+                    CallManager.getInstance().endCall();
+                    Intent in = new Intent();
+                    in.putExtra("time",t);
+                    setResult(100,in);
+                    finish();
+                }
+            }
+        }
+
         int h = t / 60 / 60;
         int m = t / 60 % 60;
         int s = t % 60 % 60;

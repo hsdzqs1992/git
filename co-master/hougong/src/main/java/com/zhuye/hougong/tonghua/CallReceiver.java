@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 
 import com.hyphenate.chat.EMClient;
-import com.vmloft.develop.library.tools.utils.VMLog;
 
 /**
  * Created by lzan13 on 2016/10/18.
@@ -30,8 +29,8 @@ public class CallReceiver extends BroadcastReceiver {
         // 呼叫接收方，
         String callTo = intent.getStringExtra("to");
         // 获取通话时的扩展字段
-        String callExt = EMClient.getInstance().callManager().getCurrentCallSession().getExt();
-        VMLog.d("call extension data %s", callExt);
+       // String callExt = EMClient.getInstance().callManager().getCurrentCallSession().getExt();
+       // VMLog.d("call extension data %s", callExt);
         Intent callIntent = new Intent();
         // 根据通话类型跳转到语音通话或视频通话界面
         if (callType.equals("video")) {
@@ -43,6 +42,7 @@ public class CallReceiver extends BroadcastReceiver {
             CallManager.getInstance().setCallType(CallManager.CallType.VOICE);
           callIntent.setClass(context, VoiceCallActivity.class);
         }
+        callIntent.putExtra("type","shou");
         // 初始化通化管理类的一些属性
         CallManager.getInstance().setChatId(callFrom);
         CallManager.getInstance().setInComingCall(true);

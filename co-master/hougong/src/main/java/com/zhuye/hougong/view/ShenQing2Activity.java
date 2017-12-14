@@ -185,14 +185,15 @@ public class ShenQing2Activity extends AppCompatActivity {
 //                }
 
                 //String[] dd = new String[choose.size()];
-                ArrayList dd = new ArrayList();
+                ArrayList<String> dd = new ArrayList();
                 for (int i = 0;i<choose.size();i++){
                     dd.add(choose.get(i).getId());
                 }
 
-                startActivity(new Intent(ShenQing2Activity.this,ZiPaiActivity.class));
+                Intent intent = new Intent(ShenQing2Activity.this,ZiPaiActivity.class);
+                intent.putStringArrayListExtra("id",dd);
+                startActivity(intent);
                 //upload(dd);
-
                 break;
         }
     }

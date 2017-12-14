@@ -1,7 +1,6 @@
 package com.zhuye.hougong.view;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -26,7 +25,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class ZiPaiActivity extends BaseActivity {
@@ -43,12 +41,34 @@ public class ZiPaiActivity extends BaseActivity {
     protected int getResId() {
         return R.layout.activity_zi_pai;
     }
+    List<String> ids;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
+    protected void initview() {
+        super.initview();
+        ids = getIntent().getStringArrayListExtra("id");
+    }
+
+
+    @Override
+    protected void initData() {
+        super.initData();
+        PostRequest request = OkGo.<String>post(Contants.host_pic)
+                .params("token", Sputils.getString(ZiPaiActivity.this,"token",""));
+        request.execute(new StringCallback() {
+            @Override
+            public void onSuccess(Response<String> response) {
+                Log.i("---",response.body());
+                CommentUtils.toast(ZiPaiActivity.this,"上传成功");
+            }
+
+            @Override
+            public void onError(Response<String> response) {
+                super.onError(response);
+                Log.i("---",response.body());
+            }
+        });
+
     }
 
     @OnClick({R.id.mywalot_back, R.id.selectphoto, R.id.zipai_kaiqi})
@@ -63,8 +83,13 @@ public class ZiPaiActivity extends BaseActivity {
 
                 break;
             case R.id.zipai_kaiqi:
+                
+                tijiao();
                 break;
         }
+    }
+
+    private void tijiao() {
     }
 
     private void seleciPicture() {
@@ -88,7 +113,7 @@ public class ZiPaiActivity extends BaseActivity {
                 images = (List<ImageItem>) data.getSerializableExtra(ImagePicker.EXTRA_RESULT_ITEMS);
                 //tasks = adapter.updateData(images);
 
-                upload();
+               // upload();
 
             } else {
                 //showToast("没有数据");
@@ -111,25 +136,6 @@ public class ZiPaiActivity extends BaseActivity {
                 files.add(file);
             }
         }
-        PostRequest request = OkGo.<String>post(Contants.host_pic)
-                .params("token", Sputils.getString(ZiPaiActivity.this,"token",""));
 
-        for (int i = 0 ;i<files.size() ;i++){
-            request.params("file"+i,files.get(i));
-        }
-
-        request.execute(new StringCallback() {
-            @Override
-            public void onSuccess(Response<String> response) {
-                Log.i("---",response.body());
-                CommentUtils.toast(ZiPaiActivity.this,"上传成功");
-            }
-
-            @Override
-            public void onError(Response<String> response) {
-                super.onError(response);
-                Log.i("---",response.body());
-            }
-        });
     }
 }

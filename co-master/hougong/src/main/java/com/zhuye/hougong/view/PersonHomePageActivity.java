@@ -477,11 +477,8 @@ public class PersonHomePageActivity extends AppCompatActivity {
     private void callVideo(String huanXinid) {
         //checkContacts();
         //han.sendEmptyMessageDelayed(0,2000);
-        Intent intent = new Intent(PersonHomePageActivity.this, VideoCallActivity.class);
-        CallManager.getInstance().setChatId(huanXinid);
-        CallManager.getInstance().setInComingCall(false);
-        CallManager.getInstance().setCallType(CallManager.CallType.VIDEO);
-        startActivity(intent);
+        initmoneydata("video",huanXinid);
+
     }
 
     /**
@@ -508,8 +505,10 @@ public class PersonHomePageActivity extends AppCompatActivity {
         }
     };
 
+//    private String voicemoney = person.getData().getVoice_money();
+//    private String videomoney = person.getData().getVideo_money();
 
-    private void initmoneydata(String type, final String huanXinid) {
+    private void initmoneydata(final String type, final String huanXinid) {
         OkGo.<String>post(Contants.answer_set)
                 .params("token", Sputils.getString(PersonHomePageActivity.this, "token", ""))
                 .params("uid", uid)
@@ -521,24 +520,51 @@ public class PersonHomePageActivity extends AppCompatActivity {
                             try {
                                 Gson gosn = new Gson();
                                 CallBean bean = gosn.fromJson(response.body(),CallBean.class);
-                                CommentUtils.toast(PersonHomePageActivity.this,"ok");
-                                Intent intent = new Intent(PersonHomePageActivity.this, VoiceCallActivity.class);
-                                CallManager.getInstance().setChatId(huanXinid);
-                                CallManager.getInstance().setInComingCall(false);
-                                CallManager.getInstance().setCallType(CallManager.CallType.VOICE);
-                                //startActivity(intent);
-                                intent.putExtra("money",bean.getData().getMoney()+"");
-                                startActivityForResult(intent,10);
+
+                                if(bean.getData().getMoney()==0){
+                                   if(person.getData().getMian_type()==1){
+                                       CommentUtils.toast(PersonHomePageActivity.this,"请充值");
+                                       return;
+                                   }
+                                }
+
+
+
+                                if(type.equals("voice")){
+                                    Intent intent = new Intent(PersonHomePageActivity.this, VoiceCallActivity.class);
+                                    CallManager.getInstance().setChatId(huanXinid);
+                                    CallManager.getInstance().setInComingCall(false);
+                                    CallManager.getInstance().setCallType(CallManager.CallType.VOICE);
+                                    //startActivity(intent);
+//                                    intent.putExtra("money",bean.getData().getMoney()+"");
+//                                    intent.putExtra("price",voicemoney);
+                                    intent.putExtra("money","2000");
+                                    intent.putExtra("price",person.getData().getVoice_money());
+                                    intent.putExtra("type","fa");
+                                    startActivityForResult(intent,10);
+                                }else if(type.equals("video")){
+                                    Intent intent = new Intent(PersonHomePageActivity.this, VideoCallActivity.class);
+                                    CallManager.getInstance().setChatId(huanXinid);
+                                    CallManager.getInstance().setInComingCall(false);
+                                    CallManager.getInstance().setCallType(CallManager.CallType.VIDEO);
+                                    intent.putExtra("money",bean.getData().getMoney()+"");
+                                    intent.putExtra("price",person.getData().getVideo_money());
+                                    intent.putExtra("type","fa");
+                                    startActivityForResult(intent,20);
+
+                                }
+
+
                             } catch (JsonSyntaxException e) {
                                 e.printStackTrace();
                             }
-                            Log.i("sdfas",response.body());
+                            //Log.i("sdfas",response.body());
                         }else if(response.body().contains("201")){
-                            Log.i("sdfas",response.body());
+                            CommentUtils.toast(PersonHomePageActivity.this,"主播隐身了");
                         }else if(response.body().contains("202")){
-                            Log.i("sdfas",response.body());
+                            CommentUtils.toast(PersonHomePageActivity.this,"关闭了接听");
                         }else if(response.body().contains("288")){
-                            Log.i("sdfas",response.body());
+                            CommentUtils.toast(PersonHomePageActivity.this,"登录失效");
                         }
                     }
 
@@ -553,14 +579,53 @@ public class PersonHomePageActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        int time = data.getIntExtra("time",0);
         switch (requestCode){
-
             case 10:
+                //Log.i("as",time+"sdfasdf");
+                OkGo.<String>post(Contants.avlog)
+                        .params("token", Sputils.getString(PersonHomePageActivity.this, "token", ""))
+                        .params("uid", uid)
+                        .params("type", "voice")
+                        .params("time", time)
+                        //.addUrlParams("feature",dd)
+                        .execute(new StringCallback() {
+                            @Override
+                            public void onSuccess(Response<String> response) {
+                                if (response.body().contains("200")) {
+                                    //CommentUtils.toast(PersonHomePageActivity.this, "设置成功");
 
+                                }
+                            }
+
+                            @Override
+                            public void onError(Response<String> response) {
+                                super.onError(response);
+                                CommentUtils.toast(PersonHomePageActivity.this, "设置失败");
+                            }
+                        });
                 break;
-
             case 20:
+                OkGo.<String>post(Contants.avlog)
+                        .params("token", Sputils.getString(PersonHomePageActivity.this, "token", ""))
+                        .params("uid", uid)
+                        .params("type", "video")
+                        .params("time", time)
+                        //.addUrlParams("feature",dd)
+                        .execute(new StringCallback() {
+                            @Override
+                            public void onSuccess(Response<String> response) {
+                                if (response.body().contains("200")) {
+                                    //CommentUtils.toast(PersonHomePageActivity.this, "设置成功");
 
+                                }
+                            }
+                            @Override
+                            public void onError(Response<String> response) {
+                                super.onError(response);
+                                CommentUtils.toast(PersonHomePageActivity.this, "设置失败");
+                            }
+                        });
                 break;
         }
     }

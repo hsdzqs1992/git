@@ -1,5 +1,6 @@
 package com.zhuye.hougong.tonghua;
 
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -16,6 +17,7 @@ import com.hyphenate.chat.EMClient;
 import com.hyphenate.exceptions.HyphenateException;
 import com.vmloft.develop.library.tools.utils.VMLog;
 import com.zhuye.hougong.R;
+import com.zhuye.hougong.utils.CommentUtils;
 
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
@@ -48,16 +50,29 @@ public class VoiceCallActivity extends CallActivity {
     @BindView(R.id.fab_answer_call)
     FloatingActionButton answerCallFab;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_voice_call);
 
         ButterKnife.bind(this);
+        type = getIntent().getStringExtra("type");
+        if(type.equals("fa")){
+            money =  getIntent().getStringExtra("money");
+            price = getIntent().getStringExtra("price");
+            //问题
+            totaltime = Long.valueOf(Integer.parseInt(money)/Integer.parseInt(price));
+        }
+
+
 
         initView();
     }
-
+    String type;
+    private Long totaltime;
+    String money;
+    String price;
     /**
      * 重载父类方法,实现一些当前通话的操作，
      */
@@ -129,6 +144,9 @@ public class VoiceCallActivity extends CallActivity {
                 break;
         }
     }
+
+
+
 
     /**
      * 接听通话
@@ -251,6 +269,10 @@ public class VoiceCallActivity extends CallActivity {
                 break;
             case DISCONNECTED: // 通话已中断
                 VMLog.i("通话已结束" + callError);
+
+                //在这 处理对方挂断记录时间
+
+
                 onFinish();
                 break;
             case NETWORK_DISCONNECTED:
@@ -291,11 +313,27 @@ public class VoiceCallActivity extends CallActivity {
     /**
      * 刷新通话时间显示
      */
+
     private void refreshCallTime() {
-        int t = CallManager.getInstance().getCallTime();
+         t = CallManager.getInstance().getCallTime();
 
         //// TODO: 2017/12/13 0013 chuli 
         Log.i("as",t+"");
+
+        if(type.equals("fa")){
+            if(t>180){
+            if((t-180)==totaltime*60){
+                CommentUtils.toast(VoiceCallActivity.this,"余额不足，请充值！");
+                CallManager.getInstance().endCall();
+                Intent in = new Intent();
+                in.putExtra("time",t);
+                setResult(100,in);
+                finish();
+            }
+             }
+        }
+
+
         
         int h = t / 60 / 60;
         int m = t / 60 % 60;
