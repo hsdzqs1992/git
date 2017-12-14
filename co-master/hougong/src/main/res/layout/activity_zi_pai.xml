@@ -86,8 +86,9 @@
         </LinearLayout>
 
         <Button
+            android:text="完成"
             android:background="#cccccc"
-            android:textColor="#fff"
+            android:textColor="#000"
             android:textSize="16sp"
             android:layout_marginRight="12dp"
             android:layout_marginLeft="12dp"

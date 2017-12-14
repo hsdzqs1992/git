@@ -527,9 +527,6 @@ public class PersonHomePageActivity extends AppCompatActivity {
                                        return;
                                    }
                                 }
-
-
-
                                 if(type.equals("voice")){
                                     Intent intent = new Intent(PersonHomePageActivity.this, VoiceCallActivity.class);
                                     CallManager.getInstance().setChatId(huanXinid);
@@ -547,7 +544,7 @@ public class PersonHomePageActivity extends AppCompatActivity {
                                     CallManager.getInstance().setChatId(huanXinid);
                                     CallManager.getInstance().setInComingCall(false);
                                     CallManager.getInstance().setCallType(CallManager.CallType.VIDEO);
-                                    intent.putExtra("money",bean.getData().getMoney()+"");
+                                    intent.putExtra("money","2000");
                                     intent.putExtra("price",person.getData().getVideo_money());
                                     intent.putExtra("type","fa");
                                     startActivityForResult(intent,20);
@@ -617,13 +614,12 @@ public class PersonHomePageActivity extends AppCompatActivity {
                             public void onSuccess(Response<String> response) {
                                 if (response.body().contains("200")) {
                                     //CommentUtils.toast(PersonHomePageActivity.this, "设置成功");
-
                                 }
                             }
                             @Override
                             public void onError(Response<String> response) {
                                 super.onError(response);
-                                CommentUtils.toast(PersonHomePageActivity.this, "设置失败");
+                               // CommentUtils.toast(PersonHomePageActivity.this, "设置失败");
                             }
                         });
                 break;

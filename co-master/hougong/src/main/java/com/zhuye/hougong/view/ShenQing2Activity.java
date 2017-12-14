@@ -193,6 +193,7 @@ public class ShenQing2Activity extends AppCompatActivity {
                 Intent intent = new Intent(ShenQing2Activity.this,ZiPaiActivity.class);
                 intent.putStringArrayListExtra("id",dd);
                 startActivity(intent);
+                finish();
                 //upload(dd);
                 break;
         }
