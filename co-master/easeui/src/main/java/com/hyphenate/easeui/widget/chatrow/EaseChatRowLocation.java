@@ -20,10 +20,11 @@ public class EaseChatRowLocation extends EaseChatRow{
     }
 
     @Override
-    protected void onInflateView() {
+    protected View onInflateView() {
        View view =  inflater.inflate(message.direct() == EMMessage.Direct.RECEIVE ?
                 R.layout.ease_row_received_location : R.layout.ease_row_sent_location, this);
-        
+
+        return view;
     }
 
     @Override

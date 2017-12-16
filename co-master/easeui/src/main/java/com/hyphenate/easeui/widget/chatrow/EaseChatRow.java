@@ -285,7 +285,7 @@ public abstract class EaseChatRow extends LinearLayout {
         }
     }
 
-    protected abstract void onInflateView();
+    protected abstract View onInflateView();
 
     /**
      * find view by id
