@@ -38,6 +38,7 @@ import com.zhuye.hougong.adapter.home.JinengAdapter;
 import com.zhuye.hougong.bean.CallBean;
 import com.zhuye.hougong.bean.LiWu;
 import com.zhuye.hougong.bean.PersonJiaoBean;
+import com.hyphenate.easeui.UserLocal;
 import com.zhuye.hougong.contants.Contants;
 import com.zhuye.hougong.http.MyCallback;
 import com.zhuye.hougong.tonghua.CallManager;
@@ -192,6 +193,11 @@ public class PersonHomePageActivity extends AppCompatActivity {
                             personHomeLiwuShu.setText("礼物(" + person.getData().getGift_count() + ")");
                         }
 
+                        UserLocal user = new UserLocal();
+                        user.setHxname(person.getData().getHx_username());
+                        user.setName(person.getData().getNickname());
+                        user.setFacepath(Contants.BASE_URL+person.getData().getFace());
+                        user.save();
 
                         JinengAdapter ad = new JinengAdapter(PersonHomePageActivity.this);
                         personJineng.setAdapter(ad);

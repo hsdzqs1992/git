@@ -23,6 +23,8 @@ import com.zhuye.hougong.model.Modle;
 import com.zhuye.hougong.tonghua.CallManager;
 import com.zhuye.hougong.tonghua.CallReceiver;
 
+import org.litepal.LitePal;
+
 /**
  * Created by zzzy on 2017/11/23.
  */
@@ -74,8 +76,7 @@ public class HouGongApplition extends Application {
 
 
 
-
-
+        LitePal.initialize(this);
         NineGridView.setImageLoader(new PicassoImageLoader());
         conn = this;
 

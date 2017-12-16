@@ -24,10 +24,8 @@ public class ChatFragment extends EaseConversationListFragment {
     protected void initView() {
         super.initView();
         titleBar.setVisibility(View.GONE);
-
         //errorItemContainer.setVisibility(View.GONE);
         //跳转
-
         //头像处理
         setConversationListItemClickListener(new EaseConversationListItemClickListener() {
             @Override
@@ -39,9 +37,7 @@ public class ChatFragment extends EaseConversationListFragment {
                startActivity(in);
             }
         });
-
         //conversationListView.setPadding(0,(int)getActivity().getResources().getDimension(Integer.parseInt("-30")),0,0);
-
         //conversationListView.setPadding(0,(-10),0,0);
         //shan
         conversationList.clear();

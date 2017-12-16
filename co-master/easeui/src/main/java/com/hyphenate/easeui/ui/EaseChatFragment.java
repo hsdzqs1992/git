@@ -13,6 +13,7 @@ import android.os.Handler;
 import android.provider.MediaStore;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -38,6 +39,7 @@ import com.hyphenate.chat.EMTextMessageBody;
 import com.hyphenate.easeui.EaseConstant;
 import com.hyphenate.easeui.EaseUI;
 import com.hyphenate.easeui.R;
+import com.hyphenate.easeui.UserLocal;
 import com.hyphenate.easeui.domain.EaseEmojicon;
 import com.hyphenate.easeui.domain.EaseUser;
 import com.hyphenate.easeui.model.EaseAtMessageHelper;
@@ -55,6 +57,8 @@ import com.hyphenate.easeui.widget.chatrow.EaseCustomChatRowProvider;
 import com.hyphenate.exceptions.HyphenateException;
 import com.hyphenate.util.EMLog;
 import com.hyphenate.util.PathUtil;
+
+import org.litepal.crud.DataSupport;
 
 import java.io.File;
 import java.util.List;
@@ -195,7 +199,21 @@ public class EaseChatFragment extends EaseBaseFragment implements EMMessageListe
     }
 
     protected void setUpView() {
-        titleBar.setTitle(toChatUsername);
+        //聊天人名
+        List<UserLocal> songs = DataSupport.findAll(UserLocal.class);
+        if(songs!=null && songs.size()>0){
+            for (UserLocal user : songs){
+                if(user.getHxname().equals(toChatUsername)){
+                    Log.i("as",user.getFacepath());
+                    titleBar.setTitle(user.getName());
+                   // holder.name.setText(user.getName());
+                    //EaseUserUtils.setUserAvatar(getContext(),username, holder.avatar);
+                    //Glide.with(getContext()).load(user.getFacepath()).into(holder.avatar);
+                }
+            }
+
+        }
+        //titleBar.setTitle(toChatUsername);
         if (chatType == EaseConstant.CHATTYPE_SINGLE) {
             // set title
             if(EaseUserUtils.getUserInfo(toChatUsername) != null){

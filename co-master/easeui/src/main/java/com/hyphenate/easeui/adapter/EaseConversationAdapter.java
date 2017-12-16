@@ -2,6 +2,7 @@ package com.hyphenate.easeui.adapter;
 
 import android.content.Context;
 import android.text.TextUtils;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.TextView.BufferType;
 
+import com.bumptech.glide.Glide;
 import com.hyphenate.chat.EMChatRoom;
 import com.hyphenate.chat.EMClient;
 import com.hyphenate.chat.EMConversation;
@@ -21,6 +23,7 @@ import com.hyphenate.chat.EMGroup;
 import com.hyphenate.chat.EMMessage;
 import com.hyphenate.easeui.EaseUI;
 import com.hyphenate.easeui.R;
+import com.hyphenate.easeui.UserLocal;
 import com.hyphenate.easeui.domain.EaseAvatarOptions;
 import com.hyphenate.easeui.domain.EaseUser;
 import com.hyphenate.easeui.model.EaseAtMessageHelper;
@@ -30,6 +33,8 @@ import com.hyphenate.easeui.utils.EaseUserUtils;
 import com.hyphenate.easeui.widget.EaseConversationList.EaseConversationListHelper;
 import com.hyphenate.easeui.widget.EaseImageView;
 import com.hyphenate.util.DateUtils;
+
+import org.litepal.crud.DataSupport;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -121,8 +126,22 @@ public class EaseConversationAdapter extends ArrayAdapter<EMConversation> {
             holder.name.setText(room != null && !TextUtils.isEmpty(room.getName()) ? room.getName() : username);
             holder.motioned.setVisibility(View.GONE);
         }else {
-            EaseUserUtils.setUserAvatar(getContext(), username, holder.avatar);
-            EaseUserUtils.setUserNick(username, holder.name);
+
+            //List<UserLocal> songs = DataSupport.where("name like ?", "song%").order("duration").find(UserLocal.class);
+
+            List<UserLocal> songs = DataSupport.findAll(UserLocal.class);
+            if(songs!=null && songs.size()>0){
+                for (UserLocal user : songs){
+                    if(user.getHxname().equals(username)){
+                        Log.i("as",user.getFacepath());
+                        holder.name.setText(user.getName());
+                        EaseUserUtils.setUserAvatar(getContext(),username, holder.avatar);
+                        Glide.with(getContext()).load(user.getFacepath()).into(holder.avatar);
+                    }
+                }
+
+            }
+           // EaseUserUtils.setUserNick(username, holder.name);
             holder.motioned.setVisibility(View.GONE);
         }
 
