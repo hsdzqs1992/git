@@ -1,5 +1,6 @@
 package com.zhuye.hougong.weidgt;
 
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.Adapter;
 import android.support.v7.widget.RecyclerView.ViewHolder;
@@ -106,6 +107,22 @@ public class HeaderViewRecyclerAdapter extends Adapter {
 		public HeaderViewHolder(View view) {
 			super(view);
 		}
+    }
+
+    @Override
+    public void onAttachedToRecyclerView(RecyclerView recyclerView) {
+        super.onAttachedToRecyclerView(recyclerView);
+        RecyclerView.LayoutManager manager = recyclerView.getLayoutManager();
+        if(manager instanceof GridLayoutManager) {
+            final GridLayoutManager gridManager = ((GridLayoutManager) manager);
+            gridManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+                @Override
+                public int getSpanSize(int position) {
+                    return getItemViewType(position) == RecyclerView.INVALID_TYPE
+                            ? gridManager.getSpanCount() : 1;
+                }
+            });
+        }
     }
     
 }

@@ -37,11 +37,11 @@
     <com.cjj.MaterialRefreshLayout
         android:id="@+id/fragment_home_materrial"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
         <LinearLayout
             android:orientation="vertical"

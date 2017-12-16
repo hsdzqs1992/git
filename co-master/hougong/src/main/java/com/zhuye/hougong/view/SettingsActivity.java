@@ -49,14 +49,25 @@ public class SettingsActivity extends AppCompatActivity {
     RelativeLayout settingLogout;
 
     private int yinshen = 1;
-
+    ImageView back;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
         ButterKnife.bind(this);
 
+        back = findViewById(R.id.person_detail_back);
+        initListener();
 
+    }
+
+    private void initListener() {
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
     }
 
     @OnClick({R.id.stting_bangding, R.id.stting_heimingdan, R.id.stting_yinsehn, R.id.stting_feedback, R.id.setting_qingchu, R.id.setting_qingchuhuancun, R.id.stting_guanyu, R.id.setting_logout})
@@ -106,9 +117,16 @@ public class SettingsActivity extends AppCompatActivity {
                         EMClient.getInstance().logout(true, new EMCallBack() {
                             @Override
                             public void onSuccess() {
-                                CommentUtils.toast(SettingsActivity.this,"退出成功");
-                                EventBus.getDefault().post(new MessageEvent());
-                                startActivity(new Intent(SettingsActivity.this,LoginActivity.class));
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        CommentUtils.toast(SettingsActivity.this,"退出成功");
+                                        EventBus.getDefault().post(new MessageEvent());
+                                        startActivity(new Intent(SettingsActivity.this,LoginActivity.class));
+                                        finish();
+                                    }
+                                });
+
 
                             }
 

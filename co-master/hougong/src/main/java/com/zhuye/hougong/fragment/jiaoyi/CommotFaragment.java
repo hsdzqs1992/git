@@ -23,6 +23,11 @@ import com.zhuye.hougong.utils.Sputils;
 public class CommotFaragment extends BaseFragment {
 
 
+
+    public void setData(int type){
+        getData(type);
+    }
+
     MaterialRefreshLayout materialRefreshLayout;
     RecyclerView recyclerView;
     CommontAdapter commontAdapter;

@@ -10,6 +10,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.lzy.imagepicker.ImagePicker;
@@ -17,10 +18,8 @@ import com.lzy.imagepicker.bean.ImageItem;
 import com.lzy.imagepicker.ui.ImageGridActivity;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
-import com.lzy.okgo.model.Progress;
 import com.lzy.okgo.model.Response;
 import com.lzy.okgo.request.PostRequest;
-import com.lzy.okserver.upload.UploadListener;
 import com.zhuye.hougong.R;
 import com.zhuye.hougong.adapter.ImageAdapter;
 import com.zhuye.hougong.contants.Contants;
@@ -50,6 +49,7 @@ public class FaBuActivity extends AppCompatActivity {
     @BindView(R.id.image)
     RecyclerView image;
     ImageAdapter adapter;
+    ImageView location;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,6 +58,8 @@ public class FaBuActivity extends AppCompatActivity {
         adapter= new ImageAdapter(this);
         image.setAdapter(adapter);
         image.setLayoutManager(new GridLayoutManager(this,3));
+
+        location = findViewById(R.id.fabu_location_iv);
         initData();
     }
 
@@ -70,6 +72,13 @@ public class FaBuActivity extends AppCompatActivity {
                         Log.i("---",response.body());
                     }
                 });
+
+        location.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                isslectedloat();
+            }
+        });
     }
 
     @OnClick({R.id.fabu_xuanze, R.id.fabu_weizhi,R.id.fabu_fabiao})
@@ -80,6 +89,7 @@ public class FaBuActivity extends AppCompatActivity {
                 seleciPicture();
                 break;
             case R.id.fabu_weizhi:
+                isslectedloat();
                 break;
             case R.id.fabu_fabiao:
 
@@ -131,6 +141,9 @@ public class FaBuActivity extends AppCompatActivity {
 
     private void fabiao() {
 
+        if(isshowlocation){
+
+        }
 
         String content = mFubuContent.getText().toString().trim();
         if(TextUtils.isEmpty(content)){
@@ -185,36 +198,14 @@ public class FaBuActivity extends AppCompatActivity {
 
     }
 
-    public class  MyListener<T> extends UploadListener{
 
-        public MyListener(Object tag) {
-            super(tag);
-        }
-
-        @Override
-        public void onStart(Progress progress) {
-
-        }
-
-        @Override
-        public void onProgress(Progress progress) {
-
-        }
-
-        @Override
-        public void onError(Progress progress) {
-
-            Log.d("dsa","safa");
-        }
-
-        @Override
-        public void onFinish(Object o, Progress progress) {
-            Log.d("dsa","safa");
-        }
-
-        @Override
-        public void onRemove(Progress progress) {
-
-        }
+    private Boolean isshowlocation = true;
+    public void isslectedloat() {
+       if(isshowlocation){
+           location.setImageResource(R.drawable.check_off);
+       }else {
+           location.setImageResource(R.drawable.check_on);
+       }
+       isshowlocation = !isshowlocation;
     }
 }

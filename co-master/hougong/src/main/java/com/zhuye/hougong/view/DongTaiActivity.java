@@ -2,7 +2,6 @@ package com.zhuye.hougong.view;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
@@ -23,6 +22,7 @@ import com.zhuye.hougong.base.BaseActivity;
 import com.zhuye.hougong.bean.DongTaiBean;
 import com.zhuye.hougong.contants.Contants;
 import com.zhuye.hougong.utils.CommentUtils;
+import com.zhuye.hougong.weidgt.MyLineLayoutManager;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -56,7 +56,7 @@ public class DongTaiActivity extends BaseActivity {
         adapter = new DongTaiAdapter(this);
         fragmentHomeMaterrial.setLoadMore(true);
         fragmentHomeRecycle.setAdapter(adapter);
-        fragmentHomeRecycle.setLayoutManager(new LinearLayoutManager(this));
+        fragmentHomeRecycle.setLayoutManager(new MyLineLayoutManager(this));
         if (type == 1) {
             mywalotQianbao.setText("我的动态");
         } else if (type == 2) {
@@ -168,7 +168,7 @@ public class DongTaiActivity extends BaseActivity {
 
     @Override
     protected int getResId() {
-        return R.layout.activity_dongtai;
+        return R.layout.activity_dongtai2;
     }
 
 

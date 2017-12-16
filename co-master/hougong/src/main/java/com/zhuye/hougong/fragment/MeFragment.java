@@ -29,16 +29,16 @@ import com.zhuye.hougong.R;
 import com.zhuye.hougong.adapter.me.MeBottomAdapter;
 import com.zhuye.hougong.bean.MessageEvent;
 import com.zhuye.hougong.bean.PersonInfoBean;
-import com.zhuye.hougong.city.ChooseAddressActivity;
 import com.zhuye.hougong.contants.Contants;
 import com.zhuye.hougong.tonghua.CallManager;
 import com.zhuye.hougong.tonghua.VoiceCallActivity;
 import com.zhuye.hougong.utils.CommentUtils;
 import com.zhuye.hougong.utils.Sputils;
-import com.zhuye.hougong.view.DongTaiActivity;
+import com.zhuye.hougong.view.DongTai2Activity;
 import com.zhuye.hougong.view.FansActivity;
 import com.zhuye.hougong.view.GuanZhuActivity;
 import com.zhuye.hougong.view.LoginActivity;
+import com.zhuye.hougong.view.LookMeActivity;
 import com.zhuye.hougong.view.MyWaletActivity;
 import com.zhuye.hougong.view.PersonDetailActivity;
 import com.zhuye.hougong.view.SelectPictureActivity;
@@ -239,13 +239,13 @@ import static com.zhuye.hougong.R.id.me_yinpin_tv2;
                                 tvFans.setText(personInfoBean.getData().getLove()+"\n粉丝");
                                 tvFriends.setText(personInfoBean.getData().getTrends()+"\n动态");
 
-                                if(personInfoBean.getData().getUsertype().equals("1")){
-                                    fragmentNvshen.setText("主播");
-                                }else if(personInfoBean.getData().getUsertype().equals("2")){
-                                    fragmentNvshen.setText("申请中");
-                                }else if(personInfoBean.getData().getUsertype().equals("0")){
-                                    fragmentNvshen.setText("成为主播");
-                                }
+//                                if(personInfoBean.getData().getUsertype().equals("1")){
+//                                    fragmentNvshen.setText("主播");
+//                                }else if(personInfoBean.getData().getUsertype().equals("2")){
+//                                    fragmentNvshen.setText("申请中");
+//                                }else if(personInfoBean.getData().getUsertype().equals("0")){
+//                                    fragmentNvshen.setText("成为主播");
+//                                }
 
                                 //语音视频初始化
                                 if(personInfoBean.getData().getVoice_open().equals("1")){
@@ -342,7 +342,7 @@ import static com.zhuye.hougong.R.id.me_yinpin_tv2;
                 break;
             case R.id.tv_friends:
                // startActivity(new Intent(getActivity(), MyFriendsActivity.class));
-                Intent intent = new Intent(getActivity(), DongTaiActivity.class);
+                Intent intent = new Intent(getActivity(), DongTai2Activity.class);
                 intent.putExtra("type",1);
                 intent.putExtra("token",Sputils.getString(getActivity(), "token", ""));
                 startActivity(intent);
@@ -373,10 +373,10 @@ import static com.zhuye.hougong.R.id.me_yinpin_tv2;
                 break;
             case R.id.me_lookme:
                // callVoice();
-               // startActivity(new Intent(getActivity(), LookMeActivity.class));
-                Intent in = new Intent(getActivity(), ChooseAddressActivity.class);
-                in.putExtra("now","sdf");
-                startActivity(in);
+               startActivity(new Intent(getActivity(), LookMeActivity.class));
+//                Intent in = new Intent(getActivity(), ChooseAddressActivity.class);
+//                in.putExtra("now","sdf");
+//                startActivity(in);
                 break;
             case R.id.me_sengliwu:
                 startActivity(new Intent(getActivity(), WhoSendLiWuActivity.class));

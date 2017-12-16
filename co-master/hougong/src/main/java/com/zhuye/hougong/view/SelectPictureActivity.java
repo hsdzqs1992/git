@@ -42,8 +42,6 @@ public class SelectPictureActivity extends BaseActivity {
     ImageView personDetailBack;
     @BindView(R.id.mywalot_qianbao)
     TextView mywalotQianbao;
-    @BindView(R.id.select_photo)
-    ImageView selectPhoto;
     @BindView(R.id.recycleview)
     RecyclerView recycleview;
     PictureListAdapter adapter;
@@ -64,14 +62,12 @@ public class SelectPictureActivity extends BaseActivity {
     @Override
     protected void initListener() {
         super.initListener();
-
         adapter.setOnItemClickListener(new BaseHolder.OnItemClickListener() {
             @Override
             public void OnItemClick(View view, int position) {
                 if(position==0){
                     seleciPicture();
                 }else {
-
                     deletePhoto(position);
                 }
              }
@@ -80,16 +76,21 @@ public class SelectPictureActivity extends BaseActivity {
 
     private void deletePhoto(final int position) {
 
-        //// TODO: 2017/12/11 0011
+        if(position==0){
+            return;
+        }
+        // TODO: 2017/12/11 0011
         OkGo.<String>post(Contants.img_del)
                 .params("token", Sputils.getString(SelectPictureActivity.this, "token", ""))
-                .params("id", bean.getData().get(position-1).getL_id())
+                .params("id", bean.getData().get(position).getL_id())
                 .execute(new StringCallback() {
                     @Override
                     public void onSuccess(Response<String> response) {
                         if (response.body().contains("200")) {
-                            adapter.removeData(bean.getData().get(position-1),position);
-                            CommentUtils.toast(SelectPictureActivity.this, "chenggn");
+                            bean.getData().remove(position);
+                           //adapter.removeData(bean.getData().get(position),position);
+                           adapter.removeData(position);
+                            CommentUtils.toast(SelectPictureActivity.this, "删除成功");
                         } else if (response.body().contains("201")) {
                             CommentUtils.toast(SelectPictureActivity.this, "无更多数据");
                         }
@@ -135,17 +136,16 @@ public class SelectPictureActivity extends BaseActivity {
     }
 
 
-
-    @OnClick({R.id.person_detail_back, R.id.select_photo})
+    @OnClick(R.id.person_detail_back)
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.person_detail_back:
                 finish();
                 break;
-            case R.id.select_photo:
-                //startActivity();
-                seleciPicture();
-                break;
+//            case R.id.select_photo:
+//                //startActivity();
+//                seleciPicture();
+//                break;
         }
     }
 
@@ -203,6 +203,14 @@ public class SelectPictureActivity extends BaseActivity {
                     @Override
                     public void onSuccess(Response<String> response) {
                         Log.i("---",response.body());
+                        if(response.body().contains("200")){
+                            bean.getData().clear();
+                            adapter.clear();
+                            initData();
+                        }else if(response.body().contains("202")){
+                           /// Gson gson = new Gson();
+                            CommentUtils.toast(SelectPictureActivity.this,"出错了");
+                        }
                     }
 
                     @Override

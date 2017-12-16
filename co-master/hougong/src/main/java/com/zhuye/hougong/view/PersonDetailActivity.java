@@ -3,13 +3,18 @@ package com.zhuye.hougong.view;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.IdRes;
+import android.support.v7.app.AlertDialog;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 import com.lzy.imagepicker.ImagePicker;
 import com.lzy.imagepicker.bean.ImageItem;
@@ -18,11 +23,13 @@ import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.model.Response;
 import com.lzy.okgo.request.PostRequest;
+import com.shawnlin.numberpicker.NumberPicker;
 import com.zhuye.hougong.R;
 import com.zhuye.hougong.base.BaseActivity;
 import com.zhuye.hougong.bean.Code1;
 import com.zhuye.hougong.bean.MessageEvent;
 import com.zhuye.hougong.bean.PersonInfoBean;
+import com.zhuye.hougong.city.ChooseAddressActivity;
 import com.zhuye.hougong.contants.Contants;
 import com.zhuye.hougong.utils.CommentUtils;
 import com.zhuye.hougong.utils.GlideImageLoader;
@@ -92,12 +99,19 @@ public class PersonDetailActivity extends BaseActivity {
                         Gson gson = new Gson();
                         PersonInfoBean personInfoBean = gson.fromJson(response.body(), PersonInfoBean.class);
                         if (response.body().contains("200")) {
-
+                            Glide.with(PersonDetailActivity.this).load(Contants.BASE_URL+personInfoBean.getData().getFace()).into(personDetailTouxiang);
                             personName.setText(personInfoBean.getData().getNickname());
                             personAge.setText(personInfoBean.getData().getAge() + "岁");
                             personXingzuo.setText(personInfoBean.getData().getCon());
                             personZone.setText(personInfoBean.getData().getCity());
+                            if(personInfoBean.getData().getSex().equals("1")){
+                                personBtnNv.setChecked(true);
+                            }else if (personInfoBean.getData().getSex().equals("2")){
+                                personBtnNan.setChecked(true);
+                            }
+
                             //  personJibie.setText(personInfoBean.getData().getLevel()+"平");
+
                             if (personInfoBean.getData().getSex().contains("0")) {
                                 personBtnNan.setChecked(true);
                                 personBtnNv.setChecked(false);
@@ -129,19 +143,37 @@ public class PersonDetailActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         // TODO: add setContentView(...) invocation
         ButterKnife.bind(this);
+        code =  Sputils.getString(PersonDetailActivity.this,"code","");
+        ci =  Sputils.getString(PersonDetailActivity.this,"city","");
     }
 
 
+    @Override
+    protected void initListener() {
+        super.initListener();
+        group.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
+                selectRadioBtn();
+            }
+        });
+    }
+
+    String sex  ;
+    private void selectRadioBtn(){
+        RadioButton radioButton = (RadioButton)findViewById(group.getCheckedRadioButtonId());
+        sex = radioButton.getText().toString();
+    }
 
     private void tiJiaoData() {
         //// TODO: 2017/12/7 0007 星座地区的处理 
         OkGo.<String>post(Contants.edit_information)
                 .params("token", Sputils.getString(PersonDetailActivity.this, "token", ""))
-                .params("sex", group.getCheckedRadioButtonId() == R.id.person_btn_nv ? "女" : "男")
+                .params("sex", group.getCheckedRadioButtonId()==R.id.person_btn_nv ? 1 :2)
                 .params("age", personAge.getText().toString().trim())
-                .params("con", "星座")
-                .params("city_code", "201")
-                .params("city", "zhengzhou")
+                .params("con", personXingzuo.getText().toString().trim())
+                .params("city_code", code)
+                .params("city", ci)
                 .params("nickname", personName.getText().toString().trim())
                 .execute(new StringCallback() {
                     @Override
@@ -181,19 +213,154 @@ public class PersonDetailActivity extends BaseActivity {
                 alertdialog();
                 break;
             case R.id.person_age:
+                selectAge();
                 break;
             case R.id.person_xingzuo:
+                selectXing();
                 break;
             case R.id.person_zone:
+
+                selectCity();
                 break;
             case R.id.person_jibie:
                 break;
         }
     }
 
+    private void selectCity() {
+        //选择城市
+        Intent in = new Intent(PersonDetailActivity.this, ChooseAddressActivity.class);
+        in.putExtra("now","郑州市");
+        startActivityForResult(in,10);
+    }
+
+
+    int pos1;
+    private void selectXing() {
+
+        final AlertDialog dial = new  AlertDialog.Builder(PersonDetailActivity.this).create();
+        View view = View.inflate(PersonDetailActivity.this,R.layout.aliet,null);
+        dial.setView(view);
+
+
+        final String[] city = new String[]{"白羊座","金牛座","双子座","巨蟹座","狮子座","处女座","天秤座","天蝎座","射手座","摩羯座","水瓶座","双鱼座"};
+        NumberPicker picker = view.findViewById(R.id.picker);
+        picker.setDisplayedValues(city);
+        picker.setMinValue(0);
+        picker.setMaxValue(city.length - 1);
+        picker.setValue(0);
+        //picker.setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS);
+        picker.setWrapSelectorWheel(false);
+        dial.show();
+        picker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
+            @Override
+            public void onValueChange(NumberPicker numberPicker, int i, int i1) {
+                pos1= i1;
+            }
+        });
+        view.findViewById(R.id.queren).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                personXingzuo.setText(city[pos1]);
+                if(dial!=null&&dial.isShowing()){
+                    dial.dismiss();
+                }
+            }
+        });
+        view.findViewById(R.id.quxiao).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (dial!=null&&dial.isShowing()){
+                    dial.dismiss();
+                }
+            }
+        });
+    }
+
+    int pos ;
+    private void selectAge() {
+      final AlertDialog dialo = new  AlertDialog.Builder(PersonDetailActivity.this).create();
+        View view = View.inflate(PersonDetailActivity.this,R.layout.aliet,null);
+        dialo.setView(view);
+
+        List<String> data = new ArrayList();
+        for(int i = 10 ;i< 60;i++){
+            data.add(i+"");
+        }
+        final String[] city = new String[data.size()];
+        for(int i = 0;i<data.size();i++){
+            city[i]=data.get(i);
+        }
+        NumberPicker picker = view.findViewById(R.id.picker);
+        picker.setDisplayedValues(city);
+        picker.setMinValue(0);
+        picker.setMaxValue(city.length - 1);
+        picker.setValue(0);
+        //picker.setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS);
+        picker.setWrapSelectorWheel(false);
+        dialo.show();
+
+
+        picker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
+            @Override
+            public void onValueChange(NumberPicker numberPicker, int i, int i1) {
+                // Log.i("acy",i+"");
+                Log.i("acy",i1+"asdfsd");
+                pos= i1;
+            }
+        });
+        view.findViewById(R.id.queren).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                personAge.setText(city[pos]);
+                if(dialo!=null&&dialo.isShowing()){
+                    dialo.dismiss();
+                }
+            }
+        });
+        view.findViewById(R.id.quxiao).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (dialo!=null&&dialo.isShowing()){
+                    dialo.dismiss();
+                }
+            }
+        });
+    }
+
     private void alertdialog() {
+        final AlertDialog dialog = new  AlertDialog.Builder(PersonDetailActivity.this).create();
+        View view = View.inflate(PersonDetailActivity.this,R.layout.aliet1,null);
+        dialog.setView(view);
+        dialog.show();
+        final EditText ed = view.findViewById(R.id.content);
 
 
+        view.findViewById(R.id.quxiao).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(dialog!=null&&dialog.isShowing()){
+                    dialog.dismiss();
+                }
+            }
+        });
+        view.findViewById(R.id.queren).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+               String tet = ed.getText().toString().trim();
+                if(TextUtils.isEmpty(tet)){
+                    CommentUtils.toast(PersonDetailActivity.this,"请输入昵称");
+                    return;
+                }
+
+                personName.setText(tet);
+                if(dialog!=null&&dialog.isShowing()){
+                    dialog.dismiss();
+                }
+            }
+        });
     }
 
     private void seleciPicture() {
@@ -207,9 +374,16 @@ public class PersonDetailActivity extends BaseActivity {
     }
 
     List<ImageItem> images = new ArrayList<>();
+    String code;
+    String ci;
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode==10){
+            ci= data.getStringExtra("city");
+            code = data.getStringExtra("citycode");
+            personZone.setText(ci);
+        }
         if (resultCode == ImagePicker.RESULT_CODE_ITEMS) {
             if (data != null && requestCode == 100) {
                 //noinspection unchecked

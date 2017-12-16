@@ -176,6 +176,13 @@ public class LoginActivity extends AppCompatActivity {
         loginFormserver();
     }
 
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        System.exit(0);
+    }
+
     private void loginFormserver() {
         OkGo.<String>post(Contants.LOGIN_URL)
                 .params("mobile",phone)

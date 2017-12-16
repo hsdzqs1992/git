@@ -77,11 +77,9 @@ public abstract class BaseHomeFragment extends BaseFragment {
         }
     }
 
-
     @Override
     protected void initData() {
         super.initData();
-
         OkGo.<String>post(Contants.lunbo)
                 .execute(new StringCallback() {
                     @Override

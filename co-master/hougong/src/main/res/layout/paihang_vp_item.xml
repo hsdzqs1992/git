@@ -18,6 +18,7 @@
           android:orientation="vertical">
 
          <LinearLayout
+             android:id="@+id/header"
              android:background="@drawable/paihang_bg"
              android:orientation="horizontal"
              android:layout_width="match_parent"

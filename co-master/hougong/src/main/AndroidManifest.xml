@@ -178,6 +178,7 @@
         //qq
         <activity android:name=".view.DongTaiActivity"></activity>
         <activity android:name=".city.ChooseAddressActivity"></activity>
+        <activity android:name=".view.DongTai2Activity"></activity>
     </application>
 
 </manifest>

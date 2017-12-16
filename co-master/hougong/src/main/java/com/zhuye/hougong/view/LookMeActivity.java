@@ -1,10 +1,9 @@
 package com.zhuye.hougong.view;
 
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -16,14 +15,15 @@ import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.model.Response;
 import com.zhuye.hougong.R;
 import com.zhuye.hougong.adapter.me.LookMeAdapter;
+import com.zhuye.hougong.base.BaseActivity;
+import com.zhuye.hougong.bean.LookBean;
 import com.zhuye.hougong.contants.Contants;
 import com.zhuye.hougong.utils.Sputils;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class LookMeActivity extends AppCompatActivity {
+public class LookMeActivity extends BaseActivity {
 
 
     @BindView(R.id.person_detail_back)
@@ -37,23 +37,10 @@ public class LookMeActivity extends AppCompatActivity {
     @BindView(R.id.common_material)
     MaterialRefreshLayout commonMaterial;
 
+
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.common_recycle2);
-        ButterKnife.bind(this);
-        mywalotQianbao.setText("谁看过我");
-
-
-
-        LookMeAdapter blackNumberAdapter = new LookMeAdapter(this);
-
-        commotRecycle.setAdapter(blackNumberAdapter);
-        commotRecycle.setLayoutManager(new LinearLayoutManager(this));
-        initData();
-    }
-
-    private void initData() {
+    protected void initData() {
         OkGo.<String>post(Contants.wholookme)
                 .params("token", Sputils.getString(LookMeActivity.this,"token",""))
                 .params("page",1)
@@ -62,12 +49,12 @@ public class LookMeActivity extends AppCompatActivity {
                     public void onSuccess(Response<String> response) {
                         Log.i("llllll",response.body());
                         if(response.body().contains("200")){
-                            Gson gson = new Gson();
                             try {
-
-
-
-
+                                Gson gson = new Gson();
+                                LookBean bean = gson.fromJson(response.body(),LookBean.class);
+                                if(bean.getData()!=null && bean.getData().size()>0){
+                                    blackNumberAdapter.addData(bean.getData());
+                                }
                             } catch (JsonSyntaxException e) {
                                 e.printStackTrace();
                             }
@@ -79,6 +66,21 @@ public class LookMeActivity extends AppCompatActivity {
                         Log.i("llllll",response.body());
                     }
                 });
+    }
+    LookMeAdapter blackNumberAdapter;
+    @Override
+    protected void initview() {
+        super.initview();
+        mywalotQianbao.setText("谁看过我");
+        songliwuTixian.setVisibility(View.INVISIBLE);
+        blackNumberAdapter = new LookMeAdapter(this);
+        commotRecycle.setAdapter(blackNumberAdapter);
+        commotRecycle.setLayoutManager(new LinearLayoutManager(this));
+    }
+
+    @Override
+    protected int getResId() {
+        return R.layout.common_recycle2;
     }
 
     @OnClick(R.id.person_detail_back)

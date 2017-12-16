@@ -257,7 +257,7 @@ public class PersonHomePageActivity extends AppCompatActivity {
 
                 break;
             case R.id.person_home_dontai_detail:
-                Intent intent = new Intent(PersonHomePageActivity.this, DongTaiActivity.class);
+                Intent intent = new Intent(PersonHomePageActivity.this, DongTai2Activity.class);
                 intent.putExtra("type", 2);
                 intent.putExtra("token", person.getData().getUid());
                 startActivity(intent);

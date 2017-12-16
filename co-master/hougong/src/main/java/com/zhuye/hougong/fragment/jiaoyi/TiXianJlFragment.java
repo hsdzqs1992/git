@@ -6,10 +6,13 @@ package com.zhuye.hougong.fragment.jiaoyi;
 
 public class TiXianJlFragment extends CommotFaragment {
 
-    int type;
-    public TiXianJlFragment(int type) {
-        this.type =type;
+    public TiXianJlFragment() {
     }
+
+    int type;
+//    public TiXianJlFragment(int type) {
+//        this.type =type;
+//    }
 
     @Override
     protected void initData() {

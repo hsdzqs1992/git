@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    >
+
     <RelativeLayout
         android:id="@+id/head"
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -14,13 +10,14 @@
         android:layout_marginBottom="18dp"
         android:layout_height="wrap_content">
 
-        <ImageView
+        <com.zhuye.hougong.weidgt.RoundedCornerImageView
             android:id="@+id/message_item_touxiang"
             android:src="@drawable/news"
             android:layout_width="50dp"
             android:layout_height="50dp"/>
 
         <ImageView
+            android:visibility="gone"
             android:layout_marginLeft="10dp"
             android:layout_toRightOf="@+id/message_item_title"
             android:id="@+id/message_item_hongdian"
@@ -28,6 +25,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
         <TextView
+            android:layout_marginTop="15dp"
+            android:gravity="center_vertical"
             android:textColor="#666666"
             android:textSize="16sp"
             android:layout_marginLeft="8dp"
@@ -38,6 +37,7 @@
             android:layout_height="wrap_content" />
 
         <TextView
+            android:visibility="gone"
             android:layout_marginTop="10dp"
             android:textColor="#999999"
             android:textSize="13sp"
@@ -49,7 +49,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <TextView
-            android:layout_marginTop="10dp"
+
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="15dp"
             android:gravity="center_vertical"
             android:textColor="#999999"
             android:textSize="13sp"
@@ -62,6 +64,6 @@
     </RelativeLayout>
 
 
-</LinearLayout>
+
 
 

@@ -95,6 +95,7 @@ public abstract class BasePaiHangFragment extends BaseFragment {
     PaiHangAdapter ada;
     @BindView(R.id.materialRefreshLayout)
     MaterialRefreshLayout materialRefreshLayout;
+    protected LinearLayout header;
 
     @Override
     protected void initView() {
@@ -102,6 +103,7 @@ public abstract class BasePaiHangFragment extends BaseFragment {
         paihangqi.setAdapter(ada);
         paihangqi.setLayoutManager(new MyLineLayoutManager(getActivity()));
         materialRefreshLayout.setLoadMore(true);
+        header = rootView.findViewById(R.id.header);
     }
 
     private int kinds = 0;

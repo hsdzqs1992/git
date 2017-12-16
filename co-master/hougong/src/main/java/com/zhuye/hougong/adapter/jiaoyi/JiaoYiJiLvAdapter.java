@@ -29,8 +29,8 @@ public class JiaoYiJiLvAdapter extends FragmentStatePagerAdapter {
         titles.add("充值记录");
         titles.add("提现记录");
 
-        fargments.add(new ChongZhiJlFragment(1));
-        fargments.add(new TiXianJlFragment(2));
+        fargments.add(new ChongZhiJlFragment());
+        fargments.add(new TiXianJlFragment());
     }
 
     @Override

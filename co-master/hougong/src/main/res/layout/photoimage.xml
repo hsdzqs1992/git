@@ -3,7 +3,7 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="wrap_content">
 <ImageView
-    android:id="@+id/photoimage"
+    android:id="@+id/photo"
     android:layout_width="118dp"
     android:layout_height="118dp"
     android:src="@mipmap/ic_launcher"/>

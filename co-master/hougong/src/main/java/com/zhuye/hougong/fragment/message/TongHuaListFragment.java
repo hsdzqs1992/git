@@ -1,8 +1,10 @@
 package com.zhuye.hougong.fragment.message;
 
+import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
 
 import com.cjj.MaterialRefreshLayout;
 import com.google.gson.Gson;
@@ -11,11 +13,13 @@ import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.model.Response;
 import com.zhuye.hougong.R;
+import com.zhuye.hougong.adapter.BaseHolder;
 import com.zhuye.hougong.adapter.message.TongHuaListAdapter;
 import com.zhuye.hougong.base.BaseFragment;
 import com.zhuye.hougong.bean.TongListBean;
 import com.zhuye.hougong.contants.Contants;
 import com.zhuye.hougong.utils.Sputils;
+import com.zhuye.hougong.view.PersonHomePageActivity;
 
 import butterknife.BindView;
 
@@ -46,6 +50,7 @@ public class TongHuaListFragment extends BaseFragment {
     }
 
     int page = 1;
+    TongListBean bean;
     @Override
     protected void initData() {
         super.initData();
@@ -58,7 +63,7 @@ public class TongHuaListFragment extends BaseFragment {
                         if(response.body().contains("200")){
                             try {
                                 Gson gson = new Gson();
-                                TongListBean bean = gson.fromJson(response.body(),TongListBean.class);
+                                bean= gson.fromJson(response.body(),TongListBean.class);
                                 if(adapter!=null){
                                     adapter.addData(bean.getData());
                                 }
@@ -75,5 +80,20 @@ public class TongHuaListFragment extends BaseFragment {
                     }
                 });
 
+    }
+
+    @Override
+    protected void initListener() {
+        super.initListener();
+
+        adapter.setOnItemClickListener(new BaseHolder.OnItemClickListener() {
+            @Override
+            public void OnItemClick(View view, int position) {
+                Intent in = new Intent(getActivity(),PersonHomePageActivity.class);
+                in.putExtra("uid",bean.getData().get(position).getUid());
+                in.putExtra("guanzhu",bean.getData().get(position).getUsertype());//bug
+                getActivity().startActivity(in);
+            }
+        });
     }
 }

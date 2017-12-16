@@ -79,9 +79,17 @@ public abstract class BaseRecycleAdapter<T> extends RecyclerView.Adapter<BaseHol
 //        return (V)rootView.findViewById(ResId);
 //    }
 
+
+
     public void removeData(T t,int position){
         this.data.remove(t);
-        notifyItemChanged(position);
+        notifyItemRemoved(position);
+
+    }
+
+    public void removeData(int position){
+        this.data.remove(position);
+        notifyItemRemoved(position);
 
     }
 
@@ -125,6 +133,8 @@ public abstract class BaseRecycleAdapter<T> extends RecyclerView.Adapter<BaseHol
         this.data.addAll(t);
         notifyItemInserted(position);
     }
+
+
 
 
 

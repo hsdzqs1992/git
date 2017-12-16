@@ -1,24 +1,27 @@
 package com.zhuye.hougong.view;
 
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.cjj.MaterialRefreshLayout;
+import com.google.gson.Gson;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.model.Response;
 import com.zhuye.hougong.R;
 import com.zhuye.hougong.adapter.me.WhoSendAdapter;
+import com.zhuye.hougong.base.BaseActivity;
+import com.zhuye.hougong.bean.SongLiBean;
 import com.zhuye.hougong.contants.Contants;
 import com.zhuye.hougong.utils.Sputils;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
-public class WhoSendLiWuActivity extends AppCompatActivity {
+public class WhoSendLiWuActivity extends BaseActivity {
 
 
     @BindView(R.id.commot_recycle)
@@ -26,31 +29,52 @@ public class WhoSendLiWuActivity extends AppCompatActivity {
     @BindView(R.id.common_material)
     MaterialRefreshLayout commonMaterial;
 
+    ImageView back;
+    TextView tixian;
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.common_recycle2);
-        ButterKnife.bind(this);
-
-
-
-
-        WhoSendAdapter whoSendAdapter = new WhoSendAdapter(this);
-
+    protected void initview() {
+        super.initview();
+        whoSendAdapter = new WhoSendAdapter(this);
         commotRecycle.setAdapter(whoSendAdapter);
         commotRecycle.setLayoutManager(new LinearLayoutManager(this));
-        initData();
+        back = findViewById(R.id.person_detail_back);
+        tixian = findViewById(R.id.songliwu_tixian);
+        tixian.setVisibility(View.GONE);
+    }
+    WhoSendAdapter whoSendAdapter;
+
+    @Override
+    protected void initListener() {
+        super.initListener();
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+
     }
 
-    private void initData() {
-
+    @Override
+    protected void initData() {
         OkGo.<String>post(Contants.gift_log)
                 .params("token", Sputils.getString(WhoSendLiWuActivity.this,"token",""))
                 .params("page",1)
                 .execute(new StringCallback() {
                     @Override
                     public void onSuccess(Response<String> response) {
-                        Log.i("---",response.body());
+                        if(response.body().contains("200")){
+                            try {
+                                Gson gson = new Gson();
+                                SongLiBean bean = gson.fromJson(response.body(),SongLiBean.class);
+                                whoSendAdapter.addData(bean.getData());
+
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        }
                     }
 
                     @Override
@@ -60,5 +84,10 @@ public class WhoSendLiWuActivity extends AppCompatActivity {
 
                     }
                 });
+    }
+
+    @Override
+    protected int getResId() {
+        return R.layout.common_recycle2;
     }
 }

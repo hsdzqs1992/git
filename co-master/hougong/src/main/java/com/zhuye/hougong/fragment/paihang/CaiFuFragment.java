@@ -1,5 +1,7 @@
 package com.zhuye.hougong.fragment.paihang;
 
+import com.zhuye.hougong.R;
+
 /**
  * Created by Administrator on 2017/12/6 0006.
  */
@@ -10,6 +12,7 @@ public class CaiFuFragment extends BasePaiHangFragment {
     @Override
     protected void initData() {
         super.initData();
+        header.setBackgroundResource(R.drawable.paihang_bg2);
         type1 = 4;
         day = 1;
         getBangData(1,type1,day);

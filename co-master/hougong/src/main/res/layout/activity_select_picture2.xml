@@ -38,14 +38,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ImageView
-            android:focusable="true"
-            android:clickable="true"
-            android:background="#eee"
-            android:id="@+id/select_photo"
-            android:src="@drawable/photo1"
-            android:layout_width="118dp"
-            android:layout_height="118dp"/>
+        <!--<ImageView-->
+            <!--android:focusable="true"-->
+            <!--android:clickable="true"-->
+            <!--android:background="#eee"-->
+            <!--android:id="@+id/select_photo"-->
+            <!--android:src="@drawable/photo1"-->
+            <!--android:layout_width="118dp"-->
+            <!--android:layout_height="118dp"/>-->
         <android.support.v7.widget.RecyclerView
             android:focusable="false"
             android:clickable="false"

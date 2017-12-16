@@ -27,11 +27,11 @@ public class PictureListAdapter extends BaseRecycleAdapter {
     @Override
     protected void conver(BaseHolder holder, int position) {
         if(position==0){
-            ((ImageView) holder.getView(R.id.photoimage)).setImageResource(R.drawable.photo1);
+            ((ImageView) holder.getView(R.id.photo)).setImageResource(R.drawable.photo1);
         }else {
-            ImageView iv = holder.getView(R.id.photoimage);
+            ImageView iv = holder.getView(R.id.photo);
             Glide.with(conn).load(Contants.BASE_URL+((PhotoBean.DataBean)data.get(position))
-                    .getPhoto()).error(R.id.photoimage).placeholder(R.mipmap.ic_launcher).into(iv);
+                    .getPhoto()).error(R.mipmap.ic_launcher).placeholder(R.mipmap.ic_launcher).into(iv);
         }
 
     }

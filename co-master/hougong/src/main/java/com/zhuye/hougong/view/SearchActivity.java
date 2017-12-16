@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonSyntaxException;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.model.Response;
@@ -78,17 +79,24 @@ public class SearchActivity extends AppCompatActivity {
                     public void onSuccess(Response<String> response) {
                         Log.i("llllll", response.body());
                         //// TODO: 2017/11/29  解析历史数据加入流式布局中
-                        Gson gson = new Gson();
-                        h = gson.fromJson(response.body(),HistoryBean.class);
-                        idFlowlayout.setAdapter(new TagAdapter<String>(h.getData()) {
-                            @Override
-                            public View getView(FlowLayout parent, int position, String o) {
-                                View view = View.inflate(SearchActivity.this,R.layout.search_edit,null);
-                                TextView tv = view.findViewById(R.id.name);
-                                tv.setText(o);
-                                return view;
+                        try {
+                            Gson gson = new Gson();
+                            h = gson.fromJson(response.body(),HistoryBean.class);
+                            if(h!=null){
+                                idFlowlayout.setAdapter(new TagAdapter<String>(h.getData()) {
+                                    @Override
+                                    public View getView(FlowLayout parent, int position, String o) {
+                                        View view = View.inflate(SearchActivity.this,R.layout.search_edit,null);
+                                        TextView tv = view.findViewById(R.id.name);
+                                        tv.setText(o);
+                                        return view;
+                                    }
+                                });
                             }
-                        });
+                        } catch (JsonSyntaxException e) {
+                            e.printStackTrace();
+                        }
+
                     }
 
                     @Override

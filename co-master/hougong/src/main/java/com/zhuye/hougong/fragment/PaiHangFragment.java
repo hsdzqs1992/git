@@ -126,7 +126,7 @@ public class PaiHangFragment extends BaseFragment {
                 if(position==0){
                     mSelfCreateTitlebar.setBackgroundResource(R.drawable.paihang_bg);
                 }else if(position==1){
-                    mSelfCreateTitlebar.setBackgroundResource(R.color.primary_dark);
+                    mSelfCreateTitlebar.setBackgroundResource(R.drawable.paihang_bg2);
                 }
             }
 

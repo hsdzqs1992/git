@@ -1,5 +1,7 @@
 package com.zhuye.hougong.fragment.paihang;
 
+import com.zhuye.hougong.R;
+
 /**
  * Created by Administrator on 2017/12/6 0006.
  */
@@ -9,6 +11,7 @@ public class MeiLiFragment extends BasePaiHangFragment {
     @Override
     protected void initData() {
         super.initData();
+        header.setBackgroundResource(R.drawable.paihang_bg);
         //默认请求日的数据
         type1 = 3;
         day = 1;

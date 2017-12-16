@@ -3,7 +3,6 @@ package com.zhuye.hougong.adapter;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.widget.LinearLayout;
 
 import com.zhuye.hougong.base.BaseFragment;
 import com.zhuye.hougong.fragment.paihang.CaiFuFragment;
@@ -17,10 +16,6 @@ import java.util.List;
  */
 
 public class PaiHangAdapter2 extends FragmentPagerAdapter {
-
-    //@BindView(R.id.paihang_two)
-    LinearLayout paihangTwo;
-    //@BindView(R.id.paihang_one)
 
     List<BaseFragment>  fragments = new ArrayList<>(2);
     public PaiHangAdapter2(FragmentManager fm,List<String> titles) {

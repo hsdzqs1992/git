@@ -3,6 +3,7 @@ package com.zhuye.hougong.adapter.jiaoyi;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
+import android.view.ViewGroup;
 
 import com.zhuye.hougong.base.BaseFragment;
 import com.zhuye.hougong.fragment.jiaoyi.ShouRuJlFragment;
@@ -29,8 +30,14 @@ public class ShouZhiJiLvAdapter extends FragmentStatePagerAdapter {
         super(fm);
         titles.add("收入记录");
         titles.add("支出记录");
-        fargments.add(new ShouRuJlFragment(3));
-        fargments.add(new ZhiChuJlFragment(4));
+        fargments.add(new ShouRuJlFragment());
+        fargments.add(new ZhiChuJlFragment());
+    }
+
+    @Override
+    public Object instantiateItem(ViewGroup container, int position) {
+        return super.instantiateItem(container, position);
+
     }
 
     @Override
