@@ -5,26 +5,27 @@
     android:layout_height="match_parent">
 
     <RelativeLayout
+        android:paddingTop="25dp"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/home_color"
+        android:layout_height="75dp"
+        android:background="@drawable/paihang_bg2"
         android:gravity="center_vertical">
 
         <ImageView
+            android:layout_marginTop="1dp"
             android:id="@+id/person_detail_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="12dp"
-            android:layout_marginTop="12dp"
             android:src="@drawable/back" />
 
         <TextView
+            android:layout_marginTop="1dp"
             android:id="@+id/mywalot_zhuanqian"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_marginRight="12dp"
-            android:layout_marginTop="12dp"
             android:text="确认"
             android:textColor="@color/white"
             android:textSize="16sp" />
@@ -90,6 +91,7 @@
 
 
             <TextView
+                android:lines="1"
                 android:gravity="end"
                 android:background="@null"
                 android:textColor="#666666"
@@ -97,7 +99,7 @@
                 android:layout_alignParentRight="true"
                 android:id="@+id/person_name"
                 android:text="@string/mingzi"
-                android:layout_width="60dp"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content" />
 
         </RelativeLayout>

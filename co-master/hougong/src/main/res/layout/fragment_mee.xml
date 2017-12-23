@@ -2,29 +2,41 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/y450"
+        android:layout_height="230dp"
         android:background="#4a4542"
         android:paddingTop="16dp">
 
         <com.zhuye.hougong.weidgt.RoundedCornerImageView
             android:id="@+id/avatar"
             android:src="@mipmap/ic_launcher"
-            android:layout_width="@dimen/x140"
-            android:layout_height="@dimen/x140"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:layout_marginLeft="15dp"
-            android:layout_marginTop="59dp" />
+            android:layout_marginTop="40dp" />
 
         <TextView
             android:layout_marginLeft="20dp"
             android:textSize="18sp"
-            android:layout_marginTop="@dimen/y140"
+            android:layout_marginTop="40dp"
             android:text="用户名"
             android:layout_toRightOf="@+id/avatar"
             android:id="@+id/me_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+
+            android:layout_below="@+id/me_name"
+            android:layout_marginLeft="20dp"
+            android:textSize="18sp"
+           android:layout_marginTop="5dp"
+            android:layout_toRightOf="@+id/avatar"
+            android:id="@+id/me_invid"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
@@ -44,10 +56,11 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_marginRight="@dimen/x30"
-            android:layout_marginTop="@dimen/y40"
+            android:layout_marginTop="35dp"
             android:src="@mipmap/set" />
 
         <RelativeLayout
+            android:visibility="gone"
             android:id="@+id/zuopinji"
             android:layout_width="@dimen/x135"
             android:layout_height="@dimen/y65"
@@ -65,13 +78,6 @@
                 android:text="成为女神"
                 android:textColor="@color/white" />
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="4dp"
-                android:src="@mipmap/sanjiao" />
         </RelativeLayout>
 
         <TextView
@@ -99,16 +105,20 @@
             android:textColor="@color/white" />
 
         <TextView
+            android:layout_marginTop="5dp"
+            android:background="@drawable/tv_slide_bg"
+            android:paddingBottom="4dp"
+            android:paddingTop="4dp"
+            android:paddingRight="10dp"
+            android:paddingLeft="10dp"
             android:textSize="12sp"
-            android:background="#fcb829"
             android:textColor="#fff"
             android:text="VIP"
             android:id="@+id/tag_vip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/nickname"
-            android:layout_marginLeft="@dimen/x20"
-            android:layout_marginTop="@dimen/y40"
+            android:layout_below="@+id/me_invid"
+            android:layout_marginLeft="20dp"
             android:layout_toRightOf="@+id/btn_sign"
             />
 
@@ -164,116 +174,151 @@
     </RelativeLayout>
 
     <RelativeLayout
-        android:layout_marginTop="20dp"
+        android:background="#f0f0f0"
         android:layout_width="match_parent"
-        android:layout_height="60dp">
+        android:layout_height="133dp">
+        <LinearLayout
+            android:background="@color/white"
+            android:id="@+id/yinshifei"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="132dp">
+            <RelativeLayout
+                android:gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="66dp">
+                <ImageView
+                    android:layout_marginLeft="10dp"
+                    android:id="@+id/me_yinpin_iv"
+                    android:src="@drawable/voice"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp" />
+
+
+                <TextView
+                    android:textSize="16sp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center_vertical"
+                    android:id="@+id/me_yinpin_tv"
+                    android:layout_toRightOf="@+id/me_yinpin_iv"
+                    android:text="语音接听"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <ImageView
+                    android:layout_marginTop="3dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_toRightOf="@+id/me_yinpin_tv"
+                    android:id="@+id/me_yinpin_iv2"
+                    android:src="@drawable/open"
+                    android:layout_width="47dp"
+                    android:layout_height="30dp" />
+
+
+                <ImageView
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_alignParentRight="true"
+                    android:id="@+id/me_yinpin_go"
+                    android:src="@drawable/jiantou"
+                    android:layout_width="7dp"
+                    android:layout_height="11dp" />
+
+                <TextView
+                    android:layout_marginTop="8dp"
+                    android:textColor="#999999"
+                    android:textSize="10sp"
+                    android:layout_marginRight="11dp"
+                    android:gravity="center_vertical"
+                    android:id="@+id/me_yinpin_tv2"
+                    android:layout_toLeftOf="@+id/me_yinpin_go"
+                    android:text="10金币/分钟"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#f0f0f0"></View>
+            <RelativeLayout
+                android:gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="66dp">
+                <ImageView
+                    android:layout_marginLeft="10dp"
+                    android:id="@+id/me_shipin_iv"
+                    android:src="@drawable/video"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp" />
+
+
+                <TextView
+                    android:textSize="16sp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center_vertical"
+                    android:id="@+id/me_shipin_tv"
+                    android:layout_toRightOf="@+id/me_shipin_iv"
+                    android:text="视频接听"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <ImageView
+                    android:layout_marginTop="3dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_toRightOf="@+id/me_shipin_tv"
+                    android:id="@+id/me_shipin_iv2"
+                    android:src="@drawable/open"
+                    android:layout_width="47dp"
+                    android:layout_height="30dp" />
+
+
+                <ImageView
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_alignParentRight="true"
+                    android:id="@+id/me_shipin_go"
+                    android:src="@drawable/jiantou"
+                    android:layout_width="7dp"
+                    android:layout_height="11dp" />
+
+                <TextView
+                    android:layout_marginTop="8dp"
+                    android:textColor="#999999"
+                    android:textSize="10sp"
+                    android:layout_marginRight="11dp"
+                    android:gravity="center_vertical"
+                    android:id="@+id/me_shipin_tv2"
+                    android:layout_toLeftOf="@+id/me_shipin_go"
+                    android:text="10金币/分钟"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+
         <ImageView
-            android:layout_marginLeft="10dp"
-            android:id="@+id/me_yinpin_iv"
-            android:src="@drawable/voice"
-            android:layout_width="35dp"
-            android:layout_height="35dp" />
+            android:scaleType="centerCrop"
+            android:src="@drawable/zh"
+            android:id="@+id/nvnanshen"
+            android:layout_width="match_parent"
+            android:layout_height="132dp" />
 
 
-        <TextView
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="10dp"
-            android:gravity="center_vertical"
-            android:id="@+id/me_yinpin_tv"
-            android:layout_toRightOf="@+id/me_yinpin_iv"
-            android:text="语音接听"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <ImageView
-            android:layout_marginTop="3dp"
-            android:layout_marginLeft="15dp"
-            android:layout_toRightOf="@+id/me_yinpin_tv"
-            android:id="@+id/me_yinpin_iv2"
-            android:src="@drawable/open"
-            android:layout_width="47dp"
-            android:layout_height="30dp" />
-
-
-        <ImageView
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_alignParentRight="true"
-            android:id="@+id/me_yinpin_go"
-            android:src="@drawable/jiantou"
-            android:layout_width="7dp"
-            android:layout_height="11dp" />
-
-        <TextView
-            android:layout_marginTop="10dp"
-            android:textColor="#999999"
-            android:textSize="10sp"
-            android:layout_marginRight="11dp"
-            android:gravity="center_vertical"
-            android:id="@+id/me_yinpin_tv2"
-            android:layout_toLeftOf="@+id/me_yinpin_go"
-            android:text="10金币/分钟"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
     </RelativeLayout>
 
-    <RelativeLayout
+
+    <View
         android:layout_width="match_parent"
-        android:layout_height="60dp">
-        <ImageView
-            android:layout_marginLeft="10dp"
-            android:id="@+id/me_shipin_iv"
-            android:src="@drawable/video"
-            android:layout_width="35dp"
-            android:layout_height="35dp" />
-
-
-        <TextView
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="10dp"
-            android:gravity="center_vertical"
-            android:id="@+id/me_shipin_tv"
-            android:layout_toRightOf="@+id/me_shipin_iv"
-            android:text="视频接听"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <ImageView
-            android:layout_marginTop="3dp"
-            android:layout_marginLeft="15dp"
-            android:layout_toRightOf="@+id/me_shipin_tv"
-            android:id="@+id/me_shipin_iv2"
-            android:src="@drawable/open"
-            android:layout_width="47dp"
-            android:layout_height="30dp" />
-
-
-        <ImageView
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_alignParentRight="true"
-            android:id="@+id/me_shipin_go"
-            android:src="@drawable/jiantou"
-            android:layout_width="7dp"
-            android:layout_height="11dp" />
-
-        <TextView
-            android:layout_marginTop="10dp"
-            android:textColor="#999999"
-            android:textSize="10sp"
-            android:layout_marginRight="11dp"
-            android:gravity="center_vertical"
-            android:id="@+id/me_shipin_tv2"
-            android:layout_toLeftOf="@+id/me_shipin_go"
-            android:text="10金币/分钟"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-    </RelativeLayout>
-
-
-
+        android:layout_height="10dp"
+        android:background="#f0f0f0"></View>
 
     <LinearLayout
+        android:background="#fff"
         android:orientation="vertical"
         android:layout_marginBottom="30dp"
         android:layout_marginLeft="30dp"
@@ -282,7 +327,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <LinearLayout
+        <RelativeLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -290,10 +335,8 @@
                 android:id="@+id/me_qianbao"
                 android:orientation="vertical"
                 android:gravity="center"
-                android:layout_weight="1"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
-
                 <ImageView
                     android:gravity="center"
                     android:src="@drawable/wallet"
@@ -303,7 +346,7 @@
                     android:gravity="center"
                     android:layout_marginTop="10dp"
                     android:textColor="#666666"
-                    android:textSize="12sp"
+                    android:textSize="14sp"
                     android:text="我的钱包"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
@@ -312,8 +355,9 @@
                 android:orientation="vertical"
                 android:id="@+id/me_photos"
                 android:gravity="center"
-                android:layout_weight="1"
-                android:layout_width="0dp"
+
+                android:layout_centerInParent="true"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
                 <ImageView
@@ -323,17 +367,17 @@
                 <TextView
                     android:layout_marginTop="10dp"
                     android:textColor="#666666"
-                    android:textSize="12sp"
+                    android:textSize="14sp"
                     android:text="我的相册"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </LinearLayout>
             <LinearLayout
+                android:layout_alignParentRight="true"
                 android:orientation="vertical"
                 android:id="@+id/me_yaoqing"
                 android:gravity="center"
-                android:layout_weight="1"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
                 <ImageView
@@ -343,15 +387,16 @@
                 <TextView
                     android:layout_marginTop="10dp"
                     android:textColor="#666666"
-                    android:textSize="12sp"
+                    android:textSize="14sp"
                     android:text="邀请奖励"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </LinearLayout>
-        </LinearLayout>
+        </RelativeLayout>
 
 
-        <LinearLayout
+
+        <RelativeLayout
             android:layout_marginTop="25dp"
             android:orientation="horizontal"
             android:layout_width="match_parent"
@@ -360,8 +405,8 @@
                 android:id="@+id/me_lookme"
                 android:orientation="vertical"
                 android:gravity="center"
-                android:layout_weight="1"
-                android:layout_width="0dp"
+
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
                 <ImageView
@@ -373,17 +418,18 @@
                     android:gravity="center"
                     android:layout_marginTop="10dp"
                     android:textColor="#666666"
-                    android:textSize="12sp"
+                    android:textSize="14sp"
                     android:text="谁看过我"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </LinearLayout>
             <LinearLayout
+                android:layout_centerInParent="true"
                 android:orientation="vertical"
                 android:id="@+id/me_sengliwu"
                 android:gravity="center"
-                android:layout_weight="1"
-                android:layout_width="0dp"
+
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
                 <ImageView
@@ -393,17 +439,18 @@
                 <TextView
                     android:layout_marginTop="10dp"
                     android:textColor="#666666"
-                    android:textSize="12sp"
+                    android:textSize="14sp"
                     android:text="谁送过礼物"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </LinearLayout>
             <LinearLayout
+                android:layout_alignParentRight="true"
                 android:orientation="vertical"
                 android:id="@+id/me_shengvip"
                 android:gravity="center"
-                android:layout_weight="1"
-                android:layout_width="0dp"
+
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
                 <ImageView
@@ -413,12 +460,12 @@
                 <TextView
                     android:layout_marginTop="10dp"
                     android:textColor="#666666"
-                    android:textSize="12sp"
+                    android:textSize="14sp"
                     android:text="升级VIP"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </LinearLayout>
-        </LinearLayout>
+        </RelativeLayout>
 
 
     </LinearLayout>

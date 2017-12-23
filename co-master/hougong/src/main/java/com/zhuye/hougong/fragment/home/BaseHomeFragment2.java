@@ -160,7 +160,7 @@ public abstract class BaseHomeFragment2 extends BaseFragment {
                     @Override
                     public void onError(Response<String> response) {
                         super.onError(response);
-                        Log.d("------",response.body());
+                      //  Log.d("------",response.body());
                     }
                 });
 
@@ -206,8 +206,8 @@ public abstract class BaseHomeFragment2 extends BaseFragment {
                     @Override
                     public void onClick(View view) {
                         Intent intent = new Intent(getActivity(), PersonHomePageActivity.class);
-                        intent.putExtra("uid",((HomeRecycleBean.DataBean) dongTaiBean.getData().get(position)).getUid());
-                        intent.putExtra("guanzhu",((HomeRecycleBean.DataBean) dongTaiBean.getData().get(position)).getLove()+"");
+                        intent.putExtra("uid",((HomeRecycleBean.DataBean) dongTaiBean.getData().get(position-1)).getUid());
+                        intent.putExtra("guanzhu",((HomeRecycleBean.DataBean) dongTaiBean.getData().get(position-1)).getLove()+"");
                         getActivity().startActivity(intent);
                     }
                 });
@@ -217,13 +217,13 @@ public abstract class BaseHomeFragment2 extends BaseFragment {
                 view.findViewById(R.id.home_tuijian_item_zhuboguanzhu).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(final View view) {
-                        int love = ((HomeRecycleBean.DataBean) dongTaiBean.getData().get(position)).getLove();
+                        int love = ((HomeRecycleBean.DataBean) dongTaiBean.getData().get(position-1)).getLove();
                         if(love == 0){
                             //未关注
                             // isGuanzhu = false;
                             OkGo.<String>post(Contants.love)
                                     .params("token", Sputils.getString(getActivity(),"token",""))
-                                    .params("uid",((HomeRecycleBean.DataBean) dongTaiBean.getData().get(position)).getUid())
+                                    .params("uid",((HomeRecycleBean.DataBean) dongTaiBean.getData().get(position-1)).getUid())
                                     .execute(new MyCallback() {
                                                  @Override
                                                  protected void doFailue(Response<String> response) {
@@ -234,7 +234,7 @@ public abstract class BaseHomeFragment2 extends BaseFragment {
                                                  protected void excuess(Response<String> response) {
                                                      CommentUtils.toast(getActivity(),"关注成功");
                                                      ((ImageView)view.findViewById(R.id.home_tuijian_item_zhuboguanzhu)).setImageResource(R.drawable.attention_on);
-                                                     ((HomeRecycleBean.DataBean) dongTaiBean.getData().get(position)).setLove(1);
+                                                     ((HomeRecycleBean.DataBean) dongTaiBean.getData().get(position-1)).setLove(1);
                                                  }
                                              }
                                     );
@@ -242,7 +242,7 @@ public abstract class BaseHomeFragment2 extends BaseFragment {
                             //已关注
                             OkGo.<String>post(Contants.del_mylove)
                                     .params("token", Sputils.getString(getActivity(),"token",""))
-                                    .params("uid",((HomeRecycleBean.DataBean) dongTaiBean.getData().get(position)).getUid())
+                                    .params("uid",((HomeRecycleBean.DataBean) dongTaiBean.getData().get(position-1)).getUid())
                                     .execute(new MyCallback() {
                                                  @Override
                                                  protected void doFailue(Response<String> response) {
@@ -253,7 +253,7 @@ public abstract class BaseHomeFragment2 extends BaseFragment {
                                                  protected void excuess(Response<String> response) {
                                                      CommentUtils.toast(getActivity(),"取消关注");
                                                      ((ImageView)view.findViewById(R.id.home_tuijian_item_zhuboguanzhu)).setImageResource(R.drawable.attention_off);
-                                                     ((HomeRecycleBean.DataBean) dongTaiBean.getData().get(position)).setLove(0);
+                                                     ((HomeRecycleBean.DataBean) dongTaiBean.getData().get(position-1)).setLove(0);
                                                  }
                                              }
                                     );

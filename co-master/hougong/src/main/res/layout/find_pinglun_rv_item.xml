@@ -28,12 +28,12 @@
             android:layout_height="wrap_content" />
 
         <ImageView
-            android:layout_marginRight="10dp"
+            android:paddingLeft="40dp"
             android:layout_marginTop="8dp"
             android:layout_toLeftOf="@+id/piniglun_item_zanshu"
             android:id="@+id/piniglun_item_dianzantubiao"
             android:src="@drawable/praise_of"
-            android:layout_width="17dp"
+            android:layout_width="70dp"
             android:layout_height="17dp" />
         <TextView
             android:textColor="#999"

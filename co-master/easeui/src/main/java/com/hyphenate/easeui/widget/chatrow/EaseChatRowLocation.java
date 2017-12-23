@@ -1,14 +1,21 @@
 package com.hyphenate.easeui.widget.chatrow;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.View;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.hyphenate.chat.EMLocationMessageBody;
 import com.hyphenate.chat.EMMessage;
 import com.hyphenate.easeui.R;
+import com.hyphenate.easeui.UserLocal;
 import com.hyphenate.util.LatLng;
+
+import org.litepal.crud.DataSupport;
+
+import java.util.List;
 
 public class EaseChatRowLocation extends EaseChatRow{
 
@@ -37,6 +44,23 @@ public class EaseChatRowLocation extends EaseChatRow{
     protected void onSetUpView() {
 		locBody = (EMLocationMessageBody) message.getBody();
 		locationView.setText(locBody.getAddress());
+
+        if (message.direct() == EMMessage.Direct.RECEIVE) {
+            Log.i("as",message.getFrom());
+            List<UserLocal> songs = DataSupport.findAll(UserLocal.class);
+            if(songs!=null && songs.size()>0){
+                for (UserLocal user : songs){
+                    if(user.getHxname().equals(message.getFrom())){
+                        Log.i("as",user.getFacepath());
+                        //holder.name.setText(user.getName());
+                        // EaseUserUtils.setUserAvatar(getContext(),message.getFrom(), holder.avatar);
+                        Glide.with(getContext()).load(user.getFacepath()).into(userAvatarView);
+                    }
+                }
+            }
+        } else {
+            Glide.with(context).load(context.getSharedPreferences("con",Context.MODE_PRIVATE).getString("face","")).into(userAvatarView);
+        }
     }
 
     @Override

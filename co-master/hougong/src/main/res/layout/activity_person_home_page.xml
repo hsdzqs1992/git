@@ -7,48 +7,70 @@
     tools:context="com.zhuye.hougong.view.PersonHomePageActivity">
 
     <RelativeLayout
+        android:gravity="center_vertical"
+        android:paddingTop="20dp"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/colorPrimary">
+        android:layout_height="70dp"
+        android:background="@drawable/paihang_bg2">
 
         <ImageView
             android:id="@+id/person_home_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
-            android:layout_marginTop="13dp"
             android:src="@drawable/back" />
 
 
         <RelativeLayout
-            android:gravity="center"
+            android:gravity="center_vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true">
+           >
 
             <com.zhuye.hougong.weidgt.RoundedCornerImageView
+                android:visibility="gone"
                 android:id="@+id/person_home_touxiang"
                 android:layout_width="42dp"
                 android:layout_height="42dp"
                 android:scaleType="fitXY"
                 />
 
-            <TextView
-                android:id="@+id/person_home_name"
+
+
+            <RelativeLayout
+                android:layout_centerInParent="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="9dp"
-                android:layout_toRightOf="@+id/person_home_touxiang"
-                android:src="@mipmap/arrow_right"
-                android:text="@string/yonghuiming"
-                android:textColor="@color/white"
-                android:textSize="16sp" />
+                >
+                <TextView
+                    android:id="@+id/person_home_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/arrow_right"
+                    android:text="@string/yonghuiming"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+                <TextView
+                    android:visibility="gone"
+                    android:layout_marginTop="2dp"
+                    android:id="@+id/person_home_vip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="6dp"
+                    android:layout_toRightOf="@+id/person_home_name"
+                    android:background="@drawable/person_vip_shape_bg"
+                    android:paddingLeft="6dp"
+                    android:paddingRight="6dp"
+                    android:text="vip1"
+                    android:textColor="@color/white" />
 
+
+            </RelativeLayout>
             <TextView
+                android:visibility="gone"
                 android:id="@+id/person_home_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/person_home_name"
                 android:layout_marginLeft="9dp"
                 android:layout_marginTop="8dp"
                 android:layout_toRightOf="@+id/person_home_touxiang"
@@ -57,19 +79,6 @@
                 android:textColor="@color/white"
                 android:textSize="14sp" />
 
-            <TextView
-                android:visibility="invisible"
-                android:layout_marginTop="2dp"
-                android:id="@+id/person_home_vip"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="6dp"
-                android:layout_toRightOf="@+id/person_home_name"
-                android:background="@drawable/person_vip_shape_bg"
-                android:paddingLeft="6dp"
-                android:paddingRight="6dp"
-                android:text="vip1"
-                android:textColor="@color/white" />
 
         </RelativeLayout>
 
@@ -80,7 +89,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_marginRight="20dp"
-            android:layout_marginTop="14dp"
+
             android:src="@drawable/gerenxinxi" />
     </RelativeLayout>
 
@@ -88,11 +97,24 @@
         android:layout_width="match_parent"
         android:layout_height="230dp">
 
+        <ImageView
+            android:translationZ="10dp"
+            android:focusable="true"
+            android:clickable="true"
+            android:id="@+id/shifouguan"
+            android:layout_marginRight="-30dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="130dp"
+            android:src="@drawable/guanzhu_on"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
         <com.daimajia.slider.library.SliderLayout
             android:id="@+id/person_home_slider"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            />
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -234,8 +256,9 @@
                     android:src="@mipmap/arrow_right"/>
 
                 <ImageView
+
                     android:id="@+id/person_home_dongtai_tou"
-                    android:layout_marginLeft="13dp"
+                    android:layout_marginLeft="15dp"
                     android:src="@mipmap/ic_launcher"
                     android:layout_width="63dp"
                     android:layout_height="63dp"
@@ -246,20 +269,21 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                     <TextView
+                        android:gravity="center_vertical"
                         android:id="@+id/person_home_dongtai_title"
                         android:textSize="14sp"
                         android:textColor="#666666"
                         android:ellipsize="end"
-                        android:lines="1"
+                        android:lines="2"
                         android:layout_marginLeft="12dp"
                         android:text="不知道说什么，随便点"
-                        android:background="@drawable/btn_normal"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         />
 
                     <TextView
 
+                        android:visibility="gone"
                         android:textSize="12sp"
                         android:textColor="#999999"
                         android:layout_marginTop="12dp"
@@ -303,7 +327,7 @@
 
             <RelativeLayout
                 android:layout_marginBottom="10dp"
-                android:layout_marginTop="49dp"
+                android:layout_marginTop="35dp"
                 android:gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -341,7 +365,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_marginTop="43dp"
+            android:layout_marginTop="30dp"
             android:layout_marginRight="12dp"
             android:layout_alignParentRight="true"
             android:orientation="vertical"
@@ -349,20 +373,21 @@
             android:layout_height="wrap_content">
 
             <ImageView
+                android:visibility="gone"
                 android:id="@+id/person_guanzhu"
                 android:src="@drawable/gaungzhu_on"
                 android:layout_width="36dp"
                 android:layout_height="36dp"/>
             <ImageView
+                android:layout_marginTop="20dp"
                 android:id="@+id/person_dasang"
-                android:layout_marginTop="14dp"
-                android:src="@drawable/dasang"
+                android:src="@drawable/dasang1"
                 android:layout_width="36dp"
                 android:layout_height="36dp"/>
             <ImageView
                 android:id="@+id/person_liaotian"
-                android:layout_marginTop="14dp"
-                android:src="@drawable/liaotian"
+                android:layout_marginTop="40dp"
+                android:src="@drawable/sixin"
                 android:layout_width="36dp"
                 android:layout_height="36dp"/>
 

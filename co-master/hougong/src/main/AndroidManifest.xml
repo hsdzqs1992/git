@@ -175,6 +175,7 @@
             android:name="com.umeng.socialize.editorpage.ShareActivity"
             android:excludeFromRecents="true"
             android:theme="@style/Theme.UMDefault" />
+
         //qq
         <activity android:name=".view.DongTaiActivity"></activity>
         <activity android:name=".city.ChooseAddressActivity"></activity>

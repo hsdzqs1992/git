@@ -4,11 +4,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.Window;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
+import com.gyf.barlibrary.ImmersionBar;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.model.Response;
@@ -48,10 +50,29 @@ public class MyWaletActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_my_walet);
 
+        if (isImmersionBarEnabled())
+            initImmersionBar();
         initData();
         ButterKnife.bind(this);
+    }
+    MyWaletBean mbean;
+    protected ImmersionBar mImmersionBar;
+    protected void initImmersionBar() {
+        //在BaseActivity里初始化
+        mImmersionBar = ImmersionBar.with(this);
+        mImmersionBar.init();
+    }
+    /**
+     * 是否可以使用沉浸式
+     * Is immersion bar enabled boolean.
+     *
+     * @return the boolean
+     */
+    protected boolean isImmersionBarEnabled() {
+        return true;
     }
 
     private void initData() {
@@ -61,7 +82,7 @@ public class MyWaletActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess(Response<String> response) {
                         Gson gson = new Gson();
-                        MyWaletBean mbean = gson.fromJson(response.body(),MyWaletBean.class);
+                        mbean = gson.fromJson(response.body(),MyWaletBean.class);
                         if(response.body().contains("200")){
                             mywalotMoney.setText(mbean.getData().getMoney());
                             mywalotLeiji.setText(mbean.getData().getProfile()+"");
@@ -82,7 +103,9 @@ public class MyWaletActivity extends AppCompatActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.mywalot_chongzhi:
-                startActivity(new Intent(MyWaletActivity.this, ChongZhiActivity.class));
+                Intent in = new Intent(MyWaletActivity.this, ChongZhiActivity.class);
+                in.putExtra("jne",mbean.getData().getMoney());
+                startActivity(in);
                 break;
             case R.id.mywalot_tixian:
                 startActivity(new Intent(MyWaletActivity.this, TiXianActivity.class));

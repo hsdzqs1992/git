@@ -8,16 +8,18 @@
     tools:context="com.zhuye.hougong.view.ChongZhiActivity">
 
     <RelativeLayout
+        android:gravity="center_vertical"
+        android:paddingTop="20dp"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/colorPrimary">
+        android:layout_height="70dp"
+        android:background="@drawable/paihang_bg2">
 
         <ImageView
+            android:layout_marginTop="10dp"
             android:id="@+id/person_home_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginLeft="12dp"
             android:src="@drawable/back"/>
         <TextView
             android:layout_centerInParent="true"
@@ -27,7 +29,7 @@
             android:id="@+id/chongzhi_titile_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
+
             />
     </RelativeLayout>
 
@@ -85,9 +87,10 @@
 
         <!---->
        <android.support.v7.widget.RecyclerView
+           android:layout_marginTop="30dp"
            android:id="@+id/zhifu"
            android:layout_width="match_parent"
-           android:layout_height="270dp"></android.support.v7.widget.RecyclerView>
+           android:layout_height="200dp"></android.support.v7.widget.RecyclerView>
 
         <TextView
             android:textColor="#666666"

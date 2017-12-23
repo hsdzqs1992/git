@@ -2,17 +2,24 @@ package com.hyphenate.easeui.widget.chatrow;
 
 import android.content.Context;
 import android.graphics.drawable.AnimationDrawable;
+import android.util.Log;
 import android.view.View;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.hyphenate.chat.EMClient;
 import com.hyphenate.chat.EMFileMessageBody;
 import com.hyphenate.chat.EMMessage;
 import com.hyphenate.chat.EMVoiceMessageBody;
 import com.hyphenate.easeui.R;
+import com.hyphenate.easeui.UserLocal;
 import com.hyphenate.util.EMLog;
+
+import org.litepal.crud.DataSupport;
+
+import java.util.List;
 
 public class EaseChatRowVoice extends EaseChatRowFile {
     private static final String TAG = "EaseChatRowVoice";
@@ -53,8 +60,24 @@ public class EaseChatRowVoice extends EaseChatRowFile {
         }
         if (message.direct() == EMMessage.Direct.RECEIVE) {
             voiceImageView.setImageResource(R.drawable.ease_chatfrom_voice_playing);
+            Log.i("as",message.getFrom());
+
+            List<UserLocal> songs = DataSupport.findAll(UserLocal.class);
+            if(songs!=null && songs.size()>0){
+                for (UserLocal user : songs){
+                    if(user.getHxname().equals(message.getFrom())){
+                        Log.i("as",user.getFacepath());
+                        //holder.name.setText(user.getName());
+                       // EaseUserUtils.setUserAvatar(getContext(),message.getFrom(), holder.avatar);
+                        Glide.with(getContext()).load(user.getFacepath()).into(userAvatarView);
+                    }
+                }
+
+            }
         } else {
             voiceImageView.setImageResource(R.drawable.ease_chatto_voice_playing);
+            //userAvatarView.setImageResource(R.drawable.ic_launcher);
+            Glide.with(context).load(context.getSharedPreferences("con",Context.MODE_PRIVATE).getString("face","")).into(userAvatarView);
         }
 
         if (message.direct() == EMMessage.Direct.RECEIVE) {
@@ -102,9 +125,9 @@ public class EaseChatRowVoice extends EaseChatRowFile {
 
     public void startVoicePlayAnimation() {
         if (message.direct() == EMMessage.Direct.RECEIVE) {
-            //voiceImageView.setImageResource(R.anim.voice_from_icon);
+            voiceImageView.setImageResource(R.drawable.voice_from_icon);
         } else {
-            //voiceImageView.setImageResource(R.anim.voice_to_icon);
+            voiceImageView.setImageResource(R.drawable.voice_to_icon);
         }
         voiceAnimation = (AnimationDrawable) voiceImageView.getDrawable();
         voiceAnimation.start();

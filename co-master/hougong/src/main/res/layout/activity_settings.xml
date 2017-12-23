@@ -8,9 +8,10 @@
     tools:context="com.zhuye.hougong.view.SettingsActivity">
 
     <RelativeLayout
+        android:paddingTop="20dp"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/home_color"
+        android:layout_height="70dp"
+        android:background="@drawable/paihang_bg2"
         android:gravity="center_vertical">
 
         <ImageView
@@ -18,7 +19,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="12dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="2dp"
             android:src="@drawable/back"/>
 
         <TextView
@@ -46,153 +47,167 @@
             />
     </RelativeLayout>
 
-   <LinearLayout
-       android:layout_marginRight="12dp"
-       android:layout_marginLeft="12dp"
-       android:orientation="vertical"
-       android:layout_width="match_parent"
-       android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:orientation="vertical">
 
-       <RelativeLayout
-           android:gravity="center_vertical"
-           android:layout_width="match_parent"
-           android:layout_height="50dp">
-           <TextView
-               android:textColor="#666"
-               android:textSize="@dimen/sp_16"
-               android:text="@string/bangding"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content" />
-           <ImageView
-               android:layout_marginTop="5dp"
-               android:src="@mipmap/arrow_right"
-               android:layout_alignParentRight="true"
-               android:id="@+id/stting_bangding"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center_vertical"
+            android:visibility="gone">
 
-       </RelativeLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/bangding"
+                android:textColor="#666"
+                android:textSize="@dimen/sp_16" />
 
-       <RelativeLayout
-           android:gravity="center_vertical"
-           android:layout_width="match_parent"
-           android:layout_height="50dp">
-           <TextView
-               android:textColor="#666"
-               android:textSize="@dimen/sp_16"
-               android:text="@string/heimingdan"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content" />
-           <ImageView
-               android:layout_marginTop="5dp"
-               android:src="@mipmap/arrow_right"
-               android:layout_alignParentRight="true"
-               android:id="@+id/stting_heimingdan"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content" />
+            <ImageView
+                android:id="@+id/stting_bangding"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="5dp"
+                android:src="@mipmap/arrow_right" />
 
-       </RelativeLayout>
-       <RelativeLayout
-           android:gravity="center_vertical"
-           android:layout_width="match_parent"
-           android:layout_height="50dp">
-           <TextView
-               android:layout_marginTop="10dp"
-               android:textColor="#666"
-               android:textSize="@dimen/sp_16"
-               android:text="@string/yinshen"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content" />
-           <ImageView
-               android:src="@drawable/open"
-               android:layout_alignParentRight="true"
-               android:id="@+id/stting_yinsehn"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content" />
+        </RelativeLayout>
 
-       </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center_vertical">
 
-       <RelativeLayout
-           android:gravity="center_vertical"
-           android:layout_width="match_parent"
-           android:layout_height="50dp">
-           <TextView
-               android:textColor="#666"
-               android:textSize="@dimen/sp_16"
-               android:text="@string/feedback"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/heimingdan"
+                android:textColor="#666"
+                android:textSize="@dimen/sp_16" />
 
+            <ImageView
+                android:id="@+id/stting_heimingdan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="5dp"
+                android:src="@mipmap/arrow_right" />
 
-           <ImageView
-               android:layout_marginTop="5dp"
-               android:src="@mipmap/arrow_right"
-               android:layout_alignParentRight="true"
-               android:id="@+id/stting_feedback"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content" />
+        </RelativeLayout>
 
-       </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center_vertical">
 
-       <RelativeLayout
-           android:gravity="center_vertical"
-           android:layout_width="match_parent"
-           android:layout_height="50dp">
-           <TextView
-               android:textColor="#666"
-               android:textSize="@dimen/sp_16"
-               android:id="@+id/setting_qingchu"
-               android:text="@string/qingchujilu"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content" />
-       </RelativeLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/yinshen"
+                android:textColor="#666"
+                android:textSize="@dimen/sp_16" />
 
-       <RelativeLayout
-           android:gravity="center_vertical"
-           android:layout_width="match_parent"
-           android:layout_height="50dp">
-           <TextView
-               android:textColor="#666"
-               android:textSize="@dimen/sp_16"
-               android:id="@+id/setting_qingchuhuancun"
-               android:text="@string/qingchuhuancun"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content" />
-       </RelativeLayout>
+            <ImageView
+                android:id="@+id/stting_yinsehn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/open" />
 
-       <RelativeLayout
-           android:gravity="center_vertical"
-           android:layout_width="match_parent"
-           android:layout_height="50dp">
-           <TextView
-               android:textColor="#666"
-               android:textSize="@dimen/sp_16"
-               android:text="@string/guanyu"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/feedback"
+                android:textColor="#666"
+                android:textSize="@dimen/sp_16" />
 
 
-           <ImageView
-               android:layout_marginTop="10dp"
-               android:src="@mipmap/arrow_right"
-               android:layout_alignParentRight="true"
-               android:id="@+id/stting_guanyu"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content" />
-       </RelativeLayout>
+            <ImageView
+                android:id="@+id/stting_feedback"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="6dp"
+                android:src="@mipmap/arrow_right" />
 
-       <RelativeLayout
-           android:id="@+id/setting_logout"
-           android:gravity="center_vertical"
-           android:layout_width="match_parent"
-           android:layout_height="50dp">
-           <TextView
-               android:textColor="#666"
-               android:textSize="@dimen/sp_16"
-               android:text="@string/logout"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content" />
-       </RelativeLayout>
+        </RelativeLayout>
 
-   </LinearLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center_vertical"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/setting_qingchu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/qingchujilu"
+                android:textColor="#666"
+                android:textSize="@dimen/sp_16" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/setting_qingchuhuancun"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/qingchuhuancun"
+                android:textColor="#666"
+                android:textSize="@dimen/sp_16" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/guanyu"
+                android:textColor="#666"
+                android:textSize="@dimen/sp_16" />
+
+
+            <ImageView
+                android:id="@+id/stting_guanyu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="5dp"
+                android:src="@mipmap/arrow_right" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/setting_logout"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/logout"
+                android:textColor="#666"
+                android:textSize="@dimen/sp_16" />
+        </RelativeLayout>
+
+    </LinearLayout>
 </LinearLayout>

@@ -40,17 +40,20 @@ public class PaiHangAdapter extends BaseRecycleAdapter {
         TextView age = (TextView)holder.getView(R.id.find_zuixin_age);
 
         age.setText(((PaiHangBean.DataBean)data.get(position)).getAge());
-        if (((PaiHangBean.DataBean)data.get(position)).getSex().equals("1")) {
-            Drawable drawable = conn.getResources().getDrawable(R.drawable.miss);
-            drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
-            age.setCompoundDrawables(drawable, null, null, null);
-        } else if (((PaiHangBean.DataBean)data.get(position)).getSex().equals("0")) {
-            Drawable drawable = conn.getResources().getDrawable(R.drawable.boy);
-            drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
-            age.setCompoundDrawables(drawable, null, null, null);
+        if(((PaiHangBean.DataBean)data.get(position)).getSex()!= null){
+            if (((PaiHangBean.DataBean)data.get(position)).getSex().equals("1")) {
+                Drawable drawable = conn.getResources().getDrawable(R.drawable.miss);
+                drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
+                age.setCompoundDrawables(drawable, null, null, null);
+            } else if (((PaiHangBean.DataBean)data.get(position)).getSex().equals("0")) {
+                Drawable drawable = conn.getResources().getDrawable(R.drawable.boy);
+                drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
+                age.setCompoundDrawables(drawable, null, null, null);
+            }
         }
-
         ((TextView)holder.getView(R.id.paihang_sy_money)).setText(((PaiHangBean.DataBean)data.get(position)).getCount());
+
+
 
     }
 }

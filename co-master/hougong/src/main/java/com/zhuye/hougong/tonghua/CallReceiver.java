@@ -29,7 +29,7 @@ public class CallReceiver extends BroadcastReceiver {
         // 呼叫接收方，
         String callTo = intent.getStringExtra("to");
         // 获取通话时的扩展字段
-       // String callExt = EMClient.getInstance().callManager().getCurrentCallSession().getExt();
+        String callExt = EMClient.getInstance().callManager().getCurrentCallSession().getExt();
        // VMLog.d("call extension data %s", callExt);
         Intent callIntent = new Intent();
         // 根据通话类型跳转到语音通话或视频通话界面
@@ -42,7 +42,9 @@ public class CallReceiver extends BroadcastReceiver {
             CallManager.getInstance().setCallType(CallManager.CallType.VOICE);
           callIntent.setClass(context, VoiceCallActivity.class);
         }
+callIntent.putExtra("fromname",callFrom);
         callIntent.putExtra("type","shou");
+        callIntent.putExtra("ext",callExt);
         // 初始化通化管理类的一些属性
         CallManager.getInstance().setChatId(callFrom);
         CallManager.getInstance().setInComingCall(true);

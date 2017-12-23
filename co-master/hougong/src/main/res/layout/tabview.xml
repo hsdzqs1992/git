@@ -8,14 +8,15 @@
     android:orientation="vertical">
 
     <ImageView
-
+        android:layout_marginTop="5dp"
         android:id="@+id/tab_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_width="21dp"
+        android:layout_height="21dp" />
 
     <TextView
+        android:layout_marginTop="5dp"
         android:lines="1"
-        android:textSize="@dimen/sp_14"
+        android:textSize="12sp"
         android:textColor="@color/home_color_select"
         android:id="@+id/tab_tv"
         android:layout_width="wrap_content"

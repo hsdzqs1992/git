@@ -4,10 +4,6 @@
         "source": "C:\\Users\\Administrator\\.android\\build-cache\\39e014d4694b898df5daec50a34e8132c8a3b153\\output\\res\\anim\\abc_popup_exit.xml"
     },
     {
-        "merged": "D:\\aaa\\co-master\\easeui\\build\\intermediates\\res\\merged\\debug\\anim\\voice_to_icon.xml",
-        "source": "D:\\aaa\\co-master\\easeui\\src\\main\\res\\anim\\voice_to_icon.xml"
-    },
-    {
         "merged": "D:\\aaa\\co-master\\easeui\\build\\intermediates\\res\\merged\\debug\\anim\\slide_out_to_right.xml",
         "source": "D:\\aaa\\co-master\\easeui\\src\\main\\res\\anim\\slide_out_to_right.xml"
     },
@@ -18,10 +14,6 @@
     {
         "merged": "D:\\aaa\\co-master\\easeui\\build\\intermediates\\res\\merged\\debug\\anim\\push_top_in2.xml",
         "source": "D:\\aaa\\co-master\\easeui\\src\\main\\res\\anim\\push_top_in2.xml"
-    },
-    {
-        "merged": "D:\\aaa\\co-master\\easeui\\build\\intermediates\\res\\merged\\debug\\anim\\voice_from_icon.xml",
-        "source": "D:\\aaa\\co-master\\easeui\\src\\main\\res\\anim\\voice_from_icon.xml"
     },
     {
         "merged": "D:\\aaa\\co-master\\easeui\\build\\intermediates\\res\\merged\\debug\\anim\\abc_shrink_fade_out_from_bottom.xml",

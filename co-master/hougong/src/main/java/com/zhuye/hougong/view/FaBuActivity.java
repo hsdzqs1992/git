@@ -21,9 +21,11 @@ import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.model.Response;
 import com.lzy.okgo.request.PostRequest;
 import com.zhuye.hougong.R;
+import com.zhuye.hougong.adapter.BaseHolder;
 import com.zhuye.hougong.adapter.ImageAdapter;
 import com.zhuye.hougong.contants.Contants;
 import com.zhuye.hougong.utils.CommentUtils;
+import com.zhuye.hougong.utils.FileUtil;
 import com.zhuye.hougong.utils.GlideImageLoader;
 import com.zhuye.hougong.utils.Sputils;
 
@@ -50,17 +52,34 @@ public class FaBuActivity extends AppCompatActivity {
     RecyclerView image;
     ImageAdapter adapter;
     ImageView location;
+    String from;
+    @BindView(R.id.person_detail_back)
+    ImageView personDetailBack;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fa_bu);
         ButterKnife.bind(this);
-        adapter= new ImageAdapter(this);
+        adapter = new ImageAdapter(this);
         image.setAdapter(adapter);
-        image.setLayoutManager(new GridLayoutManager(this,3));
+        image.setLayoutManager(new GridLayoutManager(this, 3));
 
+        from = getIntent().getStringExtra("from");
         location = findViewById(R.id.fabu_location_iv);
         initData();
+        initListener();
+    }
+
+    private void initListener() {
+        adapter.setOnItemClickListener(new BaseHolder.OnItemClickListener() {
+            @Override
+            public void OnItemClick(View view, int position) {
+                images.remove(position);
+                adapter.clear();
+                adapter.addData(images);
+            }
+        });
     }
 
     private void initData() {
@@ -69,7 +88,7 @@ public class FaBuActivity extends AppCompatActivity {
                 .execute(new StringCallback() {
                     @Override
                     public void onSuccess(Response<String> response) {
-                        Log.i("---",response.body());
+                        Log.i("---", response.body());
                     }
                 });
 
@@ -81,7 +100,7 @@ public class FaBuActivity extends AppCompatActivity {
         });
     }
 
-    @OnClick({R.id.fabu_xuanze, R.id.fabu_weizhi,R.id.fabu_fabiao})
+    @OnClick({R.id.fabu_xuanze, R.id.fabu_weizhi, R.id.fabu_fabiao,R.id.person_detail_back})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.fabu_xuanze:
@@ -94,6 +113,10 @@ public class FaBuActivity extends AppCompatActivity {
             case R.id.fabu_fabiao:
 
                 fabiao();
+                break;
+
+            case R.id.person_detail_back:
+                finish();
                 break;
         }
     }
@@ -109,6 +132,7 @@ public class FaBuActivity extends AppCompatActivity {
     }
 
     List<ImageItem> images = new ArrayList<>();
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -118,15 +142,14 @@ public class FaBuActivity extends AppCompatActivity {
                 images = (List<ImageItem>) data.getSerializableExtra(ImagePicker.EXTRA_RESULT_ITEMS);
                 //tasks = adapter.updateData(images);
                 ArrayList<File> files = new ArrayList<>();
-                if(images != null && images.size() > 0){
+                if (images != null && images.size() > 0) {
 
-                    for (int i = 0 ;i< images.size();i++){
+                    for (int i = 0; i < images.size(); i++) {
                         File file = new File(images.get(i).path);
                         files.add(file);
                     }
                 }
-                adapter.addData(files);
-
+                adapter.addData(images);
 
 //                Intent intent = new Intent(FaBuActivity.this,PingLunActivity.class);
 //                intent.putParcelableArrayListExtra("image", (ArrayList<? extends Parcelable>) images);
@@ -134,58 +157,66 @@ public class FaBuActivity extends AppCompatActivity {
 
             } else {
                 //showToast("没有数据");
-                CommentUtils.toast(FaBuActivity.this,"没有数据");
+                CommentUtils.toast(FaBuActivity.this, "没有数据");
             }
         }
     }
 
     private void fabiao() {
 
-        if(isshowlocation){
+        if (isshowlocation) {
 
         }
 
         String content = mFubuContent.getText().toString().trim();
-        if(TextUtils.isEmpty(content)){
-            CommentUtils.toast(FaBuActivity.this,"请输入内容");
+        if (TextUtils.isEmpty(content)) {
+            CommentUtils.toast(FaBuActivity.this, "请输入内容");
             return;
         }
         fabuFabiao.setTextColor(Color.RED);
         fabuFabiao.setEnabled(false);
         ArrayList<File> files = new ArrayList<>();
-        if(images != null && images.size() > 0){
+        if (images != null && images.size() > 0) {
 
-            for (int i = 0 ;i< images.size();i++){
-                File file = new File(images.get(i).path);
-                files.add(file);
+            for (int i = 0; i < images.size(); i++) {
+                //File file = new File(images.get(i).path);
+                files.add(FileUtil.getSmallBitmap(FaBuActivity.this, images.get(i).path));
             }
         }
 
         //// TODO: 2017/12/11 0011  chuanbushang
-        PostRequest request=  OkGo.<String>post(Contants.addcontent).params("token", Sputils.getString(FaBuActivity.this,"token",""))
-                .params("content",content)
-                .params("city_code","100")
-                .params("city","北京市");
+        PostRequest request = OkGo.<String>post(Contants.addcontent).params("token", Sputils.getString(FaBuActivity.this, "token", ""))
+                .params("content", content)
+                .params("city_code", "100")
+                .params("city", "北京市");
 
-       for(int i = 0 ; i<files.size();i++){
-           request.params("file"+i,files.get(i));
-       }
+
+        // Bitmap bitmap = new
+
+        for (int i = 0; i < files.size(); i++) {
+            request.params("file" + i, files.get(i));
+        }
         request.execute(new StringCallback() {
-                    @Override
-                    public void onSuccess(Response<String> response) {
-                        Log.i("---",response.body());
-                        CommentUtils.toast(FaBuActivity.this,"chengong");
-                        fabuFabiao.setEnabled(true);
-                        fabuFabiao.setTextColor(Color.BLACK);
-                        finish();
-                    }
+            @Override
+            public void onSuccess(Response<String> response) {
+                Log.i("---", response.body());
+                CommentUtils.toast(FaBuActivity.this, "发布成功");
+                fabuFabiao.setEnabled(true);
+                fabuFabiao.setTextColor(Color.BLACK);
+                if (from.equals("me")) {
+                    Intent in = new Intent();
+                    in.putExtra("type", "ai");
+                    setResult(1000);
+                }
+                finish();
+            }
 
-                    @Override
-                    public void onError(Response<String> response) {
-                        super.onError(response);
-                        Log.i("---",response.body());
-                    }
-                });
+            @Override
+            public void onError(Response<String> response) {
+                super.onError(response);
+                Log.i("---", response.body());
+            }
+        });
 //
 //        UploadTask<String> task = OkUpload.request("haha", postRequest)//
 //                .priority(10)//
@@ -200,12 +231,13 @@ public class FaBuActivity extends AppCompatActivity {
 
 
     private Boolean isshowlocation = true;
+
     public void isslectedloat() {
-       if(isshowlocation){
-           location.setImageResource(R.drawable.check_off);
-       }else {
-           location.setImageResource(R.drawable.check_on);
-       }
-       isshowlocation = !isshowlocation;
+        if (isshowlocation) {
+            location.setImageResource(R.drawable.check_off);
+        } else {
+            location.setImageResource(R.drawable.check_on);
+        }
+        isshowlocation = !isshowlocation;
     }
 }

@@ -61,16 +61,19 @@ public class PaiHangFragment extends BaseFragment {
 
     @Override
     protected void initView() {
-
         paihangTablayout.setTextColorResource(R.color.white);
-        paihangTablayout.setIndicatorColorResource(R.color.tab_blue_bg);
+        paihangTablayout.setIndicatorColorResource(R.color.white);
         paihangTablayout.setDividerColor(Color.TRANSPARENT);
         paihangTablayout.setTextSelectedColorResource(R.color.white);
         paihangTablayout.setTextSize(getResources().getDimensionPixelSize(R.dimen.h10));
         paihangTablayout.setTextSelectedSize(getResources().getDimensionPixelSize(R.dimen.h10));
         paihangTablayout.setUnderlineHeight(1);
 
+
     }
+
+
+
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     @Override

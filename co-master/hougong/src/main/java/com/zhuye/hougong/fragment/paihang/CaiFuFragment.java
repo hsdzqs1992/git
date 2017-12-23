@@ -1,12 +1,14 @@
 package com.zhuye.hougong.fragment.paihang;
 
+import android.view.View;
+
 import com.zhuye.hougong.R;
 
 /**
  * Created by Administrator on 2017/12/6 0006.
  */
 
-public class CaiFuFragment extends BasePaiHangFragment {
+public class CaiFuFragment extends BasePaiHangFragment2 {
 
 
     @Override
@@ -42,5 +44,8 @@ public class CaiFuFragment extends BasePaiHangFragment {
     }
 
 
+    @Override
+    public void onClick(View view) {
 
+    }
 }

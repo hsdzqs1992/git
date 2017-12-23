@@ -34,8 +34,6 @@ public final class R {
         public static int slide_in_from_right=0x7f040016;
         public static int slide_out_to_left=0x7f040017;
         public static int slide_out_to_right=0x7f040018;
-        public static int voice_from_icon=0x7f040019;
-        public static int voice_to_icon=0x7f04001a;
     }
     public static final class attr {
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
@@ -2363,8 +2361,10 @@ containing a value of this type.
         public static int googleg_disabled_color_18=0x7f02010c;
         public static int googleg_standard_color_18=0x7f02010d;
         public static int ic_launcher=0x7f02010e;
-        public static int notification_template_icon_bg=0x7f020110;
+        public static int notification_template_icon_bg=0x7f020112;
         public static int recall_message_bg=0x7f02010f;
+        public static int voice_from_icon=0x7f020110;
+        public static int voice_to_icon=0x7f020111;
     }
     public static final class id {
         public static int action0=0x7f0a00c2;

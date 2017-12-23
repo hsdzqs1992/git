@@ -1,20 +1,20 @@
 package com.zhuye.hougong.view;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.gyf.barlibrary.ImmersionBar;
 import com.hyphenate.EMCallBack;
 import com.hyphenate.chat.EMClient;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.model.Response;
 import com.zhuye.hougong.R;
+import com.zhuye.hougong.base.BaseActivity;
 import com.zhuye.hougong.bean.MessageEvent;
 import com.zhuye.hougong.contants.Contants;
 import com.zhuye.hougong.http.MyCallback;
@@ -24,10 +24,9 @@ import com.zhuye.hougong.utils.Sputils;
 import org.greenrobot.eventbus.EventBus;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class SettingsActivity extends AppCompatActivity {
+public class SettingsActivity extends BaseActivity {
 
 
 
@@ -50,24 +49,47 @@ public class SettingsActivity extends AppCompatActivity {
 
     private int yinshen = 1;
     ImageView back;
+    protected void initImmersionBar() {
+        //在BaseActivity里初始化
+        mImmersionBar = ImmersionBar.with(this);
+        mImmersionBar.init();
+    }
+    /**
+     * 是否可以使用沉浸式
+     * Is immersion bar enabled boolean.
+     *
+     * @return the boolean
+     */
+    protected ImmersionBar mImmersionBar;
+    protected boolean isImmersionBarEnabled() {
+        return true;
+    }
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_settings);
-        ButterKnife.bind(this);
-
+    protected void initview() {
+        super.initview();
+        if (isImmersionBarEnabled())
+            initImmersionBar();
         back = findViewById(R.id.person_detail_back);
-        initListener();
+        if(Sputils.getBoolean(this,"yinshen",false)) {
+                sttingYinsehn.setImageResource(R.drawable.open);
+        }else {
+            sttingYinsehn.setImageResource(R.drawable.close);
 
+        }
     }
 
-    private void initListener() {
+    protected void initListener() {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();
             }
         });
+    }
+
+    @Override
+    protected int getResId() {
+        return R.layout.activity_settings;
     }
 
     @OnClick({R.id.stting_bangding, R.id.stting_heimingdan, R.id.stting_yinsehn, R.id.stting_feedback, R.id.setting_qingchu, R.id.setting_qingchuhuancun, R.id.stting_guanyu, R.id.setting_logout})
@@ -79,12 +101,14 @@ public class SettingsActivity extends AppCompatActivity {
                 startActivity(new Intent(SettingsActivity.this,BlackNumberActivity.class));
                 break;
             case R.id.stting_yinsehn:
-                if (yinshen == 1) {
-                      yinshen = 2;
-                }else if (yinshen ==2){
-                      yinshen = 1;
+                if (Sputils.getBoolean(this,"yinshen",false)) {
+
+                    buyinshen();
+                 }else {
+                    yinShen();
+
                   }
-                onYinShen();
+
                 break;
             case R.id.stting_feedback:
                 startActivity(new Intent(SettingsActivity.this,FeedBackActivity.class));
@@ -100,6 +124,36 @@ public class SettingsActivity extends AppCompatActivity {
                 break;
         }
    }
+
+    private void buyinshen() {
+        onYinShen(1);
+    }
+
+    private void yinShen() {
+        final AlertDialog dialog1 = new  AlertDialog.Builder(SettingsActivity.this).create();
+        View view = View.inflate(SettingsActivity.this,R.layout.yinshen,null);
+        dialog1.setView(view);
+        view.findViewById(R.id.queren).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (dialog1!=null&&dialog1.isShowing()){
+                    dialog1.dismiss();
+                }
+                onYinShen(2);
+            }
+        });
+
+        view.findViewById(R.id.quxiao).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (dialog1!=null&&dialog1.isShowing()){
+                    dialog1.dismiss();
+                }
+            }
+        });
+        dialog1.show();
+
+    }
 
     private void logout(){
         OkGo.<String>post(Contants.logout)
@@ -132,7 +186,7 @@ public class SettingsActivity extends AppCompatActivity {
 
                             @Override
                             public void onError(int i, String s) {
-
+                                finish();
                             }
 
                             @Override
@@ -145,22 +199,22 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     //处理隐身的逻辑
-    private void onYinShen() {
-
-        final AlertDialog dialog = new  AlertDialog.Builder(SettingsActivity.this).create();
-        View view = View.inflate(SettingsActivity.this,R.layout.aliet,null);
-        dialog.setView(view);
-        dialog.show();
-
-
+    private void onYinShen(final int type) {
         OkGo.<String>post(Contants.stealth)
                 .params("token", Sputils.getString(SettingsActivity.this,"token",""))
-                .params("type",yinshen + "")
+                .params("type",type + "")
                 .execute(new StringCallback() {
                     @Override
                     public void onSuccess(Response<String> response) {
                         if (response.body().contains("200")){
                             CommentUtils.toast(SettingsActivity.this,"设置成功");
+                        }
+                        if(type == 2){
+                            Sputils.setBoolean(SettingsActivity.this,"yinshen",true);
+                            sttingYinsehn.setImageResource(R.drawable.open);
+                        }  else if(type == 1){
+                            Sputils.setBoolean(SettingsActivity.this,"yinshen",false);
+                            sttingYinsehn.setImageResource(R.drawable.close);
                         }
                     }
 

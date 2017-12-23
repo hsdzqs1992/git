@@ -61,6 +61,16 @@ public class PersonInfoBean {
          */
 
         private String face;
+
+        public String getInv_code() {
+            return inv_code;
+        }
+
+        public void setInv_code(String inv_code) {
+            this.inv_code = inv_code;
+        }
+
+        private String inv_code;
         private String nickname;
         private String sex;
         private String age;

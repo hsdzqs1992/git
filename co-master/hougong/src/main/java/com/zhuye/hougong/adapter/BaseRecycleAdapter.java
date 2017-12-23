@@ -136,6 +136,11 @@ public abstract class BaseRecycleAdapter<T> extends RecyclerView.Adapter<BaseHol
 
 
 
+    public void addData2(List<T> t,int position){
+        data.clear();
+        this.data.addAll(t);
+        notifyItemRangeChanged(position,data.size());
 
+    }
 
 }

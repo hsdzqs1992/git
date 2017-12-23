@@ -4,20 +4,22 @@
     android:id="@+id/activity_ti_xian"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#fff"
     android:orientation="vertical"
     tools:context="com.zhuye.hougong.view.TiXianActivity">
 
 
     <RelativeLayout
+        android:paddingTop="20dp"
         android:background="@color/colorPrimary"
         android:gravity="center_vertical"
         android:layout_width="match_parent"
-        android:layout_height="40dp">
+        android:layout_height="70dp">
 
         <ImageView
-            android:id="@+id/mywalot_back"
-            android:layout_marginTop="10dp"
             android:layout_marginLeft="12dp"
+            android:id="@+id/mywalot_back"
+            android:layout_marginTop="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/back"/>
@@ -26,9 +28,8 @@
             android:layout_centerInParent="true"
             android:text="提现"
             android:textColor="@color/white"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:id="@+id/mywalot_qianbao"
-            android:layout_marginTop="12dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             />
@@ -120,10 +121,11 @@
         </LinearLayout>
 
         <Button
+            android:translationZ="0dp"
             android:textSize="16sp"
             android:textColor="#fff"
             android:id="@+id/tixian"
-            android:background="#f75152"
+            android:background="@drawable/tixian_bg"
             android:text="立即提现"
             android:layout_marginTop="97dp"
             android:layout_width="match_parent"

@@ -66,7 +66,6 @@ public class DividerGridViewItemDecoration2 extends ItemDecoration {
 			int right = left + mDivider.getIntrinsicWidth();
 			int top = child.getTop() - params.topMargin;
 			int bottom = child.getBottom() + params.bottomMargin;
-			
 			mDivider.setBounds(left, top, right, bottom);
 			mDivider.draw(c);
 		}
@@ -94,33 +93,30 @@ public class DividerGridViewItemDecoration2 extends ItemDecoration {
 			}
 		}
 
-		if(isLastColum(pos,parent)){//�Ƿ������һ��
-			outRect.set(0, 0, 0, bottom);
-			//	right = 0;
-		}
-		else if(isLastRow(pos,parent)){//�����һ��
-			outRect.set(0, 0, right, 0);
-			//	bottom = 0;
-		}else{
-			outRect.set(0, 0, right, bottom);
-		}
+//		if(isLastColum(pos,parent)){//是否是最后一列
+////			outRect.set(0, 0, 0, bottom);
+//			right = 0;
+//		}
+//		if(isLastRow(pos,parent)){//是最后一行
+////			outRect.set(0, 0, right, 0);
+//			bottom = 0;
+//		}
+//		outRect.set(0, 0, right, bottom);
+
+
+//		if(isLastColum(pos,parent)){//�Ƿ������һ��
+//			outRect.set(0, 0, 0, bottom);
+//			//	right = 0;
+//		}
+//		else if(isLastRow(pos,parent)){//�����һ��
+//			outRect.set(0, 0, right, 0);
+//			//	bottom = 0;
+//		}else{
+//			outRect.set(0, 0, right, bottom);
+//		}
 
 	}
 
-	@Override
-	@Deprecated
-	public void getItemOffsets(Rect outRect, int itemPosition,
-			RecyclerView parent) {
-		//
-		int right = mDivider.getIntrinsicWidth();
-		int bottom = mDivider.getIntrinsicHeight();
-//		int right = 12;
-//		int bottom = 12;
-
-
-
-		
-	}
 
 	/**
 	 * �Ƿ������һ��
@@ -133,7 +129,7 @@ public class DividerGridViewItemDecoration2 extends ItemDecoration {
 		LayoutManager layoutManager = parent.getLayoutManager();
 		//�ж�����
 		if(layoutManager instanceof GridLayoutManager){
-			int childCount = parent.getAdapter().getItemCount();
+			int childCount = parent.getAdapter().getItemCount()-1;
 			int lastRowCount = childCount%spanCount;
 			//���һ�е�����С��spanCount
 			if(lastRowCount==0||lastRowCount<spanCount){

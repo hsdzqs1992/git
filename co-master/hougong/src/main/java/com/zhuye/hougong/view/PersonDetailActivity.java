@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
+import com.gyf.barlibrary.ImmersionBar;
 import com.lzy.imagepicker.ImagePicker;
 import com.lzy.imagepicker.bean.ImageItem;
 import com.lzy.imagepicker.ui.ImageGridActivity;
@@ -83,10 +84,26 @@ public class PersonDetailActivity extends BaseActivity {
     protected int getResId() {
         return R.layout.activity_person_detail;
     }
-
+    protected void initImmersionBar() {
+        //在BaseActivity里初始化
+        mImmersionBar = ImmersionBar.with(this);
+        mImmersionBar.init();
+    }
+    /**
+     * 是否可以使用沉浸式
+     * Is immersion bar enabled boolean.
+     *
+     * @return the boolean
+     */
+    protected ImmersionBar mImmersionBar;
+    protected boolean isImmersionBarEnabled() {
+        return true;
+    }
     @Override
     protected void initview() {
         super.initview();
+        if (isImmersionBarEnabled())
+            initImmersionBar();
         String token = Sputils.getString(this, "token", "");
         //获取个人信息
         OkGo.<String>post(Contants.information)
@@ -241,7 +258,8 @@ public class PersonDetailActivity extends BaseActivity {
         final AlertDialog dial = new  AlertDialog.Builder(PersonDetailActivity.this).create();
         View view = View.inflate(PersonDetailActivity.this,R.layout.aliet,null);
         dial.setView(view);
-
+        view.findViewById(R.id.shoufei).setVisibility(View.INVISIBLE);
+        view.findViewById(R.id.jinbi).setVisibility(View.INVISIBLE);
 
         final String[] city = new String[]{"白羊座","金牛座","双子座","巨蟹座","狮子座","处女座","天秤座","天蝎座","射手座","摩羯座","水瓶座","双鱼座"};
         NumberPicker picker = view.findViewById(R.id.picker);
@@ -249,6 +267,8 @@ public class PersonDetailActivity extends BaseActivity {
         picker.setMinValue(0);
         picker.setMaxValue(city.length - 1);
         picker.setValue(0);
+        //picker.setTextSize(8f);
+
         //picker.setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS);
         picker.setWrapSelectorWheel(false);
         dial.show();
@@ -283,6 +303,8 @@ public class PersonDetailActivity extends BaseActivity {
         View view = View.inflate(PersonDetailActivity.this,R.layout.aliet,null);
         dialo.setView(view);
 
+        view.findViewById(R.id.shoufei).setVisibility(View.INVISIBLE);
+        view.findViewById(R.id.jinbi).setVisibility(View.INVISIBLE);
         List<String> data = new ArrayList();
         for(int i = 10 ;i< 60;i++){
             data.add(i+"");

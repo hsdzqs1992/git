@@ -42,12 +42,21 @@ public class LiaoBiLIstBean {
     }
 
     public static class DataBean {
+        public Boolean getIssected() {
+            return issected;
+        }
+
+        public void setIssected(Boolean issected) {
+            this.issected = issected;
+        }
+
         /**
          * id : 1
          * money : 0.01
          * liaobi : 100
          */
 
+        private Boolean issected;
         private String id;
         private String money;
         private String liaobi;

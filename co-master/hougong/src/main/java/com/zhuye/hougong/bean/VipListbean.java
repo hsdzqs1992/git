@@ -42,6 +42,14 @@ public class VipListbean {
     }
 
     public static class DataBean {
+        public Boolean getSelect() {
+            return isSelect;
+        }
+
+        public void setSelect(Boolean select) {
+            isSelect = select;
+        }
+
         /**
          * vip_id : 1
          * money : 0.01
@@ -49,6 +57,7 @@ public class VipListbean {
          * photo : /Uploads/Picture/2017-11-10/5a0525980501b.png
          */
 
+        private Boolean isSelect = false;
         private String vip_id;
         private String money;
         private String month;

@@ -67,7 +67,8 @@ import static com.zhuye.hougong.R.id.me_yinpin_tv2;
 
 /**
  * Created by zzzy on 2017/11/20.
- */public class MeFragment extends Fragment {
+ */
+public class MeFragment extends Fragment {
 
 
     //private MyToolbar myToolbar;
@@ -134,19 +135,18 @@ import static com.zhuye.hougong.R.id.me_yinpin_tv2;
     LinearLayout meShengvip;
     @BindView(R.id.fragment_nvshen)
     TextView fragmentNvshen;
+    @BindView(R.id.nvnanshen)
+    ImageView nvnanshen;
+    @BindView(R.id.yinshifei)
+    LinearLayout yinshifei;
+    @BindView(R.id.me_invid)
+    TextView meInvid;
+
 
     private Boolean isShouYuYin;
     private Boolean isShouShiPin;
     private static final String SHOWYINPIN = "shouyinpin";
     private static final String SHOWSHIPIN = "shoushipin";
-
-
-    @Override
-    public void onDestroy() {
-
-        super.onDestroy();
-
-    }
 
 
     //即时处理个人中心的界面
@@ -201,6 +201,7 @@ import static com.zhuye.hougong.R.id.me_yinpin_tv2;
         return view;
     }
 
+    PersonInfoBean personInfoBean;
 
     private void initData() {
 
@@ -214,30 +215,29 @@ import static com.zhuye.hougong.R.id.me_yinpin_tv2;
                 .execute(new StringCallback() {
                     @Override
                     public void onSuccess(Response<String> response) {
-                        CommentUtils.toast(getActivity(), response.body());
-                        Log.i("---------", response.body());
                         try {
                             Gson gson = new Gson();
-                            PersonInfoBean personInfoBean = gson.fromJson(response.body(), PersonInfoBean.class);
+                            personInfoBean = gson.fromJson(response.body(), PersonInfoBean.class);
                             if (response.body().contains("200")) {
 
-                                Glide.with(getActivity()).load(Contants.BASE_URL+personInfoBean.getData().getFace())
+                                Glide.with(getActivity()).load(Contants.BASE_URL + personInfoBean.getData().getFace())
                                         .placeholder(R.mipmap.ic_launcher).error(R.mipmap.ic_launcher).into(avatar);
                                 //头部
                                 meName.setText(personInfoBean.getData().getNickname());
+                                meName.setTextColor(getActivity().getResources().getColor(R.color.white));
                                 //无id字段
                                 //meId.setText(personInfoBean.getData().g);
                                 meId.setVisibility(View.GONE);
 
-                                if(personInfoBean.getData().getLevel().equals("0")){
+                                if (personInfoBean.getData().getLevel().equals("0")) {
                                     tagVip.setText("平民");
-                                }else if(personInfoBean.getData().getUsertype().equals("2")){
+                                } else if (personInfoBean.getData().getUsertype().equals("2")) {
                                     tagVip.setText("VIP");
                                 }
 
                                 tvFollow.setText(personInfoBean.getData().getInterest() + "\n关注");
-                                tvFans.setText(personInfoBean.getData().getLove()+"\n粉丝");
-                                tvFriends.setText(personInfoBean.getData().getTrends()+"\n动态");
+                                tvFans.setText(personInfoBean.getData().getLove() + "\n粉丝");
+                                tvFriends.setText(personInfoBean.getData().getTrends() + "\n动态");
 
 //                                if(personInfoBean.getData().getUsertype().equals("1")){
 //                                    fragmentNvshen.setText("主播");
@@ -248,35 +248,42 @@ import static com.zhuye.hougong.R.id.me_yinpin_tv2;
 //                                }
 
                                 //语音视频初始化
-                                if(personInfoBean.getData().getVoice_open().equals("1")){
+                                if (personInfoBean.getData().getVoice_open().equals("1")) {
                                     meYinpinIv2.setImageResource(R.drawable.open);
-                                }else if(personInfoBean.getData().getVoice_open().equals("0")){
+                                } else if (personInfoBean.getData().getVoice_open().equals("0")) {
                                     meYinpinIv2.setImageResource(R.drawable.close);
                                 }
 
 
-                                meYinpinTv2.setText(personInfoBean.getData().getVoice_money()+"金币/分钟");
-                                meShipinTv2.setText(personInfoBean.getData().getVideo_money()+"金币/分钟");
+                                if (personInfoBean.getData().getUsertype().equals("0") || personInfoBean.getData().getUsertype().equals("2")) {
+                                    yinshifei.setVisibility(View.GONE);
+                                } else if (personInfoBean.getData().getUsertype().equals("1")) {
+                                    nvnanshen.setVisibility(View.GONE);
+                                }
+                                meInvid.setText(personInfoBean.getData().getInv_code());
+
+                                meYinpinTv2.setText(personInfoBean.getData().getVoice_money() + "金币/分钟");
+                                meShipinTv2.setText(personInfoBean.getData().getVideo_money() + "金币/分钟");
                                 // me_yinpin_tv2
-                                if(personInfoBean.getData().getVideo_open().equals("1")){
+                                if (personInfoBean.getData().getVideo_open().equals("1")) {
                                     meShipinIv2.setImageResource(R.drawable.open);
-                                }else if(personInfoBean.getData().getVideo_open().equals("0")){
+                                } else if (personInfoBean.getData().getVideo_open().equals("0")) {
                                     meShipinIv2.setImageResource(R.drawable.close);
                                 }
 
 
-    //                            personName.setText(personInfoBean.getData().getNickname());
-    //                            personAge.setText(personInfoBean.getData().getCity() + "sdfa");
-    //                            personXingzuo.setText(personInfoBean.getData().getCon()+"老虎");
-    //                            personZone.setText(personInfoBean.getData().getCity()+"老虎");
-    //                            personJibie.setText(personInfoBean.getData().getLevel()+"平");
-    //                            if(personInfoBean.getData().getSex().contains("0")){
-    //                                personBtnNan.setChecked(true);
-    //                                personBtnNv.setChecked(false);
-    //                            }else{
-    //                                personBtnNan.setChecked(false);
-    //                                personBtnNv.setChecked(true);
-    //                            }
+                                //                            personName.setText(personInfoBean.getData().getNickname());
+                                //                            personAge.setText(personInfoBean.getData().getCity() + "sdfa");
+                                //                            personXingzuo.setText(personInfoBean.getData().getCon()+"老虎");
+                                //                            personZone.setText(personInfoBean.getData().getCity()+"老虎");
+                                //                            personJibie.setText(personInfoBean.getData().getLevel()+"平");
+                                //                            if(personInfoBean.getData().getSex().contains("0")){
+                                //                                personBtnNan.setChecked(true);
+                                //                                personBtnNv.setChecked(false);
+                                //                            }else{
+                                //                                personBtnNan.setChecked(false);
+                                //                                personBtnNv.setChecked(true);
+                                //                            }
                             } else {
 
                             }
@@ -325,9 +332,13 @@ import static com.zhuye.hougong.R.id.me_yinpin_tv2;
     }
 
 
-    @OnClick({ me_yinpin_tv2,R.id.me_shipin_tv2,R.id.tv_follow,R.id.tag_vip,R.id.fragment_nvshen, R.id.tv_fans, R.id.tv_friends, R.id.me_yinpin_iv2, R.id.me_yinpin_go, R.id.me_shipin_iv2, R.id.me_shipin_go, R.id.me_qianbao, R.id.me_photos, R.id.me_yaoqing, R.id.me_lookme, R.id.me_sengliwu, R.id.me_shengvip})
+    @OnClick({me_yinpin_tv2, R.id.nvnanshen, R.id.me_shipin_tv2, R.id.tv_follow, R.id.tag_vip, R.id.fragment_nvshen, R.id.tv_fans, R.id.tv_friends, R.id.me_yinpin_iv2, R.id.me_yinpin_go, R.id.me_shipin_iv2, R.id.me_shipin_go, R.id.me_qianbao, R.id.me_photos, R.id.me_yaoqing, R.id.me_lookme, R.id.me_sengliwu, R.id.me_shengvip})
     public void onViewClicked(View view) {
         switch (view.getId()) {
+            case R.id.nvnanshen:
+                panduanshen();
+
+                break;
             case me_yinpin_tv2:
                 settingShcarge(1);
                 break;
@@ -341,10 +352,10 @@ import static com.zhuye.hougong.R.id.me_yinpin_tv2;
                 startActivity(new Intent(getActivity(), FansActivity.class));
                 break;
             case R.id.tv_friends:
-               // startActivity(new Intent(getActivity(), MyFriendsActivity.class));
+                // startActivity(new Intent(getActivity(), MyFriendsActivity.class));
                 Intent intent = new Intent(getActivity(), DongTai2Activity.class);
-                intent.putExtra("type",1);
-                intent.putExtra("token",Sputils.getString(getActivity(), "token", ""));
+                intent.putExtra("type", 1);
+                intent.putExtra("token", Sputils.getString(getActivity(), "token", ""));
                 startActivity(intent);
 
                 break;
@@ -372,8 +383,8 @@ import static com.zhuye.hougong.R.id.me_yinpin_tv2;
                 startActivity(new Intent(getActivity(), YanQingJiangLiActivity.class));
                 break;
             case R.id.me_lookme:
-               // callVoice();
-               startActivity(new Intent(getActivity(), LookMeActivity.class));
+                // callVoice();
+                startActivity(new Intent(getActivity(), LookMeActivity.class));
 //                Intent in = new Intent(getActivity(), ChooseAddressActivity.class);
 //                in.putExtra("now","sdf");
 //                startActivity(in);
@@ -382,8 +393,8 @@ import static com.zhuye.hougong.R.id.me_yinpin_tv2;
                 startActivity(new Intent(getActivity(), WhoSendLiWuActivity.class));
                 break;
             case R.id.me_shengvip:
-               startActivity(new Intent(getActivity(), ShengVIP1Activity.class));
-               // test();
+                startActivity(new Intent(getActivity(), ShengVIP1Activity.class));
+                // test();
                 break;
             case R.id.fragment_nvshen:
                 startActivity(new Intent(getActivity(), ShenQing2Activity.class));
@@ -391,14 +402,43 @@ import static com.zhuye.hougong.R.id.me_yinpin_tv2;
 
             case R.id.tag_vip:
                 //编辑资料
-               // startActivity(new Intent(getActivity(), PersonDetailActivity.class));
+                // startActivity(new Intent(getActivity(), PersonDetailActivity.class));
                 break;
         }
+    }
+
+    private void panduanshen() {
+
+        if (personInfoBean.getData().getUsertype().equals("2")) {
+            //申请中
+            alertShenqing();
+
+        } else if (personInfoBean.getData().getUsertype().equals("0")) {
+            startActivity(new Intent(getActivity(), ShenQing2Activity.class));
+        }
+
+    }
+
+    private void alertShenqing() {
+        final AlertDialog dialog3 = new AlertDialog.Builder(getActivity()).create();
+        View view = View.inflate(getActivity(), R.layout.aliet3, null);
+        dialog3.setView(view);
+
+        view.findViewById(R.id.queren).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (dialog3 != null && dialog3.isShowing()) {
+                    dialog3.dismiss();
+                }
+            }
+        });
+        dialog3.show();
     }
 
     private static IWXAPI WXapi;
     private String WX_APP_ID = "wxddf17683ec437cfa";
     PayReq req;
+
     private void test() {
         WXapi = WXAPIFactory.createWXAPI(getActivity(), WX_APP_ID, false);
         WXapi.registerApp(WX_APP_ID);
@@ -411,18 +451,19 @@ import static com.zhuye.hougong.R.id.me_yinpin_tv2;
                         if (response.body().contains("200")) {
                             CommentUtils.toast(getActivity(), "设置成功");
                             Gson gson = new Gson();
-                            WxPayBean bean = gson.fromJson(response.body(),WxPayBean.class);
+                            WxPayBean bean = gson.fromJson(response.body(), WxPayBean.class);
                             req = new PayReq();
                             req.appId = bean.getData().getAppid();
                             req.partnerId = bean.getData().getPartnerid();
                             req.prepayId = bean.getData().getPrepayid();
                             req.nonceStr = bean.getData().getNoncestr();
-                            req.timeStamp = bean.getData().getTimestamp()+"";
+                            req.timeStamp = bean.getData().getTimestamp() + "";
                             req.packageValue = bean.getData().getPackageX();
                             req.sign = bean.getData().getSign();
                             WXapi.sendReq(req);
                         }
                     }
+
                     @Override
                     public void onError(Response<String> response) {
                         super.onError(response);
@@ -432,21 +473,22 @@ import static com.zhuye.hougong.R.id.me_yinpin_tv2;
     }
 
     int pos = 0;
+
     private void settingShcarge(final int type) {
-        final AlertDialog dialog = new  AlertDialog.Builder(getActivity()).create();
-        View view = View.inflate(getActivity(),R.layout.aliet,null);
+        final AlertDialog dialog = new AlertDialog.Builder(getActivity()).create();
+        View view = View.inflate(getActivity(), R.layout.aliet, null);
         dialog.setView(view);
 
-       // final String[] city = {"免费","10","20","30","50","100"};
+        // final String[] city = {"免费","10","20","30","50","100"};
         final List<String> data = new ArrayList();
-        data.add("免费");
+        //data.add("免费");
         NumberPicker picker = view.findViewById(R.id.picker);
-        for(int i= 5;i<201;i=i+5){
-            data.add(i+"");
+        for (int i = 5; i < 201; i = i + 5) {
+            data.add(i + "");
         }
         final String[] city = new String[data.size()];
-        for(int i = 0;i<data.size();i++){
-            city[i]=data.get(i);
+        for (int i = 0; i < data.size(); i++) {
+            city[i] = data.get(i);
         }
 
 
@@ -456,28 +498,28 @@ import static com.zhuye.hougong.R.id.me_yinpin_tv2;
         picker.setValue(0);
         //picker.setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS);
         picker.setWrapSelectorWheel(false);
-         //int i =  picker.getValue();
+        //int i =  picker.getValue();
         //Log.i("acy",i+"");
 
         picker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
             @Override
             public void onValueChange(NumberPicker numberPicker, int i, int i1) {
-               // Log.i("acy",i+"");
-                Log.i("acy",i1+"asdfsd");
-                pos= i1;
+                // Log.i("acy",i+"");
+                Log.i("acy", i1 + "asdfsd");
+                pos = i1;
 
             }
         });
         view.findViewById(R.id.queren).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (dialog!=null&&dialog.isShowing()){
+                if (dialog != null && dialog.isShowing()) {
                     dialog.dismiss();
                 }
-                final int money ;
-                if(pos==0){
+                final int money;
+                if (pos == 0) {
                     money = 0;
-                }else {
+                } else {
                     money = Integer.parseInt(city[pos]);
                 }
                 OkGo.<String>post(Contants.charge)
@@ -489,10 +531,10 @@ import static com.zhuye.hougong.R.id.me_yinpin_tv2;
                             public void onSuccess(Response<String> response) {
                                 if (response.body().contains("200")) {
                                     CommentUtils.toast(getActivity(), "设置成功");
-                                    if(type==1){
-                                        meYinpinTv2.setText(money+"金币/分钟");
-                                    }else if(type==2){
-                                        meShipinTv2.setText(money+"金币/分钟");
+                                    if (type == 1) {
+                                        meYinpinTv2.setText(money + "金币/分钟");
+                                    } else if (type == 2) {
+                                        meShipinTv2.setText(money + "金币/分钟");
                                     }
                                 }
                             }
@@ -512,7 +554,7 @@ import static com.zhuye.hougong.R.id.me_yinpin_tv2;
         view.findViewById(R.id.quxiao).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (dialog!=null&&dialog.isShowing()){
+                if (dialog != null && dialog.isShowing()) {
                     dialog.dismiss();
                 }
             }

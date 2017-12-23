@@ -42,16 +42,15 @@
         android:layout_height="match_parent">
 
         <LinearLayout
+            android:gravity="center_vertical"
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
-
-            <TextView
+            <com.zhuye.hougong.weidgt.RoundedCornerImageView
                 android:text="tupain"
                 android:id="@+id/shengji2_tou"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_width="59dp"
+                android:layout_height="59dp" />
 
             <TextView
                 android:layout_marginLeft="20dp"
@@ -69,7 +68,7 @@
         <android.support.v7.widget.RecyclerView
             android:layout_width="match_parent"
             android:id="@+id/recycle"
-            android:layout_height="60dp">
+            android:layout_height="120dp">
         </android.support.v7.widget.RecyclerView>
 
 
@@ -84,10 +83,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
-            <EditText
+            <TextView
+                android:id="@+id/month"
+                android:text="3"
                 android:layout_marginLeft="40dp"
                 android:background="@drawable/edit_bg"
-                android:textColor="@color/red"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
@@ -121,8 +121,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
+            <ImageView
+                android:id="@+id/fabu_location_iv"
+                android:layout_marginRight="9dp"
+                android:layout_toLeftOf="@+id/text"
+                android:src="@drawable/check_on"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
             <TextView
-                android:drawableLeft="@mipmap/ic_launcher"
+                android:id="@+id/text"
                 android:layout_alignParentRight="true"
                 android:text="自动续费"
                 android:layout_width="wrap_content"
@@ -133,6 +141,9 @@
 
 
         <Button
+            android:textColor="#fff"
+            android:textSize="16sp"
+            android:layout_marginTop="30dp"
             android:background="@drawable/btn_bg"
             android:text="立即开通"
             android:id="@+id/shengji2_kaitong"

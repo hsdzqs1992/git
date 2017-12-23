@@ -7,17 +7,22 @@
     android:background="@drawable/alert_bg">
 
  <EditText
+     android:paddingLeft="20dp"
+     android:background="@null"
+     android:paddingTop="40dp"
      android:gravity="start"
      android:id="@+id/tousu"
      android:layout_width="match_parent"
      android:layout_height="250dp"
-     android:hint="tousu"/>
+     android:hint="请输入投诉内容"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <Button
+            android:textColor="#666"
+            android:background="#999"
             android:textSize="18sp"
             android:id="@+id/quxiao"
             android:text="取消"

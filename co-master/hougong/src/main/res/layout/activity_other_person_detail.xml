@@ -20,13 +20,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
+        <Switch
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="8dp"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/switch1"/>
         <TextView
+            android:layout_toLeftOf="@+id/switch1"
             android:id="@+id/person_jiahei"
             android:drawablePadding="5dp"
-            android:drawableLeft="@drawable/plus"
             android:textSize="@dimen/sp_16"
             android:textColor="@color/white"
-            android:layout_alignParentRight="true"
             android:layout_marginTop="12dp"
             android:layout_marginRight="10dp"
             android:text="黑名单"
@@ -45,7 +51,8 @@
                 android:id="@+id/other_person_detail_touxiang"
                 android:src="@mipmap/ic_launcher"
                 android:layout_width="76dp"
-                android:layout_height="76dp" />
+                android:layout_height="76dp"
+                android:scaleType="centerCrop"/>
 
             <TextView
                 android:textColor="@color/white"
@@ -93,21 +100,7 @@
                 android:textColor="@color/white"
                 android:textSize="16sp" />
 
-            <View
-                android:layout_width="2dp"
-                android:layout_height="@dimen/y48"
-                android:background="@color/white" />
 
-            <TextView
-                android:lineSpacingExtra="3dp"
-                android:id="@+id/tv_friends"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center_horizontal"
-                android:text="120\n好友"
-                android:textColor="@color/white"
-                android:textSize="16sp" />
         </LinearLayout>
 
 
@@ -256,15 +249,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <Button
-            android:gravity="center_vertical"
+            android:gravity="center"
             android:drawablePadding="6dp"
-            android:paddingLeft="160dp"
-            android:drawableLeft="@drawable/attention_onn"
             android:textColor="#999999"
             android:textSize="16sp"
             android:layout_alignParentBottom="true"
             android:id="@+id/other_person_detail_shifouguan"
-            android:text="已关注"
+            android:text="\@   他"
             android:layout_width="match_parent"
             android:layout_height="47dp" />
     </RelativeLayout>

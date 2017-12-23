@@ -29,5 +29,12 @@ public class ShengJIAdapter extends BaseRecycleAdapter {
     protected void conver(BaseHolder holder, int position) {
         ImageView iv = holder.getView(R.id.image);
         Glide.with(conn).load(Contants.BASE_URL+((VipListbean.DataBean)data.get(position)).getPhoto()).into(iv);
+
+        if(!((VipListbean.DataBean)data.get(position)).getSelect()){
+            holder.getView(R.id.image).setBackgroundResource(R.color.white);
+        }else{
+            holder.getView(R.id.image).setBackgroundResource(R.drawable.chongzhi);
+        }
+
     }
 }

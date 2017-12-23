@@ -11,6 +11,7 @@ import com.lzy.okgo.model.Response;
 import com.zhuye.hougong.R;
 import com.zhuye.hougong.adapter.CommontAdapter;
 import com.zhuye.hougong.base.BaseFragment;
+import com.zhuye.hougong.bean.ShouZhiBean;
 import com.zhuye.hougong.contants.Contants;
 import com.zhuye.hougong.utils.CommentUtils;
 import com.zhuye.hougong.utils.Sputils;
@@ -54,6 +55,8 @@ public class CommotFaragment extends BaseFragment {
                             Gson gson = new Gson();
                             //// TODO: 2017/12/9 0009 数据的处理
                             //WxPayBean bean = gson.fromJson(response.body(),WxPayBean.class);
+                            ShouZhiBean bean = gson.fromJson(response.body(),ShouZhiBean.class);
+                            commontAdapter.addData(bean.getData());
 
                         }else if(response.body().contains("201")){
                             CommentUtils.toast(getActivity(),"没有更多数据");

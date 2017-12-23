@@ -1,16 +1,22 @@
 package com.hyphenate.easeui.widget.chatrow;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.View;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.hyphenate.chat.EMMessage;
 import com.hyphenate.chat.EMNormalFileMessageBody;
 import com.hyphenate.easeui.R;
+import com.hyphenate.easeui.UserLocal;
 import com.hyphenate.util.TextFormater;
 
+import org.litepal.crud.DataSupport;
+
 import java.io.File;
+import java.util.List;
 
 public class EaseChatRowFile extends EaseChatRow{
     private static final String TAG = "EaseChatRowFile";
@@ -55,6 +61,23 @@ public class EaseChatRowFile extends EaseChatRow{
                 fileStateView.setText(R.string.Did_not_download);
             }
             return;
+        }
+
+        if (message.direct() == EMMessage.Direct.RECEIVE) {
+            Log.i("as",message.getFrom());
+            List<UserLocal> songs = DataSupport.findAll(UserLocal.class);
+            if(songs!=null && songs.size()>0){
+                for (UserLocal user : songs){
+                    if(user.getHxname().equals(message.getFrom())){
+                        Log.i("as",user.getFacepath());
+                        //holder.name.setText(user.getName());
+                        // EaseUserUtils.setUserAvatar(getContext(),message.getFrom(), holder.avatar);
+                        Glide.with(getContext()).load(user.getFacepath()).into(userAvatarView);
+                    }
+                }
+            }
+        } else {
+            Glide.with(context).load(context.getSharedPreferences("con",Context.MODE_PRIVATE).getString("face","")).into(userAvatarView);
         }
 	}
 

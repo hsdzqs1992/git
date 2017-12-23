@@ -195,4 +195,6 @@ public class DongTaiActivity extends BaseActivity {
         // TODO: add setContentView(...) invocation
         ButterKnife.bind(this);
     }
+
+
 }

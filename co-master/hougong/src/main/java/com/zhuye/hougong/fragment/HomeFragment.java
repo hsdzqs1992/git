@@ -280,21 +280,21 @@ public class HomeFragment extends BaseFragment {
     private void changeTongHuaGround() {
         switch (selecttonghua) {
             case sexbuxian:
-                setTvBackGround(homeTonghuaBuxian, R.drawable.tv_slide_bg, Color.RED);
-                setTvBackGround(homeTonghuaShipin, R.drawable.tv_slidenor_bg, Color.BLACK);
-                setTvBackGround(homeTonghuaYuyin, R.drawable.tv_slidenor_bg, Color.BLACK);
+                setTvBackGround(homeTonghuaBuxian, R.drawable.tv_slide_bg, Color.WHITE);
+                setTvBackGround(homeTonghuaShipin, R.drawable.tv_slidenor_bg, getActivity().getResources().getColor(R.color.liu));
+                setTvBackGround(homeTonghuaYuyin, R.drawable.tv_slidenor_bg, getActivity().getResources().getColor(R.color.liu));
                 break;
             case sexne:
-                setTvBackGround(homeTonghuaBuxian, R.drawable.tv_slidenor_bg, Color.BLACK);
-                setTvBackGround(homeTonghuaShipin, R.drawable.tv_slide_bg, Color.RED);
-                setTvBackGround(homeTonghuaYuyin, R.drawable.tv_slidenor_bg, Color.BLACK);
+                setTvBackGround(homeTonghuaBuxian, R.drawable.tv_slidenor_bg, getActivity().getResources().getColor(R.color.liu));
+                setTvBackGround(homeTonghuaShipin, R.drawable.tv_slide_bg, Color.WHITE);
+                setTvBackGround(homeTonghuaYuyin, R.drawable.tv_slidenor_bg, getActivity().getResources().getColor(R.color.liu));
                 //homeSexBuxian.setBackground(getResources().getDrawable(R.drawable.tv_slide_bg));
                 //homeSexNv.setBackgroundResource(R.drawable.tv_slide_bg);
                 break;
             case sexnan:
-                setTvBackGround(homeTonghuaBuxian, R.drawable.tv_slidenor_bg, Color.BLACK);
-                setTvBackGround(homeTonghuaShipin, R.drawable.tv_slidenor_bg, Color.BLACK);
-                setTvBackGround(homeTonghuaYuyin, R.drawable.tv_slide_bg, Color.RED);
+                setTvBackGround(homeTonghuaBuxian, R.drawable.tv_slidenor_bg, getActivity().getResources().getColor(R.color.liu));
+                setTvBackGround(homeTonghuaShipin, R.drawable.tv_slidenor_bg,getActivity().getResources().getColor(R.color.liu));
+                setTvBackGround(homeTonghuaYuyin, R.drawable.tv_slide_bg, Color.WHITE);
                 break;
         }
     }
@@ -302,21 +302,21 @@ public class HomeFragment extends BaseFragment {
     private void changeTongChengGround() {
         switch (selecttongcheng) {
             case sexbuxian:
-                setTvBackGround(homeTongchengBuxian, R.drawable.tv_slide_bg, Color.RED);
-                setTvBackGround(homeTongchengTongcheng, R.drawable.tv_slidenor_bg, Color.BLACK);
-                setTvBackGround(homeTongchengQite, R.drawable.tv_slidenor_bg, Color.BLACK);
+                setTvBackGround(homeTongchengBuxian, R.drawable.tv_slide_bg, Color.WHITE);
+                setTvBackGround(homeTongchengTongcheng, R.drawable.tv_slidenor_bg, getActivity().getResources().getColor(R.color.liu));
+                setTvBackGround(homeTongchengQite, R.drawable.tv_slidenor_bg, getActivity().getResources().getColor(R.color.liu));
                 break;
             case sexne:
-                setTvBackGround(homeTongchengBuxian, R.drawable.tv_slidenor_bg, Color.BLACK);
-                setTvBackGround(homeTongchengTongcheng, R.drawable.tv_slide_bg, Color.RED);
-                setTvBackGround(homeTongchengQite, R.drawable.tv_slidenor_bg, Color.BLACK);
+                setTvBackGround(homeTongchengBuxian, R.drawable.tv_slidenor_bg, getActivity().getResources().getColor(R.color.liu));
+                setTvBackGround(homeTongchengTongcheng, R.drawable.tv_slide_bg, Color.WHITE);
+                setTvBackGround(homeTongchengQite, R.drawable.tv_slidenor_bg, getActivity().getResources().getColor(R.color.liu));
                 //homeSexBuxian.setBackground(getResources().getDrawable(R.drawable.tv_slide_bg));
                 //homeSexNv.setBackgroundResource(R.drawable.tv_slide_bg);
                 break;
             case sexnan:
-                setTvBackGround(homeTongchengBuxian, R.drawable.tv_slidenor_bg, Color.BLACK);
-                setTvBackGround(homeTongchengTongcheng, R.drawable.tv_slidenor_bg, Color.BLACK);
-                setTvBackGround(homeTongchengQite, R.drawable.tv_slide_bg, Color.RED);
+                setTvBackGround(homeTongchengBuxian, R.drawable.tv_slidenor_bg, getActivity().getResources().getColor(R.color.liu));
+                setTvBackGround(homeTongchengTongcheng, R.drawable.tv_slidenor_bg, getActivity().getResources().getColor(R.color.liu));
+                setTvBackGround(homeTongchengQite, R.drawable.tv_slide_bg, Color.WHITE);
                 break;
         }
     }
@@ -324,21 +324,21 @@ public class HomeFragment extends BaseFragment {
     private void changeSexBackGround() {
         switch (selectsex) {
             case sexbuxian:
-                setTvBackGround(homeSexBuxian, R.drawable.tv_slide_bg, Color.RED);
-                setTvBackGround(homeSexNv, R.drawable.tv_slidenor_bg, Color.BLACK);
-                setTvBackGround(homeSexNan, R.drawable.tv_slidenor_bg, Color.BLACK);
+                setTvBackGround(homeSexBuxian, R.drawable.tv_slide_bg, Color.WHITE);
+                setTvBackGround(homeSexNv, R.drawable.tv_slidenor_bg, getActivity().getResources().getColor(R.color.liu));
+                setTvBackGround(homeSexNan, R.drawable.tv_slidenor_bg, getActivity().getResources().getColor(R.color.liu));
                 break;
             case sexne:
-                setTvBackGround(homeSexBuxian, R.drawable.tv_slidenor_bg, Color.BLACK);
-                setTvBackGround(homeSexNv, R.drawable.tv_slide_bg, Color.RED);
-                setTvBackGround(homeSexNan, R.drawable.tv_slidenor_bg, Color.BLACK);
+                setTvBackGround(homeSexBuxian, R.drawable.tv_slidenor_bg, getActivity().getResources().getColor(R.color.liu));
+                setTvBackGround(homeSexNv, R.drawable.tv_slide_bg, Color.WHITE);
+                setTvBackGround(homeSexNan, R.drawable.tv_slidenor_bg, getActivity().getResources().getColor(R.color.liu));
                 //homeSexBuxian.setBackground(getResources().getDrawable(R.drawable.tv_slide_bg));
                 //homeSexNv.setBackgroundResource(R.drawable.tv_slide_bg);
                 break;
             case sexnan:
-                setTvBackGround(homeSexBuxian, R.drawable.tv_slidenor_bg, Color.BLACK);
-                setTvBackGround(homeSexNv, R.drawable.tv_slidenor_bg, Color.BLACK);
-                setTvBackGround(homeSexNan, R.drawable.tv_slide_bg, Color.RED);
+                setTvBackGround(homeSexBuxian, R.drawable.tv_slidenor_bg, getActivity().getResources().getColor(R.color.liu));
+                setTvBackGround(homeSexNv, R.drawable.tv_slidenor_bg, getActivity().getResources().getColor(R.color.liu));
+                setTvBackGround(homeSexNan, R.drawable.tv_slide_bg, Color.WHITE);
                 break;
         }
 

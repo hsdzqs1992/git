@@ -26,5 +26,6 @@
     <color name="home_color">#f474c5</color>
     <color name="touming">#00000000</color>
 
-
+    <color name="liu">#666</color>
+    <color name="gray1">#f0f0f0</color>
 </resources>

@@ -114,6 +114,8 @@ public class Contants {
     //发表评论
     public static final String addcontent= BASE_URL+"/index.php/home/dynamic/add";
 
+
+
     //我的动态列表
     public static final String dynamiclists= BASE_URL+"/index.php/home/dynamic/lists";
 
@@ -128,6 +130,11 @@ public class Contants {
     public static final String comment_zan= BASE_URL+"/index.php/home/dynamic/comment_zan";
     //点评取消点赞
     public static final String comment_qxzan= BASE_URL+"/index.php/home/dynamic/comment_qxzan";
+
+
+    //评论
+    public static final String comment= BASE_URL+"/index.php/home/dynamic/comment";
+
     //搜索
     public static final String select= BASE_URL+"/index.php/home/hall/select";
 

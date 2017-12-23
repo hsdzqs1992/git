@@ -28,6 +28,7 @@ public class PictureListAdapter extends BaseRecycleAdapter {
     protected void conver(BaseHolder holder, int position) {
         if(position==0){
             ((ImageView) holder.getView(R.id.photo)).setImageResource(R.drawable.photo1);
+            ((ImageView) holder.getView(R.id.photo)).setBackgroundResource(R.color.gray1);
         }else {
             ImageView iv = holder.getView(R.id.photo);
             Glide.with(conn).load(Contants.BASE_URL+((PhotoBean.DataBean)data.get(position))

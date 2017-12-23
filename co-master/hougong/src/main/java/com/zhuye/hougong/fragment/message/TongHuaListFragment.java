@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 
 import com.cjj.MaterialRefreshLayout;
+import com.cjj.MaterialRefreshListener;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 import com.lzy.okgo.OkGo;
@@ -18,10 +19,13 @@ import com.zhuye.hougong.adapter.message.TongHuaListAdapter;
 import com.zhuye.hougong.base.BaseFragment;
 import com.zhuye.hougong.bean.TongListBean;
 import com.zhuye.hougong.contants.Contants;
+import com.zhuye.hougong.utils.CommentUtils;
 import com.zhuye.hougong.utils.Sputils;
 import com.zhuye.hougong.view.PersonHomePageActivity;
 
 import butterknife.BindView;
+
+import static com.lzy.okgo.utils.HttpUtils.runOnUiThread;
 
 /**
  * Created by zzzy on 2017/12/5.
@@ -42,6 +46,7 @@ public class TongHuaListFragment extends BaseFragment {
         adapter = new TongHuaListAdapter(getActivity());
         commotRecycle.setAdapter(adapter);
         commotRecycle.setLayoutManager(new LinearLayoutManager(getActivity()));
+        commonMaterial.setLoadMore(true);
     }
 
     @Override
@@ -49,11 +54,55 @@ public class TongHuaListFragment extends BaseFragment {
         return R.layout.common_recycle;
     }
 
-    int page = 1;
-    TongListBean bean;
+
+    TongListBean dongTaiBean;
     @Override
     protected void initData() {
         super.initData();
+
+getData(1);
+    }
+    private final int normal = 0;
+    private final int refresh = 1;
+    private final int loadmore = 2;
+    private int state = 0;
+    public int page = 1;
+    @Override
+    protected void initListener() {
+        super.initListener();
+
+
+        commonMaterial.setMaterialRefreshListener(new MaterialRefreshListener() {
+            @Override
+            public void onRefresh(MaterialRefreshLayout materialRefreshLayout) {
+                state =refresh;
+                getData(1);
+
+
+            }
+
+            @Override
+            public void onRefreshLoadMore(MaterialRefreshLayout materialRefreshLayout) {
+                super.onRefreshLoadMore(materialRefreshLayout);
+                page++;
+                state= loadmore;
+                getData(page);
+            }
+        });
+
+        adapter.setOnItemClickListener(new BaseHolder.OnItemClickListener() {
+            @Override
+            public void OnItemClick(View view, int position) {
+                Intent in = new Intent(getActivity(),PersonHomePageActivity.class);
+                in.putExtra("uid",dongTaiBean.getData().get(position).getUid());
+                in.putExtra("guanzhu",dongTaiBean.getData().get(position).getUsertype());//bug
+                getActivity().startActivity(in);
+            }
+        });
+    }
+
+    private void getData(int page) {
+
         OkGo.<String>post(Contants.call_record)
                 .params("token", Sputils.getString(getActivity(),"token",""))
                 .params("page",page)
@@ -61,16 +110,55 @@ public class TongHuaListFragment extends BaseFragment {
                     @Override
                     public void onSuccess(Response<String> response) {
                         if(response.body().contains("200")){
+                            Gson gson = new Gson();
                             try {
-                                Gson gson = new Gson();
-                                bean= gson.fromJson(response.body(),TongListBean.class);
+                                dongTaiBean= gson.fromJson(response.body(),TongListBean.class);
                                 if(adapter!=null){
-                                    adapter.addData(bean.getData());
+                                    switch (state){
+                                        case normal:
+                                            if(dongTaiBean!=null&&adapter!=null){
+                                                adapter.addData(dongTaiBean.getData());
+                                            }
+                                            break;
+                                        case refresh:
+                                            adapter.clear();
+                                            adapter.addData(dongTaiBean.getData());
+                                            commotRecycle.scrollToPosition(0);
+                                            commonMaterial.finishRefresh();
+                                            break;
+                                        case loadmore:
+                                            if(dongTaiBean.getData()==null|| dongTaiBean.getData().size()==0){
+                                                CommentUtils.toast(getActivity(),"没有更多数据");
+                                                TongHuaListFragment.this.page--;
+                                            }else{
+                                                runOnUiThread(new Runnable() {
+                                                    @Override
+                                                    public void run() {
+                                                        adapter.addData(dongTaiBean.getData());
+                                                        commotRecycle.scrollToPosition(adapter.getSize());
+                                                    }
+                                                });
+
+                                            }
+                                            runOnUiThread(new Runnable() {
+                                                @Override
+                                                public void run() {
+                                                    commonMaterial.finishRefreshLoadMore();
+                                                }
+                                            });
+                                            break;
+                                    }
                                 }
                             } catch (JsonSyntaxException e) {
                                 e.printStackTrace();
                             }
+                        }else if(response.body().contains("201")){
+                            commonMaterial.finishRefresh();
+                            CommentUtils.toast(getActivity(),"没有更多数据");
+                            TongHuaListFragment.this.page--;
+                            commonMaterial.finishRefreshLoadMore();
                         }
+
                     }
                     @Override
                     public void onError(Response<String> response) {
@@ -79,21 +167,5 @@ public class TongHuaListFragment extends BaseFragment {
                         Log.i("llllll",response.body());
                     }
                 });
-
-    }
-
-    @Override
-    protected void initListener() {
-        super.initListener();
-
-        adapter.setOnItemClickListener(new BaseHolder.OnItemClickListener() {
-            @Override
-            public void OnItemClick(View view, int position) {
-                Intent in = new Intent(getActivity(),PersonHomePageActivity.class);
-                in.putExtra("uid",bean.getData().get(position).getUid());
-                in.putExtra("guanzhu",bean.getData().get(position).getUsertype());//bug
-                getActivity().startActivity(in);
-            }
-        });
     }
 }

@@ -36,7 +36,7 @@ public class FindFragment extends BaseFragment {
         mTabStrip.setIndicatorColorResource(R.color.white);
         mTabStrip.setDividerColor(Color.TRANSPARENT);
         mTabStrip.setTextSelectedColorResource(R.color.white);
-        mTabStrip.setTextSize(getResources().getDimensionPixelSize(R.dimen.h8));
+        mTabStrip.setTextSize(getResources().getDimensionPixelSize(R.dimen.h10));
         mTabStrip.setTextSelectedSize(getResources().getDimensionPixelSize(R.dimen.h10));
         mTabStrip.setUnderlineHeight(1);
 

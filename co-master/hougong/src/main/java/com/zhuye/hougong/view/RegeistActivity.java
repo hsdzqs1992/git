@@ -19,6 +19,7 @@ import com.lzy.okgo.model.Response;
 import com.zhuye.hougong.R;
 import com.zhuye.hougong.contants.Contants;
 import com.zhuye.hougong.utils.CommentUtils;
+import com.zhuye.hougong.utils.PhoneFormatCheckUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -107,6 +108,11 @@ public class RegeistActivity extends AppCompatActivity {
 
                 if (TextUtils.isEmpty(phone)) {
                     Toast.makeText(RegeistActivity.this, "手机号不能为空", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if(!PhoneFormatCheckUtils.isChinaPhoneLegal(phone)){
+                    Toast.makeText(RegeistActivity.this,"手机号格式错误",Toast.LENGTH_SHORT).show();
                     return;
                 }
 

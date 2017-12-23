@@ -16,7 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
-        android:src="@mipmap/ic_launcher"
+        android:src="@color/vm_black_38"
         />
 
     <RelativeLayout
@@ -107,7 +107,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:background="@color/vm_black_38"
             android:gravity="center"
             android:orientation="vertical"
             >
@@ -146,6 +145,15 @@
                     android:layout_margin="8dp"
                     android:background="@drawable/click_circle_transparent"
                     android:src="@drawable/ic_record_white_24dp"
+                    />
+
+                <ImageButton
+                    android:id="@+id/btn_record_songli"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_margin="8dp"
+                    android:background="@drawable/click_circle_transparent"
+                    android:src="@drawable/liwu"
                     />
 
             </LinearLayout>

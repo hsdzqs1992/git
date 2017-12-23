@@ -9,6 +9,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonSyntaxException;
+import com.gyf.barlibrary.ImmersionBar;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.model.Response;
@@ -40,6 +42,14 @@ public class TiXianActivity extends BaseActivity {
 
 
     @Override
+    protected void initview() {
+        super.initview();
+
+        if (isImmersionBarEnabled())
+            initImmersionBar();
+    }
+
+    @Override
     protected void initData() {
         super.initData();
 
@@ -51,8 +61,12 @@ public class TiXianActivity extends BaseActivity {
                         Log.i("sdf",response.body());
                         if(response.body().contains("200")){
                             Gson gson = new Gson();
-                            TiXianBeab tiXianBeab= gson.fromJson(response.body(),TiXianBeab.class);
-                            jine.setText(tiXianBeab.getData().getMoney()+"");
+                            try {
+                                TiXianBeab tiXianBeab= gson.fromJson(response.body(),TiXianBeab.class);
+                                jine.setText(tiXianBeab.getData().getMoney()+"");
+                            } catch (JsonSyntaxException e) {
+                                e.printStackTrace();
+                            }
                         }
                     }
 
@@ -65,6 +79,21 @@ public class TiXianActivity extends BaseActivity {
                 });
     }
 
+    protected void initImmersionBar() {
+        //在BaseActivity里初始化
+        mImmersionBar = ImmersionBar.with(this);
+        mImmersionBar.init();
+    }
+    /**
+     * 是否可以使用沉浸式
+     * Is immersion bar enabled boolean.
+     *
+     * @return the boolean
+     */
+    protected ImmersionBar mImmersionBar;
+    protected boolean isImmersionBarEnabled() {
+        return true;
+    }
     @Override
     protected int getResId() {
         return R.layout.activity_ti_xian;

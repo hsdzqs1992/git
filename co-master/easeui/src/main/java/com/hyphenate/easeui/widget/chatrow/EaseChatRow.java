@@ -89,9 +89,10 @@ public abstract class EaseChatRow extends LinearLayout {
     }
 
     private void initView() {
-        onInflateView();
+        View view = onInflateView();
         timeStampView = (TextView) findViewById(R.id.timestamp);
         userAvatarView = (ImageView) findViewById(R.id.iv_userhead);
+
         bubbleLayout = findViewById(R.id.bubble);
         usernickView = (TextView) findViewById(R.id.tv_userid);
 
@@ -118,6 +119,7 @@ public abstract class EaseChatRow extends LinearLayout {
         this.itemClickListener = itemClickListener;
         this.itemActionCallback = itemActionCallback;
         this.itemStyle = itemStyle;
+        userAvatarView.setImageResource(R.drawable.ic_launcher);
 
         setUpBaseView();
         onSetUpView();

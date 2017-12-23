@@ -51,6 +51,9 @@ public  class FindBaseAdapter extends BaseRecycleAdapter {
         ((TextView)holder.getView(R.id.find_zuixin_name)).setText(((DongTaiBean.DataBean)data.get(position)).getNickname()+"");
         ((TextView)holder.getView(R.id.find_zuixin_age)).setText(((DongTaiBean.DataBean)data.get(position)).getAge()+"");
 
+
+
+
         //城市
         ((TextView)holder.getView(R.id.find_zuixin_dizhi)).setText(((DongTaiBean.DataBean)data.get(position)).getCity());
 
@@ -69,11 +72,11 @@ public  class FindBaseAdapter extends BaseRecycleAdapter {
             ((ImageView)holder.getView(R.id.zan)).setImageResource(R.drawable.praise_on);
         }
 
-        //评论
-        //((TextView)holder.getView(R.id.find_zuixin_pinglun)).setText(((DongTaiBean.DataBean)data.get(position)).getPing_count()+"");
+       // 评论
+        ((TextView)holder.getView(R.id.pinglun)).setText(((DongTaiBean.DataBean)data.get(position)).getPing_count()+"");
 
-        //礼物
-       // ((TextView)holder.getView(R.id.find_zuixin_liwu)).setText(((DongTaiBean.DataBean)data.get(position)).getGift());
+       // 礼物
+        ((TextView)holder.getView(R.id.find_zuixin_liwu)).setText(((DongTaiBean.DataBean)data.get(position)).getGift());
 
         //自己是否点赞
 

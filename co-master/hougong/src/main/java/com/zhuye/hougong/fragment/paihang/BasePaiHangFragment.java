@@ -3,7 +3,6 @@ package com.zhuye.hougong.fragment.paihang;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -28,6 +27,7 @@ import com.zhuye.hougong.utils.Sputils;
 import com.zhuye.hougong.view.PersonHomePageActivity;
 import com.zhuye.hougong.weidgt.MyLineLayoutManager;
 import com.zhuye.hougong.weidgt.RoundedCornerImageView;
+import com.zhuye.hougong.weidgt.WrapRecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -90,7 +90,7 @@ public abstract class BasePaiHangFragment extends BaseFragment {
     TextView findZuixinAge;
 
     @BindView(R.id.paihangqi)
-    RecyclerView paihangqi;
+    WrapRecyclerView paihangqi;
 
     PaiHangAdapter ada;
     @BindView(R.id.materialRefreshLayout)
@@ -100,6 +100,7 @@ public abstract class BasePaiHangFragment extends BaseFragment {
     @Override
     protected void initView() {
         ada = new PaiHangAdapter(getActivity());
+
         paihangqi.setAdapter(ada);
         paihangqi.setLayoutManager(new MyLineLayoutManager(getActivity()));
         materialRefreshLayout.setLoadMore(true);

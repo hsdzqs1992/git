@@ -7,6 +7,9 @@ import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.view.View;
+import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -33,18 +36,23 @@ public class YanQingJiangLiActivity extends AppCompatActivity {
 
     @BindView(R.id.yaoqing_bg)
     ImageView yaoqingBg;
+    @BindView(R.id.mywalot_back)
+    Button mywalotBack;
+    @BindView(R.id.qing)
+    Button qing;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_yan_qing_jiang_li2);
         ButterKnife.bind(this);
 
 
-
-
         initData();
     }
+
     ShareAction acion;
     YaoqingBean bean;
 
@@ -75,17 +83,16 @@ public class YanQingJiangLiActivity extends AppCompatActivity {
                                            String permissions[], int[] grantResults) {
     }
 
-    @OnClick(R.id.yaoqing_bg)
-    public void onViewClicked() {
 
-        if(Build.VERSION.SDK_INT>=23){
-            String[] mPermissionList = new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.CALL_PHONE,Manifest.permission.READ_LOGS,Manifest.permission.READ_PHONE_STATE, Manifest.permission.READ_EXTERNAL_STORAGE,Manifest.permission.SET_DEBUG_APP,Manifest.permission.SYSTEM_ALERT_WINDOW,Manifest.permission.GET_ACCOUNTS,Manifest.permission.WRITE_APN_SETTINGS};
-            ActivityCompat.requestPermissions(this,mPermissionList,123);
+    private void yaoqing() {
+        if (Build.VERSION.SDK_INT >= 23) {
+            String[] mPermissionList = new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.CALL_PHONE, Manifest.permission.READ_LOGS, Manifest.permission.READ_PHONE_STATE, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.SET_DEBUG_APP, Manifest.permission.SYSTEM_ALERT_WINDOW, Manifest.permission.GET_ACCOUNTS, Manifest.permission.WRITE_APN_SETTINGS};
+            ActivityCompat.requestPermissions(this, mPermissionList, 123);
         }
-        if(TextUtils.isEmpty(Contants.BASE_URL+bean.getData())){
+        if (TextUtils.isEmpty(Contants.BASE_URL + bean.getData())) {
             return;
         }
-        UMWeb web = new UMWeb(Contants.BASE_URL+bean.getData());
+        UMWeb web = new UMWeb(Contants.BASE_URL + bean.getData());
         web.setTitle("来看看吧");//标题
         //web.setThumb(thumb);  //缩略图
 
@@ -94,7 +101,7 @@ public class YanQingJiangLiActivity extends AppCompatActivity {
         //web.setDescription("my description");//描述 .setDisplayList(SHARE_MEDIA.SINA,SHARE_MEDIA.QQ,SHARE_MEDIA.WEIXIN)
 
         acion = new ShareAction(YanQingJiangLiActivity.this)
-                .setDisplayList(SHARE_MEDIA.WEIXIN,SHARE_MEDIA.WEIXIN_CIRCLE,SHARE_MEDIA.QQ,SHARE_MEDIA.QZONE)
+                .setDisplayList(SHARE_MEDIA.WEIXIN, SHARE_MEDIA.WEIXIN_CIRCLE, SHARE_MEDIA.QQ, SHARE_MEDIA.QZONE)
                 .withText("sadf")
                 .withMedia(web)
                 .setCallback(umShareListener);
@@ -112,7 +119,7 @@ public class YanQingJiangLiActivity extends AppCompatActivity {
 //                        .share();
 //            }
 
-       // UMShareAPI.get(this).getPlatformInfo(this,share_media, authListener);
+        // UMShareAPI.get(this).getPlatformInfo(this,share_media, authListener);
         acion.open();
     }
 
@@ -120,29 +127,41 @@ public class YanQingJiangLiActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        UMShareAPI.get(this).onActivityResult(requestCode,resultCode,data);
+        UMShareAPI.get(this).onActivityResult(requestCode, resultCode, data);
     }
 
-     UMShareListener umShareListener = new UMShareListener(){
+    UMShareListener umShareListener = new UMShareListener() {
 
-         @Override
-         public void onStart(SHARE_MEDIA share_media) {
+        @Override
+        public void onStart(SHARE_MEDIA share_media) {
 
-         }
+        }
 
-         @Override
-         public void onResult(SHARE_MEDIA share_media) {
-             Toast.makeText(YanQingJiangLiActivity.this,"成功了",Toast.LENGTH_LONG).show();
-         }
+        @Override
+        public void onResult(SHARE_MEDIA share_media) {
+            Toast.makeText(YanQingJiangLiActivity.this, "成功了", Toast.LENGTH_LONG).show();
+        }
 
-         @Override
-         public void onError(SHARE_MEDIA share_media, Throwable throwable) {
-             Toast.makeText(YanQingJiangLiActivity.this,"失败"+throwable.getMessage(),Toast.LENGTH_LONG).show();
-         }
+        @Override
+        public void onError(SHARE_MEDIA share_media, Throwable throwable) {
+            Toast.makeText(YanQingJiangLiActivity.this, "失败" + throwable.getMessage(), Toast.LENGTH_LONG).show();
+        }
 
-         @Override
-         public void onCancel(SHARE_MEDIA share_media) {
+        @Override
+        public void onCancel(SHARE_MEDIA share_media) {
 
-         }
-     };
+        }
+    };
+
+    @OnClick({R.id.mywalot_back, R.id.qing})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.mywalot_back:
+                finish();
+                break;
+            case R.id.qing:
+                yaoqing();
+                break;
+        }
+    }
 }

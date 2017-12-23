@@ -33,6 +33,12 @@ public class CallActivity extends VMActivity {
                 | WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON);
     }
 
+
+    protected String nickname;
+    protected String face;
+    protected String uid;
+    protected String ext;
+
     /**
      * 初始化界面方法，做一些界面的初始化操作
      */
@@ -52,7 +58,8 @@ public class CallActivity extends VMActivity {
 
             // 如果不是对方打来的，就主动呼叫
             if (!CallManager.getInstance().isInComingCall()) {
-                CallManager.getInstance().makeCall();
+                String message = uid+","+face +","+nickname;
+                CallManager.getInstance().makeCall(message);
             }
         }
     }

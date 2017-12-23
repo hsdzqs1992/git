@@ -47,61 +47,63 @@
     </RelativeLayout>
 
     <LinearLayout
-        android:padding="15dp"
-        android:layout_width="match_parent"
+        android:layout_width="404dp"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="15dp">
+
         <EditText
-            android:background="@null"
-            android:gravity="start"
-            android:textSize="14sp"
-            android:textColorHint="#999"
-            android:hint="给朋友圈分享些什么....."
             android:id="@+id/fubu_content"
             android:layout_width="match_parent"
-            android:layout_height="181dp"/>
+            android:layout_height="181dp"
+            android:background="@null"
+            android:gravity="start"
+            android:hint="给朋友圈分享些什么....."
+            android:textColorHint="#999"
+            android:textSize="14sp" />
 
         <RelativeLayout
-            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+
             <TextView
-                android:textColor="#666"
-                android:textSize="14sp"
-                android:drawablePadding="8dp"
-                android:gravity="center_vertical"
-                android:drawableLeft="@drawable/picture"
-                android:text="图片"
                 android:id="@+id/fabu_xuanze"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/picture"
+                android:drawablePadding="8dp"
+                android:gravity="center_vertical"
+                android:text="图片"
+                android:textColor="#666"
+                android:textSize="14sp" />
 
 
             <ImageView
                 android:id="@+id/fabu_location_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginRight="9dp"
                 android:layout_toLeftOf="@+id/fabu_weizhi"
-                android:src="@drawable/check_on"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:src="@drawable/check_on" />
+
             <TextView
-                android:gravity="center_vertical"
-                android:textColor="#666"
-                android:textSize="14sp"
-                android:layout_alignParentRight="true"
-                android:text="显示位置"
+                android:layout_marginBottom="20dp"
                 android:id="@+id/fabu_weizhi"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:gravity="center_vertical"
+                android:text="显示位置"
+                android:textColor="#666"
+                android:textSize="14sp" />
         </RelativeLayout>
+
         <android.support.v7.widget.RecyclerView
             android:id="@+id/image"
             android:layout_width="match_parent"
             android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
     </LinearLayout>
-
-
-
 
 
 </LinearLayout>

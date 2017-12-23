@@ -172,6 +172,10 @@
         "source": "D:\\aaa\\co-master\\easeui\\src\\main\\res\\drawable\\ease_sidebar_background_pressed.xml"
     },
     {
+        "merged": "D:\\aaa\\co-master\\easeui\\build\\intermediates\\res\\merged\\release\\drawable\\voice_to_icon.xml",
+        "source": "D:\\aaa\\co-master\\easeui\\src\\main\\res\\drawable\\voice_to_icon.xml"
+    },
+    {
         "merged": "D:\\aaa\\co-master\\easeui\\build\\intermediates\\res\\merged\\release\\drawable\\ease_chatto_bg.xml",
         "source": "D:\\aaa\\co-master\\easeui\\src\\main\\res\\drawable\\ease_chatto_bg.xml"
     },
@@ -186,6 +190,10 @@
     {
         "merged": "D:\\aaa\\co-master\\easeui\\build\\intermediates\\res\\merged\\release\\drawable\\abc_tab_indicator_material.xml",
         "source": "C:\\Users\\Administrator\\.android\\build-cache\\39e014d4694b898df5daec50a34e8132c8a3b153\\output\\res\\drawable\\abc_tab_indicator_material.xml"
+    },
+    {
+        "merged": "D:\\aaa\\co-master\\easeui\\build\\intermediates\\res\\merged\\release\\drawable\\voice_from_icon.xml",
+        "source": "D:\\aaa\\co-master\\easeui\\src\\main\\res\\drawable\\voice_from_icon.xml"
     },
     {
         "merged": "D:\\aaa\\co-master\\easeui\\build\\intermediates\\res\\merged\\release\\drawable\\ease_chat_takepic_selector.xml",

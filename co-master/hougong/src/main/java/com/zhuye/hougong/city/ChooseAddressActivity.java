@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.gyf.barlibrary.ImmersionBar;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.model.Response;
@@ -24,6 +25,7 @@ import com.zhuye.hougong.adapter.BaseHolder;
 import com.zhuye.hougong.bean.CityBean;
 import com.zhuye.hougong.contants.Contants;
 import com.zhuye.hougong.utils.CommentUtils;
+import com.zhuye.hougong.utils.Sputils;
 import com.zhuye.hougong.weidgt.RoundedCornerImageView;
 
 import java.util.ArrayList;
@@ -59,16 +61,34 @@ public class ChooseAddressActivity extends AppCompatActivity {
     private String[] strings;
     private String[] city;
 
-
+    protected void initImmersionBar() {
+        //在BaseActivity里初始化
+        mImmersionBar = ImmersionBar.with(this);
+        mImmersionBar.init();
+    }
+    /**
+     * 是否可以使用沉浸式
+     * Is immersion bar enabled boolean.
+     *
+     * @return the boolean
+     */
+    protected ImmersionBar mImmersionBar;
+    protected boolean isImmersionBarEnabled() {
+        return true;
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_address);
         ButterKnife.bind(this);
+        if (isImmersionBarEnabled())
+            initImmersionBar();
         // StatusBarUtil.setTranslucent(this);
         initViews();
         initData();
     }
+
+
     CityBean bean;
 
     private void initData() {
@@ -180,12 +200,27 @@ public class ChooseAddressActivity extends AppCompatActivity {
     }
     Map ma;
     HotAdapter ada;
+
+    @Override
+    public void onBackPressed() {
+        Intent in = new Intent();
+        in.putExtra("city", Sputils.getString(ChooseAddressActivity.this,"city",""));
+        in.putExtra("citycode",Sputils.getString(ChooseAddressActivity.this,"code",""));
+        setResult(100,in);
+        finish();
+
+    }
+
     private void initViews() {
 //        实例化汉字转拼音
 //        获取characterParser的实例
         ivBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent in = new Intent();
+                in.putExtra("city", Sputils.getString(ChooseAddressActivity.this,"city",""));
+                in.putExtra("citycode",Sputils.getString(ChooseAddressActivity.this,"code",""));
+                setResult(100,in);
                 finish();
             }
         });

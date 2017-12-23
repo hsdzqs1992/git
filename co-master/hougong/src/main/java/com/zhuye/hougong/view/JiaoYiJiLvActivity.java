@@ -5,6 +5,7 @@ import android.support.v4.view.ViewPager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import com.gyf.barlibrary.ImmersionBar;
 import com.zhuye.hougong.R;
 import com.zhuye.hougong.adapter.jiaoyi.JiaoYiJiLvAdapter;
 import com.zhuye.hougong.base.BaseActivity;
@@ -29,16 +30,18 @@ public class JiaoYiJiLvActivity extends BaseActivity {
     @Override
     protected void initview() {
         super.initview();
-        tabStrip.setTextColorResource(R.color.black);
+        tabStrip.setTextColorResource(R.color.liu);
         tabStrip.setIndicatorColorResource(R.color.tab_blue_bg);
         tabStrip.setDividerColor(Color.TRANSPARENT);
-        tabStrip.setTextSelectedColorResource(R.color.red);
+        tabStrip.setTextSelectedColorResource(R.color.tab_blue_bg);
         tabStrip.setTextSize(getResources().getDimensionPixelSize(R.dimen.h10));
         tabStrip.setTextSelectedSize(getResources().getDimensionPixelSize(R.dimen.h10));
         tabStrip.setUnderlineHeight(1);
         jiaoYiJiLvAdapter = new JiaoYiJiLvAdapter(getSupportFragmentManager());
         jiiiaoyijilvViewpager.setAdapter(jiaoYiJiLvAdapter);
         tabStrip.setViewPager(jiiiaoyijilvViewpager);
+        if (isImmersionBarEnabled())
+            initImmersionBar();
     }
     JiaoYiJiLvAdapter jiaoYiJiLvAdapter;
     @Override
@@ -49,5 +52,21 @@ public class JiaoYiJiLvActivity extends BaseActivity {
     @OnClick(R.id.person_detail_back)
     public void onViewClicked() {
         finish();
+    }
+
+    protected void initImmersionBar() {
+        //在BaseActivity里初始化
+        mImmersionBar = ImmersionBar.with(this);
+        mImmersionBar.init();
+    }
+    /**
+     * 是否可以使用沉浸式
+     * Is immersion bar enabled boolean.
+     *
+     * @return the boolean
+     */
+    protected ImmersionBar mImmersionBar;
+    protected boolean isImmersionBarEnabled() {
+        return true;
     }
 }

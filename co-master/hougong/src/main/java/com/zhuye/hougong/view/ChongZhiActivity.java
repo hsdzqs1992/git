@@ -5,12 +5,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.view.Window;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
+import com.gyf.barlibrary.ImmersionBar;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.model.Response;
@@ -57,13 +60,15 @@ public class ChongZhiActivity extends AppCompatActivity {
     RelativeLayout chongzhiWeixin;
     @BindView(R.id.activity_chong_zhi)
     LinearLayout activityChongZhi;
-
+String jine;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_chong_zhi);
         ButterKnife.bind(this);
 
+        jine=getIntent().getStringExtra("jne");
         initView();
 
         initData();
@@ -79,10 +84,19 @@ public class ChongZhiActivity extends AppCompatActivity {
             @Override
             public void OnItemClick(View view, int position) {
                 pos=position;
+                //view.findViewById(R.id.imag)
+               // Log.i("as","cishi"+position);
+                for(int i = 0 ;i< bean.getData().size();i++){
+                    if(i == position){
+                        bean.getData().get(i).setIssected(true);
+                    }else  {
+                        bean.getData().get(i).setIssected(false);
+                    }
+                }
+                adaper.addData2(bean.getData(),0);
+
             }
         });
-
-
     }
 
     private Integer pos;
@@ -92,9 +106,30 @@ public class ChongZhiActivity extends AppCompatActivity {
         adaper = new ChongZhiAdapter(ChongZhiActivity.this);
         zhifu.setAdapter(adaper);
         zhifu.setLayoutManager(new GridLayoutManager(ChongZhiActivity.this,3));
+        if (isImmersionBarEnabled())
+            initImmersionBar();
+    }
+    protected void initImmersionBar() {
+        //在BaseActivity里初始化
+        mImmersionBar = ImmersionBar.with(this);
+        mImmersionBar.init();
+    }
+    /**
+     * 是否可以使用沉浸式
+     * Is immersion bar enabled boolean.
+     *
+     * @return the boolean
+     */
+    protected ImmersionBar mImmersionBar;
+    protected boolean isImmersionBarEnabled() {
+        return true;
     }
 
     private void initData() {
+        Glide.with(ChongZhiActivity.this).load(Sputils.getString(ChongZhiActivity.this,"face","")).into(chongzhiTouxiang);
+        chongzhiName.setText(Sputils.getString(ChongZhiActivity.this,"name",""));
+        findZuixinDizhi.setText(Sputils.getString(ChongZhiActivity.this,"age",""));
+        chongzhiData.setText(jine);
         OkGo.<String>post(Contants.liaobi_list)
                 .params("token", Sputils.getString(ChongZhiActivity.this, "token", ""))
                 .execute(new StringCallback() {
@@ -103,6 +138,9 @@ public class ChongZhiActivity extends AppCompatActivity {
                         if (response.body().contains("200")) {
                             Gson gson = new Gson();
                              bean = gson.fromJson(response.body(),LiaoBiLIstBean.class);
+                            for(int i = 0;i<bean.getData().size();i++){
+                                bean.getData().get(i).setIssected(false);
+                            }
                            // adaper.setData(bean.getData());
                             adaper.addData(bean.getData());
                         }

@@ -24,7 +24,19 @@ public class GlobalListener {
         //EMClient.getInstance().groupManager().addGroupChangeListener(groupListener);
         //本地广播
         manager = LocalBroadcastManager.getInstance(context);
+
+
+//        IntentFilter cmdIntentFilter = new IntentFilter(EMChatManager);
+//        CMDBroadcastReceiver cmdMessageReceiver = new CMDBroadcastReceiver();
+//        appContext.registerReceiver(cmdMessageReceiver, cmdIntentFilter);
+
+
+
     }
+
+
+
+
 
     EMContactListener listener = new EMContactListener() {
 

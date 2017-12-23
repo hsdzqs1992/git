@@ -1,13 +1,15 @@
 package com.zhuye.hougong.fragment.home;
 
+import android.support.v7.widget.GridLayoutManager;
+
 import com.zhuye.hougong.adapter.home.HomeXinRenAdapter;
-import com.zhuye.hougong.weidgt.MyGridLayoutManager;
+import com.zhuye.hougong.weidgt.DividerGridViewItemDecoration2;
 
 /**
  * Created by zzzy on 2017/11/21.
  */
 
-public class XinRenFragment extends BaseHomeFragment {
+public class XinRenFragment extends BaseHomeFragment2 {
 
 
     @Override
@@ -15,8 +17,12 @@ public class XinRenFragment extends BaseHomeFragment {
         super.initView();
 
         homeTuiJianAdapter = new HomeXinRenAdapter(getActivity());
+        recyclerView.addHeaderView(slideview);
+        GridLayoutManager grid =new GridLayoutManager(getActivity(),2);
+
+        recyclerView.setLayoutManager(grid);
         recyclerView.setAdapter(homeTuiJianAdapter);
-        recyclerView.setLayoutManager(new MyGridLayoutManager(getActivity(),2));
+        recyclerView.addItemDecoration(new DividerGridViewItemDecoration2(getActivity(),true));
 
     }
 

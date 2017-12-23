@@ -40,6 +40,7 @@ import com.zhuye.hougong.contants.Contants;
 import com.zhuye.hougong.http.MyCallback;
 import com.zhuye.hougong.model.Modle;
 import com.zhuye.hougong.utils.CommentUtils;
+import com.zhuye.hougong.utils.PhoneFormatCheckUtils;
 import com.zhuye.hougong.utils.Sputils;
 
 import org.greenrobot.eventbus.EventBus;
@@ -165,13 +166,17 @@ public class LoginActivity extends AppCompatActivity {
     private void login() {
         phone=loginUsername.getText().toString().trim();
         pass=loginPassword.getText().toString().trim();
+
+
+        if(!PhoneFormatCheckUtils.isChinaPhoneLegal(phone)){
+            Toast.makeText(LoginActivity.this,"手机号格式错误",Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         if(TextUtils.isEmpty(phone)||TextUtils.isEmpty(pass)){
             Toast.makeText(LoginActivity.this,"手机号或密码不能为空",Toast.LENGTH_SHORT).show();
             return;
         }
-
-
-
 
         loginFormserver();
     }

@@ -2,15 +2,22 @@ package com.hyphenate.easeui.widget.chatrow;
 
 import android.content.Context;
 import android.text.Spannable;
+import android.util.Log;
 import android.view.View;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 import android.widget.TextView.BufferType;
 
+import com.bumptech.glide.Glide;
 import com.hyphenate.chat.EMMessage;
 import com.hyphenate.chat.EMTextMessageBody;
 import com.hyphenate.easeui.R;
+import com.hyphenate.easeui.UserLocal;
 import com.hyphenate.easeui.utils.EaseSmileUtils;
+
+import org.litepal.crud.DataSupport;
+
+import java.util.List;
 
 public class EaseChatRowText extends EaseChatRow{
 
@@ -38,6 +45,24 @@ public class EaseChatRowText extends EaseChatRow{
         Spannable span = EaseSmileUtils.getSmiledText(context, txtBody.getMessage());
         // 设置内容
         contentView.setText(span, BufferType.SPANNABLE);
+
+
+        if (message.direct() == EMMessage.Direct.RECEIVE) {
+            Log.i("as",message.getFrom());
+            List<UserLocal> songs = DataSupport.findAll(UserLocal.class);
+            if(songs!=null && songs.size()>0){
+                for (UserLocal user : songs){
+                    if(user.getHxname().equals(message.getFrom())){
+                        Log.i("as",user.getFacepath());
+                        //holder.name.setText(user.getName());
+                        // EaseUserUtils.setUserAvatar(getContext(),message.getFrom(), holder.avatar);
+                        Glide.with(getContext()).load(user.getFacepath()).into(userAvatarView);
+                    }
+                }
+            }
+        } else {
+            Glide.with(context).load(context.getSharedPreferences("con",Context.MODE_PRIVATE).getString("face","")).into(userAvatarView);
+        }
     }
 
     @Override

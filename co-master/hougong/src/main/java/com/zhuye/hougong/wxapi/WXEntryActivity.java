@@ -191,7 +191,7 @@ public class WXEntryActivity extends WXCallbackActivity implements IWXAPIEventHa
      * @param user_info_url
      */
     private void getUserInfo(String user_info_url) {
-
+       // api.unregisterApp();
         OkGo.<String>post(user_info_url)
                 .execute(new StringCallback() {
                     @Override
@@ -272,6 +272,11 @@ public class WXEntryActivity extends WXCallbackActivity implements IWXAPIEventHa
     // 微信发送请求到第三方应用时，会回调到该方法
     @Override
     public void onReq(BaseReq req) {
+
+
+
+
+
         finish();
     }
 }

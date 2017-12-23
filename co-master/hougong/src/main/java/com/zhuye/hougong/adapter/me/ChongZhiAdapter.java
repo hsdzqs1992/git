@@ -28,5 +28,11 @@ public class ChongZhiAdapter extends BaseRecycleAdapter {
     protected void conver(BaseHolder holder, int position) {
         ((TextView)holder.getView(R.id.price)).setText(((LiaoBiLIstBean.DataBean)data.get(position)).getLiaobi()+"\n聊币");
         ((TextView)holder.getView(R.id.money)).setText(((LiaoBiLIstBean.DataBean)data.get(position)).getMoney()+"\n元");
+
+        if(!((LiaoBiLIstBean.DataBean)data.get(position)).getIssected()){
+            holder.getView(R.id.imag).setBackgroundResource(R.color.white);
+        }else{
+            holder.getView(R.id.imag).setBackgroundResource(R.drawable.chongzhi);
+        }
     }
 }

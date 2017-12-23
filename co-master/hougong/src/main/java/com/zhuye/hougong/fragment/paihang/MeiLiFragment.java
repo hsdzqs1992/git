@@ -1,12 +1,14 @@
 package com.zhuye.hougong.fragment.paihang;
 
+import android.view.View;
+
 import com.zhuye.hougong.R;
 
 /**
  * Created by Administrator on 2017/12/6 0006.
  */
 
-public class MeiLiFragment extends BasePaiHangFragment {
+public class MeiLiFragment extends BasePaiHangFragment2 {
 
     @Override
     protected void initData() {
@@ -40,6 +42,10 @@ public class MeiLiFragment extends BasePaiHangFragment {
         getBangData(1,type1,day);
     }
 
+    @Override
+    public void onClick(View view) {
+
+    }
 
 
 //    protected void handleData() {

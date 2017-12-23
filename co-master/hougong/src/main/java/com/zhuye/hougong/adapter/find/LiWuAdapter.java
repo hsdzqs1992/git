@@ -128,7 +128,7 @@ public class LiWuAdapter extends PagerAdapter {
                 });
     }
 
-    private void songli(int page,int position) {
+    private void songli(final int page, final int position) {
         OkGo.<String>post(Contants.rebate)
                 .params("token", Sputils.getString(con, "token", ""))
                 .params("gift_id", ((LiWu.DataBean)data.get(page*8+position)).getGift_id())
@@ -138,6 +138,7 @@ public class LiWuAdapter extends PagerAdapter {
                     public void onSuccess(Response<String> response) {
                         if (response.body().contains("200")) {
                             CommentUtils.toast(con, "赠送成功");
+                            liwuanswer.success(response,Contants.BASE_URL+((LiWu.DataBean)data.get(page*8+position)).getPhoto());
                             if(type==1){
 
                             }else if(type==2){
@@ -145,12 +146,14 @@ public class LiWuAdapter extends PagerAdapter {
                             }
                         }else if(response.body().contains("201")){
                             CommentUtils.toast(con, "余额不足");
+                            liwuanswer.failed(response);
                         }
                     }
                     @Override
                     public void onError(Response<String> response) {
                         super.onError(response);
                         CommentUtils.toast(con, "赠送失败");
+                        liwuanswer.failed( response);
                     }
 
 
@@ -163,5 +166,16 @@ public class LiWuAdapter extends PagerAdapter {
     @Override
     public void destroyItem(ViewGroup container, int position, Object object) {
         container.removeView((View) object);
+    }
+
+    Liwuanswer liwuanswer;
+    public void setliwueand(Liwuanswer liwuanswer){
+        this.liwuanswer = liwuanswer;
+    }
+
+
+    public interface Liwuanswer{
+        void success(Response<String> response,String url);
+        void failed(Response<String> response);
     }
 }

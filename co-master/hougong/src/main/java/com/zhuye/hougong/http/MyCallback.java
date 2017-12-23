@@ -17,7 +17,6 @@ public abstract class MyCallback extends StringCallback {
         }else{
             doFailue(response);
         }
-
         //T t - gson.fromJson(response.body(),T.class);
     }
 

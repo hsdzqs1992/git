@@ -295,11 +295,11 @@
 
 
 
-            <android.support.v7.widget.RecyclerView
+            <com.zhuye.hougong.weidgt.WrapRecyclerView
                    android:layout_width="match_parent"
                    android:layout_height="match_parent"
                    android:id="@+id/paihangqi">
-               </android.support.v7.widget.RecyclerView>
+               </com.zhuye.hougong.weidgt.WrapRecyclerView>
 
          </LinearLayout>
        </LinearLayout>

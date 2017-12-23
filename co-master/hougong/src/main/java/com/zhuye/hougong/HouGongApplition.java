@@ -40,7 +40,7 @@ public class HouGongApplition extends Application {
         super.onCreate();
 
         gson = new Gson();
-        MultiDex.install(this);
+
 
         EMOptions options =new EMOptions();
         options.setAcceptInvitationAlways(false);
@@ -69,6 +69,7 @@ public class HouGongApplition extends Application {
             registerReceiver(callReceiver, callFilter);
             setConnectionListener();
             Modle.getInstance().init(this);
+
         }
 
        // EMClient.getInstance().init(this,options);
@@ -85,6 +86,14 @@ public class HouGongApplition extends Application {
         UMShareAPI.get(this);
 
     }
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        MultiDex.install(this);
+    }
+
+
 
     /**
      * 设置连接监听

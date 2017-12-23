@@ -172,8 +172,16 @@
         "source": "D:\\aaa\\co-master\\easeui\\src\\main\\res\\drawable\\ease_chat_press_speak_btn.xml"
     },
     {
+        "merged": "D:\\aaa\\co-master\\easeui\\build\\intermediates\\res\\merged\\debug\\drawable\\voice_to_icon.xml",
+        "source": "D:\\aaa\\co-master\\easeui\\src\\main\\res\\drawable\\voice_to_icon.xml"
+    },
+    {
         "merged": "D:\\aaa\\co-master\\easeui\\build\\intermediates\\res\\merged\\debug\\drawable\\ease_btn_cancel_normal_shape.xml",
         "source": "D:\\aaa\\co-master\\easeui\\src\\main\\res\\drawable\\ease_btn_cancel_normal_shape.xml"
+    },
+    {
+        "merged": "D:\\aaa\\co-master\\easeui\\build\\intermediates\\res\\merged\\debug\\drawable\\voice_from_icon.xml",
+        "source": "D:\\aaa\\co-master\\easeui\\src\\main\\res\\drawable\\voice_from_icon.xml"
     },
     {
         "merged": "D:\\aaa\\co-master\\easeui\\build\\intermediates\\res\\merged\\debug\\drawable\\ease_chat_image_selector.xml",

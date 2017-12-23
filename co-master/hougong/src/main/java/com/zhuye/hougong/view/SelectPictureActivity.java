@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
+import com.gyf.barlibrary.ImmersionBar;
 import com.lzy.imagepicker.ImagePicker;
 import com.lzy.imagepicker.bean.ImageItem;
 import com.lzy.imagepicker.ui.ImageGridActivity;
@@ -51,8 +52,24 @@ public class SelectPictureActivity extends BaseActivity {
         adapter= new PictureListAdapter(this);
         recycleview.setAdapter(adapter);
         recycleview.setLayoutManager(new GridLayoutManager(this,3));
+        if (isImmersionBarEnabled())
+            initImmersionBar();
     }
-
+    protected void initImmersionBar() {
+        //在BaseActivity里初始化
+        mImmersionBar = ImmersionBar.with(this);
+        mImmersionBar.init();
+    }
+    /**
+     * 是否可以使用沉浸式
+     * Is immersion bar enabled boolean.
+     *
+     * @return the boolean
+     */
+    protected ImmersionBar mImmersionBar;
+    protected boolean isImmersionBarEnabled() {
+        return true;
+    }
     @Override
     protected int getResId() {
         return R.layout.activity_select_picture2;

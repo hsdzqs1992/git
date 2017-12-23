@@ -4,6 +4,7 @@ import android.content.Context;
 import android.net.Uri;
 import android.widget.ImageView;
 
+import com.lzy.imagepicker.bean.ImageItem;
 import com.zhuye.hougong.R;
 
 import java.io.File;
@@ -27,6 +28,6 @@ public class ImageAdapter extends BaseRecycleAdapter {
     @Override
     protected void conver(BaseHolder holder, int position) {
         ImageView iv = holder.getView(R.id.image);
-        iv.setImageURI(Uri.fromFile((File) data.get(position)));
+        iv.setImageURI(Uri.fromFile(new File(((ImageItem) data.get(position)).path)));
     }
 }
